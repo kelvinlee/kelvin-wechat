@@ -24,13 +24,13 @@ checkSignature = function(query, token) {
   return shasum.digest('hex') === signature;
 };
 
-getParse = function() {
+getParse = function(req) {
   var query;
   query = url.parse(req.url).query;
   return JSON.stringify(qs.parse(query));
 };
 
 exports.index = function(req, res, next) {
-  console.log(getParse());
+  console.log(getParse(req));
   return res.send(checkSignature(url.parse(req.url).query, config.wechat_token));
 };

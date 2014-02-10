@@ -20,11 +20,11 @@ checkSignature = (query, token)->
 	arr = [token, timestamp, nonce].sort()
 	shasum.update arr.join ''
 	shasum.digest('hex') is signature
-getParse = ->
+getParse = (req)->
 	query = url.parse(req.url).query
 	JSON.stringify qs.parse query
 
 exports.index = (req,res,next)->
-	console.log getParse()
+	console.log getParse req
 	
 	res.send checkSignature url.parse(req.url).query,config.wechat_token
