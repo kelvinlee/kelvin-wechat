@@ -22,4 +22,6 @@ checkSignature = (query, token)->
 
 exports.index = (req,res,next)->
 	console.log url.parse(req.url).query
+	query = url.parse(req.url).query
+	console.log query.a
 	res.send checkSignature url.parse(req.url).query,config.wechat_token

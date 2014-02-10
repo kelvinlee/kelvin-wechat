@@ -23,6 +23,9 @@ checkSignature = function(query, token) {
 };
 
 exports.index = function(req, res, next) {
+  var query;
   console.log(url.parse(req.url).query);
+  query = url.parse(req.url).query;
+  console.log(query.a);
   return res.send(checkSignature(url.parse(req.url).query, config.wechat_token));
 };
