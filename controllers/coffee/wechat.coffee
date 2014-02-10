@@ -19,5 +19,5 @@ checkSignature = (query, token)->
 	shasum.digest('hex') is signature
 
 exports.index = (req,res,next)->
-	console.log req.body
-	res.send checkSignature req.body,config.wechat_token
+	console.log req.parse
+	res.send checkSignature req.parse,config.wechat_token
