@@ -26,8 +26,8 @@ getParse = (req)->
 	JSON.stringify qs.parse query
 
 exports.index = (req,res,next)->
-	console.log getParse req
 	parse = getParse req
+	console.log parse,parse.timestamp,parse.nonce
 	to = checkSignature parse,config.wechat_token
 	console.log to
 	res.send to

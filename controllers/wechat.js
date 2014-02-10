@@ -33,8 +33,8 @@ getParse = function(req) {
 
 exports.index = function(req, res, next) {
   var parse, to;
-  console.log(getParse(req));
   parse = getParse(req);
+  console.log(parse, parse.timestamp, parse.nonce);
   to = checkSignature(parse, config.wechat_token);
   console.log(to);
   return res.send(to);
