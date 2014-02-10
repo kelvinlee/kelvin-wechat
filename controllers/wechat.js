@@ -32,5 +32,5 @@ getParse = function(req) {
 
 exports.index = function(req, res, next) {
   console.log(getParse(req));
-  return res.send(checkSignature(url.parse(req.url).query, config.wechat_token));
+  return res.send(checkSignature(getParse(req), config.wechat_token));
 };

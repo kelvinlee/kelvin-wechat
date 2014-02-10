@@ -26,5 +26,4 @@ getParse = (req)->
 
 exports.index = (req,res,next)->
 	console.log getParse req
-	
-	res.send checkSignature url.parse(req.url).query,config.wechat_token
+	res.send checkSignature getParse(req),config.wechat_token
