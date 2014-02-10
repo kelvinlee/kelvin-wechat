@@ -27,7 +27,7 @@ getParse = (req)->
 
 exports.index = (req,res,next)->
 	parse = getParse req
-	# console.log parse,parse.timestamp,parse.nonce
+	console.log parse
 	to = checkSignature parse,config.wechat_token
 	# console.log to
 	res.send if to then parse.echostr else "false"
