@@ -9,6 +9,7 @@ fs = require 'fs'
 
 app = express()
 # configuration in all env
+app.use express.bodyParser()
 app.configure ->
   viewsRoot = path.join __dirname, 'views'
   app.set 'view engine', 'jade'

@@ -26,17 +26,16 @@
       "outputStyle" : 1,
       "fileType" : 32
     },
-    "\/coffee\/app.coffee" : {
+    "\/config.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/coffee\/app.coffee",
-      "checkOutputStyle" : 0,
-      "minifyOutput" : 0,
-      "outputAbbreviatedPath" : "\/app.js",
-      "outputStyle" : 1,
-      "fileType" : 32
+      "inputAbbreviatedPath" : "\/config.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/config-min.js",
+      "fileType" : 64
     },
     "\/controllers\/wechat.js" : {
       "ignoreWasSetByUser" : 0,
@@ -60,16 +59,17 @@
       "outputAbbreviatedPath" : "\/routes-min.js",
       "fileType" : 64
     },
-    "\/config.js" : {
+    "\/coffee\/app.coffee" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/config-min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/coffee\/app.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 0,
+      "outputAbbreviatedPath" : "\/app.js",
+      "outputStyle" : 1,
+      "fileType" : 32
     },
     "\/app.js" : {
       "ignoreWasSetByUser" : 0,

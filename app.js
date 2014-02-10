@@ -13,6 +13,8 @@ fs = require('fs');
 
 app = express();
 
+app.use(express.bodyParser());
+
 app.configure(function() {
   var viewsRoot;
   viewsRoot = path.join(__dirname, 'views');
