@@ -3,8 +3,10 @@
 # check = require('validator').check 
 crypto = require 'crypto'
 xml2js = require 'xml2js'
+url = require 'url'
 EventProxy = require 'eventproxy'
 config = require('../config').config
+
 
 #var md = require('showdown').Markdown
 
