@@ -19,7 +19,7 @@ checkSignature = (query, token)->
 	shasum = crypto.createHash 'sha1'
 	arr = [token, timestamp, nonce].sort()
 	shasum.update arr.join ''
-	console.log shasum.digest 'hex'
+	console.log arr.join ''
 	shasum.digest('hex') is signature
 getParse = (req)->
 	query = url.parse(req.url).query
@@ -27,6 +27,7 @@ getParse = (req)->
 
 exports.index = (req,res,next)->
 	console.log getParse req
-	to = checkSignature getParse(req),config.wechat_token
+	parse = getParse req
+	to = checkSignature parse,config.wechat_token
 	console.log to
 	res.send to
