@@ -23,7 +23,7 @@ checkSignature = (query, token)->
 	shasum.digest('hex') is signature
 getParse = (req)->
 	query = url.parse(req.url).query
-	JSON.stringify qs.parse query
+	qs.parse query
 
 exports.index = (req,res,next)->
 	parse = getParse req

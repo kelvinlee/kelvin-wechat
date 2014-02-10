@@ -28,7 +28,7 @@ checkSignature = function(query, token) {
 getParse = function(req) {
   var query;
   query = url.parse(req.url).query;
-  return JSON.stringify(qs.parse(query));
+  return qs.parse(query);
 };
 
 exports.index = function(req, res, next) {
