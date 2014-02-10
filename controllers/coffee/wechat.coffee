@@ -4,6 +4,7 @@
 crypto = require 'crypto'
 xml2js = require 'xml2js'
 url = require 'url'
+qs = require 'querystring'
 EventProxy = require 'eventproxy'
 config = require('../config').config
 
@@ -19,9 +20,11 @@ checkSignature = (query, token)->
 	arr = [token, timestamp, nonce].sort()
 	shasum.update arr.join ''
 	shasum.digest('hex') is signature
+getParse = ->
+	query = url.parse(req.url).query
+	JSON.stringify qs.parse query
 
 exports.index = (req,res,next)->
-	console.log url.parse(req.url).query
-	query = url.parse(req.url).query
-	console.log query.a
+	console.log getParse()
+	
 	res.send checkSignature url.parse(req.url).query,config.wechat_token
