@@ -1,0 +1,13 @@
+{
+  "name": "Giccoo-WeChat",
+  "description": "This is WeChat's accout.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "*", 
+    "eventproxy":"*",
+    "xml2js":"*",
+    "xss":"*",
+    "jade": "*"
+  }
+}
