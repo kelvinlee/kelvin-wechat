@@ -21,7 +21,6 @@ checkSignature = function(query, token) {
   shasum = crypto.createHash('sha1');
   arr = [token, timestamp, nonce].sort();
   shasum.update(arr.join(''));
-  console.log(arr, arr.join(''));
   return shasum.digest('hex') === signature;
 };
 
@@ -34,8 +33,6 @@ getParse = function(req) {
 exports.index = function(req, res, next) {
   var parse, to;
   parse = getParse(req);
-  console.log(parse, parse.timestamp, parse.nonce);
   to = checkSignature(parse, config.wechat_token);
-  console.log(to);
-  return res.send(to);
+  return res.send(to ? parse.echostr : "false");
 };
