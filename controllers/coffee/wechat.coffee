@@ -19,6 +19,7 @@ checkSignature = (query, token)->
 	shasum = crypto.createHash 'sha1'
 	arr = [token, timestamp, nonce].sort()
 	shasum.update arr.join ''
+	console.log shasum.digest 'hex'
 	shasum.digest('hex') is signature
 getParse = (req)->
 	query = url.parse(req.url).query

@@ -21,6 +21,7 @@ checkSignature = function(query, token) {
   shasum = crypto.createHash('sha1');
   arr = [token, timestamp, nonce].sort();
   shasum.update(arr.join(''));
+  console.log(shasum.digest('hex'));
   return shasum.digest('hex') === signature;
 };
 
