@@ -35,11 +35,19 @@ getMessage = (stream, callback)->
 		xml = buf.toString 'utf-8'
 		xml2js.parseString xml, {trim:true} , callback
 formatMessage = (result)->
-	message = {}
+	message = {} 
+	return false if not result
 	for key of result.xml
 		val = result.xml[key][0]
 		message[key] = (if isEmpty val then '' else val).trim()
 	message
+# message信息分发.
+checkMessage = (message)->
+	switch message.MsgType
+		when 'text'
+			console.log '文字信息'
+		when 'video'
+			console.log '视频信息'
 
 exports.index = (req,res,next)->
 	parse = getParse req
@@ -49,5 +57,11 @@ exports.index = (req,res,next)->
 	getMessage req, (err,result)->
 		console.log err if err
 		message = formatMessage result
-		console.log message
-	res.send if to then parse.echostr else "false"
+		# return res.send 'what?' if not message
+		console.log message.MsgType,checkMessage message
+		res.render 'wechat-text',
+			toUser:message.FromUserName
+			FromUserName:message.toUser
+			date: new Date().getTime()
+			content: "你说的是什么意思呢?"
+	# res.send if to then parse.echostr else "false"

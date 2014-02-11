@@ -2,16 +2,17 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8376",
   "files" : {
-    "\/config.js" : {
+    "\/coffee\/app.coffee" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/config.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/config-min.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/coffee\/app.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 0,
+      "outputAbbreviatedPath" : "\/app.js",
+      "outputStyle" : 1,
+      "fileType" : 32
     },
     "\/coffee\/config.coffee" : {
       "ignoreWasSetByUser" : 0,
@@ -25,16 +26,28 @@
       "outputStyle" : 1,
       "fileType" : 32
     },
-    "\/app.js" : {
-      "ignoreWasSetByUser" : 0,
+    "\/views\/wechat-text.jade" : {
+      "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app.js",
+      "inputAbbreviatedPath" : "\/views\/wechat-text.jade",
       "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app-min.js",
-      "fileType" : 64
+      "compileDebug" : 1,
+      "outputAbbreviatedPath" : "\/wechat-text.html",
+      "fileType" : 512
+    },
+    "\/controllers\/coffee\/wechat.coffee" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/controllers\/coffee\/wechat.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 0,
+      "outputAbbreviatedPath" : "\/controllers\/wechat.js",
+      "outputStyle" : 1,
+      "fileType" : 32
     },
     "\/controllers\/wechat.js" : {
       "ignoreWasSetByUser" : 0,
@@ -58,17 +71,27 @@
       "outputAbbreviatedPath" : "\/routes-min.js",
       "fileType" : 64
     },
-    "\/controllers\/coffee\/wechat.coffee" : {
+    "\/config.js" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/controllers\/coffee\/wechat.coffee",
-      "checkOutputStyle" : 0,
-      "minifyOutput" : 0,
-      "outputAbbreviatedPath" : "\/controllers\/wechat.js",
-      "outputStyle" : 1,
-      "fileType" : 32
+      "inputAbbreviatedPath" : "\/config.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/config-min.js",
+      "fileType" : 64
+    },
+    "\/app.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app-min.js",
+      "fileType" : 64
     },
     "\/coffee\/routes.coffee" : {
       "ignoreWasSetByUser" : 0,
@@ -79,18 +102,6 @@
       "checkOutputStyle" : 0,
       "minifyOutput" : 0,
       "outputAbbreviatedPath" : "\/routes.js",
-      "outputStyle" : 1,
-      "fileType" : 32
-    },
-    "\/coffee\/app.coffee" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/coffee\/app.coffee",
-      "checkOutputStyle" : 0,
-      "minifyOutput" : 0,
-      "outputAbbreviatedPath" : "\/app.js",
       "outputStyle" : 1,
       "fileType" : 32
     }
@@ -140,7 +151,7 @@
     "jadeAutoOutputPathReplace2" : "",
     "shouldRunBless" : 0,
     "stylusAutoOutputPathStyle" : 2,
-    "coffeeCheckOutputStyle" : 1,
+    "coffeeCheckOutputStyle" : 0,
     "slimOutputStyle" : 1,
     "javascriptSyntaxCheckerStyle" : 0,
     "sassAutoOutputPathReplace1" : "sass",
