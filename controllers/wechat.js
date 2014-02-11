@@ -86,7 +86,7 @@ exports.index = function(req, res, next) {
     console.log(message.MsgType, checkMessage(message));
     return res.render('wechat-text', {
       toUser: message.FromUserName,
-      FromUserName: message.toUser,
+      fromUser: message.toUser,
       date: new Date().getTime(),
       content: "你说的是什么意思呢?"
     });
