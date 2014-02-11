@@ -62,10 +62,9 @@ exports.index = (req,res,next)->
 		console.log message
 		res.render 'wechat-text',
 			toUser:message.FromUserName
-			# fromUser:message.toUser
-			fromUser: "savelearn"
+			fromUser:message.ToUserName
 			# toUser:"message.FromUserName"
-			# fromUser:"message.toUser"
+			# fromUser:"message.ToUserName"
 			date: new Date().getTime()
 			content: "你说的是什么意思呢?"
 	# res.send if to then parse.echostr else "false"
