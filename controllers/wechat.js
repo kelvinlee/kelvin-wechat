@@ -83,7 +83,8 @@ exports.index = function(req, res, next) {
       console.log(err);
     }
     message = formatMessage(result);
-    console.log(message.MsgType, checkMessage(message));
+    checkMessage(message);
+    console.log(message);
     return res.render('wechat-text', {
       toUser: message.FromUserName,
       fromUser: message.toUser,
