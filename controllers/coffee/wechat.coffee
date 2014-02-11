@@ -27,6 +27,7 @@ getParse = (req)->
 	qs.parse query
 isEmpty = (thing)->
 	typeof thing is "object" && (thing != null) && Object.keys(thing).length is 0
+# 返回获取到的xml消息
 getMessage = (stream, callback)->
 	buf = new BufferHelper()
 	buf.load stream, (err,buf)->
@@ -42,7 +43,7 @@ formatMessage = (result)->
 
 exports.index = (req,res,next)->
 	parse = getParse req
-	console.log req,req.body
+	# console.log req,req.body
 	to = checkSignature parse,config.wechat_token
 	# console.log to
 	getMessage req, (err,result)->

@@ -64,7 +64,6 @@ formatMessage = function(result) {
 exports.index = function(req, res, next) {
   var parse, to;
   parse = getParse(req);
-  console.log(req, req.body);
   to = checkSignature(parse, config.wechat_token);
   getMessage(req, function(err, result) {
     var message;
