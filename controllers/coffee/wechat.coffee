@@ -49,6 +49,7 @@ checkMessage = (message)->
 		when 'video'
 			console.log '视频信息'
 
+# 信息接受位置
 exports.index = (req,res,next)->
 	parse = getParse req
 	# console.log req,req.body
@@ -57,14 +58,12 @@ exports.index = (req,res,next)->
 	getMessage req, (err,result)->
 		console.log err if err
 		message = formatMessage result
-		# return res.send 'what?' if not message
+		(return res.send if to then parse.echostr else "what?" ) if not message
 		checkMessage message
 		console.log message
 		res.render 'wechat-text',
 			toUser:message.FromUserName
 			fromUser:message.ToUserName
-			# toUser:"message.FromUserName"
-			# fromUser:"message.ToUserName"
 			date: new Date().getTime()
 			content: "你说的是什么意思呢?"
 	# res.send if to then parse.echostr else "false"
