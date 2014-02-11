@@ -62,7 +62,8 @@ exports.index = (req,res,next)->
 		console.log message
 		res.render 'wechat-text',
 			toUser:message.FromUserName
-			fromUser:message.toUser
+			# fromUser:message.toUser
+			fromUser: "savelearn"
 			# toUser:"message.FromUserName"
 			# fromUser:"message.toUser"
 			date: new Date().getTime()
