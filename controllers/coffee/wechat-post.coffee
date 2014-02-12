@@ -1,6 +1,7 @@
 # 这个文件的作用
 # 主要是发送给微信后台接口
 # 获取token值,定期更新.
+# 此页内的均为高级功能,需要高级权限.
 # 
 https = require 'https'
 url = require 'url'
@@ -23,7 +24,14 @@ options_get_access_token =
 options_custom = 
 	host : "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token="
 	method : "POST"
-
+# 发送消息 [Old]
+options_send = 
+	host : "https://api.weixin.qq.com/cgi-bin/message/send?access_token="
+	method : "POST"
+# 获取关注列表
+options_users = 
+	host : "https://api.weixin.qq.com/cgi-bin/user/get?access_token="
+	method : "GET"
 post_data = 
 	button:[
 		{
@@ -93,7 +101,14 @@ checkMenus = ->
 			console.log obj
 	request.write '\n'
 	request.end()
-
+# 获取关注者列表
+getUsers = (Next_OpenID)->
+	request = https.get options_users.host+access_token.access_token, (res)->
+		res.on 'data', (chunk)->
+			obj = JSON.parse chunk
+			console.log obj
+	request.write '\n'
+	request.end()
 # Node 调用.
 
 exports.gettoken = (req,res,next)->

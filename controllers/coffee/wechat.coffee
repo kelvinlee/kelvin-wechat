@@ -55,6 +55,7 @@ checkMessage = (message)->
 		when 'image'
 			console.log '图片信息'
 		when 'voice'
+			# Recognition 开启语音识别,返回对应中文.
 			console.log '声音信息'
 		when 'video'
 			console.log '视频信息'
@@ -66,6 +67,7 @@ checkMessage = (message)->
 			# subscribe 关注
 			# unsubscribe 取消关注
 			# CLICK 菜单点击
+			# LOCATION 地利位置
 			console.log message.Event
 
 # 信息接受位置
