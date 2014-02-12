@@ -69,8 +69,18 @@ checkMessage = function(message) {
   switch (message.MsgType) {
     case 'text':
       return console.log('文字信息');
+    case 'image':
+      return console.log('图片信息');
+    case 'voice':
+      return console.log('声音信息');
     case 'video':
       return console.log('视频信息');
+    case 'location':
+      return console.log('地理信息');
+    case 'link':
+      return console.log('连接消息');
+    case 'event':
+      return console.log(message.Event);
   }
 };
 

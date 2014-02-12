@@ -52,8 +52,21 @@ checkMessage = (message)->
 	switch message.MsgType
 		when 'text'
 			console.log '文字信息'
+		when 'image'
+			console.log '图片信息'
+		when 'voice'
+			console.log '声音信息'
 		when 'video'
 			console.log '视频信息'
+		when 'location'
+			console.log '地理信息'
+		when 'link'
+			console.log '连接消息'
+		when 'event'
+			# subscribe 关注
+			# unsubscribe 取消关注
+			# CLICK 菜单点击
+			console.log message.Event
 
 # 信息接受位置
 exports.index = (req,res,next)->
