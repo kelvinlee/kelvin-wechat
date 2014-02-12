@@ -1,3 +1,8 @@
+# 为了方便,这里做个说明
+# 这个文件是接收来自微信的请求
+# 并不能主动发出
+# 接收到消息后分析xml,并发送给中间键做分析,然后返回给微信.
+# 
 # User = require('../proxy').User 
 # Ut = require '../lib/util'
 # check = require('validator').check 
@@ -41,8 +46,9 @@ formatMessage = (result)->
 		val = result.xml[key][0]
 		message[key] = (if isEmpty val then '' else val).trim()
 	message
-# message信息分发.
+# message信息分发. 这里应该是中间键的一个点.
 checkMessage = (message)->
+	console.log message.MsgType
 	switch message.MsgType
 		when 'text'
 			console.log '文字信息'

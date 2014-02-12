@@ -37,6 +37,29 @@
       "outputAbbreviatedPath" : "\/wechat-text.html",
       "fileType" : 512
     },
+    "\/controllers\/wechat-post.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/controllers\/wechat-post.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/controllers\/wechat-post-min.js",
+      "fileType" : 64
+    },
+    "\/controllers\/coffee\/wechat-post.coffee" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/controllers\/coffee\/wechat-post.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 0,
+      "outputAbbreviatedPath" : "\/controllers\/wechat-post.js",
+      "outputStyle" : 1,
+      "fileType" : 32
+    },
     "\/config.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -59,17 +82,6 @@
       "outputAbbreviatedPath" : "\/controllers\/wechat-min.js",
       "fileType" : 64
     },
-    "\/routes.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/routes.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/routes-min.js",
-      "fileType" : 64
-    },
     "\/coffee\/app.coffee" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -81,6 +93,17 @@
       "outputAbbreviatedPath" : "\/app.js",
       "outputStyle" : 1,
       "fileType" : 32
+    },
+    "\/routes.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/routes.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/routes-min.js",
+      "fileType" : 64
     },
     "\/app.js" : {
       "ignoreWasSetByUser" : 0,

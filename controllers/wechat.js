@@ -65,6 +65,7 @@ formatMessage = function(result) {
 };
 
 checkMessage = function(message) {
+  console.log(message.MsgType);
   switch (message.MsgType) {
     case 'text':
       return console.log('文字信息');
