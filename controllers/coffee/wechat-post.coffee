@@ -3,6 +3,7 @@
 # 获取token值,定期更新.
 # 此页内的均为高级功能,需要高级权限.
 # 
+
 https = require 'https'
 url = require 'url'
 querystring = require 'querystring'
@@ -36,15 +37,36 @@ post_data =
 	button:[
 		{
 			type:"click"
-			name:""
-			key:"MUSIC"
-		},
+			name:"桥哥"
+			key:"myself"
+		}
+		{
+			name:"新奇世界"
+			sub_button:[
+				{
+					type:"click"
+					name:"新奇产品"
+					key:"product"
+				}
+				{
+					type:"click"
+					name:"新奇事件"
+					key:"things"
+				}
+				{
+					type:"click"
+					name:"新奇人物"
+					key:"people"
+				}
+			]
+		}
 		{
 			type:"click"
-			name:"歌手简介"
-			key:"SINGER"
+			name:"跟桥哥对话"
+			key:"talkto"
 		}
 	]
+
 # 检测token值,并向下执行
 checkToken = (callback)->
 	if access_token.date && access_token.date > new Date().getTime()
@@ -72,9 +94,11 @@ getToken = (callback)->
 	request.write '\n'
 	request.end()
 # 创建菜单
+
 sendMenus = ->
 	u = url.parse options_create_menu.host
 	p = if u['port'] then u['port'] else 80
+
 	op = 
 		hostname: u['host']
 		port: 443
@@ -88,6 +112,7 @@ sendMenus = ->
 		res.on 'data', (chunk)->
 			obj = JSON.parse chunk
 			console.log obj
+	console.log JSON.stringify post_data
 	request.write JSON.stringify(post_data)+'\n'
 	request.end()
 # 获取菜单
@@ -109,10 +134,9 @@ getUsers = (Next_OpenID)->
 			console.log obj
 	request.write '\n'
 	request.end()
-# Node 调用.
 
+# Node 调用. 
 exports.gettoken = (req,res,next)->
-	
 	checkMenus()
 	# res.send 'ok!'
 	res.render 'wechat-ctrl'

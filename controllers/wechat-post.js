@@ -43,12 +43,29 @@ post_data = {
   button: [
     {
       type: "click",
-      name: "",
-      key: "MUSIC"
+      name: "桥哥",
+      key: "myself"
+    }, {
+      name: "新奇世界",
+      sub_button: [
+        {
+          type: "click",
+          name: "新奇产品",
+          key: "product"
+        }, {
+          type: "click",
+          name: "新奇事件",
+          key: "things"
+        }, {
+          type: "click",
+          name: "新奇人物",
+          key: "people"
+        }
+      ]
     }, {
       type: "click",
-      name: "歌手简介",
-      key: "SINGER"
+      name: "跟桥哥对话",
+      key: "talkto"
     }
   ]
 };
@@ -106,6 +123,7 @@ sendMenus = function() {
       return console.log(obj);
     });
   });
+  console.log(JSON.stringify(post_data));
   request.write(JSON.stringify(post_data) + '\n');
   return request.end();
 };

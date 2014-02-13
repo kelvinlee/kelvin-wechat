@@ -13,8 +13,6 @@ qs = require 'querystring'
 BufferHelper = require 'bufferhelper'
 EventProxy = require 'eventproxy'
 config = require('../config').config
-
-
 #var md = require('showdown').Markdown
 
 # 检查签名
@@ -47,11 +45,13 @@ formatMessage = (result)->
 		message[key] = (if isEmpty val then '' else val).trim()
 	message
 # message信息分发. 这里应该是中间键的一个点.
+# @codekit-prepend "wechat-process.coffee";
 checkMessage = (message)->
 	console.log message.MsgType
 	switch message.MsgType
 		when 'text'
 			console.log '文字信息'
+			return go_process message.Content
 		when 'image'
 			console.log '图片信息'
 		when 'voice'
@@ -80,11 +80,12 @@ exports.index = (req,res,next)->
 		console.log err if err
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
-		checkMessage message
+		backMsg = checkMessage message
 		console.log message
-		res.render 'wechat-text',
-			toUser:message.FromUserName
-			fromUser:message.ToUserName
-			date: new Date().getTime()
-			content: "你说的是什么意思呢?"
-	# res.send if to then parse.echostr else "false"
+		if backMsg
+			res.render 'wechat-text',
+				toUser:message.FromUserName
+				fromUser:message.ToUserName
+				date: new Date().getTime()
+				content: backMsg
+		# res.send if to then parse.echostr else "false"
