@@ -88,4 +88,10 @@ exports.index = (req,res,next)->
 				fromUser:message.ToUserName
 				date: new Date().getTime()
 				content: backMsg
+		else
+			res.render 'wechat-text',
+				toUser:message.FromUserName
+				fromUser:message.ToUserName
+				date: new Date().getTime()
+				content: ""
 		# res.send if to then parse.echostr else "false"

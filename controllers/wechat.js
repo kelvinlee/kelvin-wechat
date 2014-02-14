@@ -168,6 +168,13 @@ exports.index = function(req, res, next) {
         date: new Date().getTime(),
         content: backMsg
       });
+    } else {
+      return res.render('wechat-text', {
+        toUser: message.FromUserName,
+        fromUser: message.ToUserName,
+        date: new Date().getTime(),
+        content: ""
+      });
     }
   });
 };
