@@ -2,18 +2,6 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8376",
   "files" : {
-    "\/coffee\/app.coffee" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/coffee\/app.coffee",
-      "checkOutputStyle" : 0,
-      "minifyOutput" : 0,
-      "outputAbbreviatedPath" : "\/app.js",
-      "outputStyle" : 1,
-      "fileType" : 32
-    },
     "\/config.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 1,
@@ -25,6 +13,17 @@
       "outputAbbreviatedPath" : "\/config-min.js",
       "fileType" : 64
     },
+    "\/controllers\/wechat-process.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/controllers\/wechat-process.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/controllers\/wechat-process-min.js",
+      "fileType" : 64
+    },
     "\/controllers\/coffee\/wechat.coffee" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -34,6 +33,18 @@
       "checkOutputStyle" : 0,
       "minifyOutput" : 0,
       "outputAbbreviatedPath" : "\/controllers\/wechat.js",
+      "outputStyle" : 1,
+      "fileType" : 32
+    },
+    "\/coffee\/app.coffee" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/coffee\/app.coffee",
+      "checkOutputStyle" : 0,
+      "minifyOutput" : 0,
+      "outputAbbreviatedPath" : "\/app.js",
       "outputStyle" : 1,
       "fileType" : 32
     },

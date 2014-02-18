@@ -6,6 +6,8 @@
 # User = require('../proxy').User 
 # Ut = require '../lib/util'
 # check = require('validator').check 
+fs = require 'fs'
+path = require 'path'
 crypto = require 'crypto'
 xml2js = require 'xml2js'
 url = require 'url'
@@ -13,6 +15,32 @@ qs = require 'querystring'
 BufferHelper = require 'bufferhelper'
 EventProxy = require 'eventproxy'
 config = require('../config').config
+Segment = require('segment').Segment
+
+# 初始化分词
+# 自定义分词文件路径
+# fs.stat "./dicts/carnames.txt", (err,stat)->
+# 	console.log err,stat,stat.isFIFO()
+# console.log 
+segWord = new Segment()
+segWord.use('URLTokenizer')
+.use('WildcardTokenizer')
+.use('PunctuationTokenizer')
+# // 中文单词识别
+.use('DictTokenizer')
+.use('ChsNameTokenizer')
+# // 优化模块
+.use('EmailOptimizer') 
+.use('ChsNameOptimizer')
+.use('DictOptimizer')
+.use('DatetimeOptimizer') 
+.use('ForeignTokenizer') 
+# // 字典文件
+.loadDict('dict.txt') 
+.loadDict('dict2.txt')
+.loadDict(path.resolve("./dicts/carnames.txt"))
+.loadDict('names.txt')
+.loadDict('wildcard.txt', 'WILDCARD', true)
 #var md = require('showdown').Markdown
 
 # 检查签名
@@ -95,3 +123,13 @@ exports.index = (req,res,next)->
 				date: new Date().getTime()
 				content: ""
 		# res.send if to then parse.echostr else "false"
+exports.word = (req,res,next)->
+	# 分词
+	# console.log segWord.doSegment "我不想参加奥迪冰雪抽奖活动?"
+	# word = segWord.doSegment "我想参与奥迪冰雪抽奖活动! http://www.baidu.com"
+	word = segWord.doSegment "我叫李泓桥李克强,我要预约试驾奥迪SQ5"
+	word.sort (a,b)->
+		b.p-a.p
+	console.log word
+	res.send "contents"
+	

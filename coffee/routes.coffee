@@ -8,5 +8,6 @@ module.exports = (app)->
   app.post '/', wechat.index 
   app.get '/gettoken', post.gettoken
   app.get '/getmenu', post.getmenu
+  app.get '/word', wechat.word
 
 console.log "routes loaded."

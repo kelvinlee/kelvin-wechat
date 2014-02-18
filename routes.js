@@ -9,7 +9,8 @@ module.exports = function(app) {
   app.get('/', wechat.index);
   app.post('/', wechat.index);
   app.get('/gettoken', post.gettoken);
-  return app.get('/getmenu', post.getmenu);
+  app.get('/getmenu', post.getmenu);
+  return app.get('/word', wechat.word);
 };
 
 console.log("routes loaded.");
