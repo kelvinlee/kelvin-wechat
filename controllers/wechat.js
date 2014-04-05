@@ -144,7 +144,8 @@ checkMessage = function(message) {
     case 'image':
       return console.log('图片信息');
     case 'voice':
-      return console.log('声音信息');
+      console.log('声音信息');
+      return go_process(message.Recognition);
     case 'video':
       return console.log('视频信息');
     case 'location':
@@ -191,7 +192,7 @@ exports.index = function(req, res, next) {
 
 exports.word = function(req, res, next) {
   var word;
-  word = segWord.doSegment("我叫李泓桥李克强,我要预约试驾奥迪SQ5");
+  word = segWord.doSegment("我叫李泓桥,我要预约试驾奥迪SQ5,我想三年之内买车.");
   word.sort(function(a, b) {
     return b.p - a.p;
   });

@@ -13,17 +13,6 @@
       "outputAbbreviatedPath" : "\/config-min.js",
       "fileType" : 64
     },
-    "\/controllers\/wechat-process.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/controllers\/wechat-process.js",
-      "outputStyle" : 0,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/controllers\/wechat-process-min.js",
-      "fileType" : 64
-    },
     "\/controllers\/coffee\/wechat.coffee" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -35,6 +24,17 @@
       "outputAbbreviatedPath" : "\/controllers\/wechat.js",
       "outputStyle" : 1,
       "fileType" : 32
+    },
+    "\/controllers\/wechat-process.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/controllers\/wechat-process.js",
+      "outputStyle" : 0,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/controllers\/wechat-process-min.js",
+      "fileType" : 64
     },
     "\/coffee\/app.coffee" : {
       "ignoreWasSetByUser" : 0,

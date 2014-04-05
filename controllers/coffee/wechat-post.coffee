@@ -33,6 +33,10 @@ options_send =
 options_users = 
 	host : "https://api.weixin.qq.com/cgi-bin/user/get?access_token="
 	method : "GET"
+# 获取关注者信息
+options_user_info = 
+	host : "https://api.weixin.qq.com/cgi-bin/user/info?lang=zh_CN&access_token="
+	method : "GET"
 post_data = 
 	button:[
 		{
@@ -128,7 +132,25 @@ checkMenus = ->
 	request.end()
 # 获取关注者列表
 getUsers = (Next_OpenID)->
-	request = https.get options_users.host+access_token.access_token, (res)->
+	if Next_OpenID is "start" or Next_OpenID
+		request = https.get options_users.host+access_token.access_token, (res)->
+			res.on 'data', (chunk)->
+				obj = JSON.parse chunk
+				console.log obj
+				CheckUsers obj
+		request.write '\n'
+		request.end()
+# 操作关注列表,如果过多,请求下一页.
+CheckUsers = (obj)->
+	if obj.next_openid
+		getUsers obj.next_openid
+
+# 获取关注者信息
+getUserInfo = (openid)->
+	request = https.get options_user_info.host+access_token.access_token+"&openid="+openid, (res)->
+		console.log "statusCode: ",res.statusCode
+		console.log "headers: ",res.headers
+
 		res.on 'data', (chunk)->
 			obj = JSON.parse chunk
 			console.log obj

@@ -85,6 +85,7 @@ checkMessage = (message)->
 		when 'voice'
 			# Recognition 开启语音识别,返回对应中文.
 			console.log '声音信息'
+			return go_process message.Recognition
 		when 'video'
 			console.log '视频信息'
 		when 'location'
@@ -98,7 +99,7 @@ checkMessage = (message)->
 			# LOCATION 地利位置
 			console.log message.Event
 
-# 信息接受位置
+# 信息接受位置 [first step]
 exports.index = (req,res,next)->
 	parse = getParse req
 	# console.log req,req.body
@@ -127,7 +128,7 @@ exports.word = (req,res,next)->
 	# 分词
 	# console.log segWord.doSegment "我不想参加奥迪冰雪抽奖活动?"
 	# word = segWord.doSegment "我想参与奥迪冰雪抽奖活动! http://www.baidu.com"
-	word = segWord.doSegment "我叫李泓桥李克强,我要预约试驾奥迪SQ5"
+	word = segWord.doSegment "我叫李泓桥,我要预约试驾奥迪SQ5,我想三年之内买车."
 	word.sort (a,b)->
 		b.p-a.p
 	console.log word
