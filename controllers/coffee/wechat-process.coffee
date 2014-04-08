@@ -32,11 +32,8 @@ op_Process_list = [
 	{
 		name:"抽奖"
 		key: "抽奖"
-		type: "link"
-		backContent: "点开下面的连接参与抽奖:\n\r http://wechat.giccoo.com"
-		url:"http://wechat.giccoo.com"
-		title:"参与抽奖获得好礼"
-		description:"活动时间2014-04-08~2014-04-17"
+		type: "text"
+		backContent: "点开下面的连接参与抽奖:\n\r http://wechat.giccoo.com" 
 	}
 ]
 
