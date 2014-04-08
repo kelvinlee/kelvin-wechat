@@ -116,7 +116,7 @@ exports.index = (req,res,next)->
 				toUser:message.FromUserName
 				fromUser:message.ToUserName
 				date: new Date().getTime()
-				content: backMsg.content
+				content: backMsg.backContent
 		if backMsg.type is 'link'
 			res.render 'wechat-link',
 				toUser:message.FromUserName
