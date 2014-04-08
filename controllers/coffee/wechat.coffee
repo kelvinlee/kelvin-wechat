@@ -125,6 +125,7 @@ exports.index = (req,res,next)->
 				url: backMsg.url
 				title: backMsg.title
 				description: backMsg.description
+				msg_id:989
 		else if backMsg.type is 'image'
 			res.render 'wechat-image',
 				toUser:message.FromUserName
