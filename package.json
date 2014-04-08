@@ -9,7 +9,7 @@
     "xml2js":"*",
     "bufferhelper":"*",
     "xss":"*",
-    "node-segment":"*",
+    "segment":"*",
     "jade": "*"
   }
 }
