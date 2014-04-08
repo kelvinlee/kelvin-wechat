@@ -110,19 +110,28 @@ exports.index = (req,res,next)->
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
 		backMsg = checkMessage message
-		console.log message
+		console.log backMsg
 		if backMsg.type is 'text'
 			res.render 'wechat-text',
 				toUser:message.FromUserName
 				fromUser:message.ToUserName
 				date: new Date().getTime()
 				content: backMsg.content
+		if backMsg.type is 'link'
+			res.render 'wechat-link',
+				toUser:message.FromUserName
+				fromUser:message.ToUserName
+				date: new Date().getTime()
+				url: backMsg.url
+				title: backMsg.title
+				description: backMsg.description
 		else if backMsg.type is 'image'
-			res.render 'wechat-text',
+			res.render 'wechat-image',
 				toUser:message.FromUserName
 				fromUser:message.ToUserName
 				date: new Date().getTime()
 				picurl: backMsg.image
+				media_id: 1
 		else
 			res.render 'wechat-text',
 				toUser:message.FromUserName
