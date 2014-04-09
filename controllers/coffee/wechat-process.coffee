@@ -40,17 +40,21 @@ op_Process_list = [
 
 myProcess = false
 go_process = (msg)->
+	# 判断是否有下一级菜单
 	if not myProcess
 		for pro in op_Process_list
 			if pro.key is msg
 				myProcess = pro
-				return pro.backContent
+				return pro
 				break
 	else
+		# 判断下级菜单内容
 		if myProcess.next
 			for pro in myProcess.next
 				if pro.key is msg
 					myProcess = pro
-					return pro.backContent
+					return pro
 					break
+		# 没有的时候返回一级查看.
+		go_process msg
 	return myProcess = false

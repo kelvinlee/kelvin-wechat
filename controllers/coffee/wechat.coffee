@@ -111,12 +111,13 @@ exports.index = (req,res,next)->
 		(return res.send if to then parse.echostr else "what?" ) if not message
 		backMsg = checkMessage message
 		console.log message
-		if backMsg
+		console.log backMsg.type,backMsg.backContent
+		if backMsg.type is "text"
 			res.render 'wechat-text',
 				toUser:message.FromUserName
 				fromUser:message.ToUserName
 				date: new Date().getTime()
-				content: backMsg
+				content: backMsg.backContent
 		else
 			res.render 'wechat-text',
 				toUser:message.FromUserName
