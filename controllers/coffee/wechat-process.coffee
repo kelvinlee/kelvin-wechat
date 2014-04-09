@@ -33,7 +33,13 @@ op_Process_list = [
 		name:"抽奖"
 		key: "抽奖"
 		type: "text"
-		backContent: "点开下面的连接参与抽奖:\n\r http://wechat.giccoo.com" 
+		backContent: "点开下面的连接参与抽奖:\n\r http://wechat.giccoo.com/active/nahaoli" 
+	}
+	{
+		name:"查看抽奖结果"
+		key: "查看抽奖结果"
+		type:"text"
+		backContent: "查看我的抽奖结果:\n\r http://wechat.giccoo.com/active-over/nahaoli"
 	}
 ]
 
@@ -44,9 +50,11 @@ go_process = (msg)->
 	if not myProcess
 		for pro in op_Process_list
 			if pro.key is msg
-				myProcess = pro
+				if pro.next
+					myProcess = pro
 				return pro
 				break
+		myProcess = false
 	else
 		# 判断下级菜单内容
 		if myProcess.next
