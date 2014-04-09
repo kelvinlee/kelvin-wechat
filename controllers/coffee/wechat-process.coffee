@@ -44,13 +44,13 @@ go_process = (msg)->
 		for pro in op_Process_list
 			if pro.key is msg
 				myProcess = pro
-				return pro
+				return pro.backContent
 				break
 	else
 		if myProcess.next
 			for pro in myProcess.next
 				if pro.key is msg
 					myProcess = pro
-					return pro
+					return pro.backContent
 					break
 	return myProcess = false
