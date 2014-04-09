@@ -110,7 +110,7 @@ exports.index = (req,res,next)->
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
 		backMsg = checkMessage message
-		console.log backMsg
+		console.log backMsg,backMsg.type is 'text'
 		if backMsg.type is 'text'
 			res.render 'wechat-text',
 				toUser:message.FromUserName
