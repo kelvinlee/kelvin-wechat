@@ -218,8 +218,7 @@ exports.index = function(req, res, next) {
       return res.send(to ? parse.echostr : "what?");
     }
     backMsg = checkMessage(message);
-    console.log(message);
-    console.log(backMsg, backMsg.type, backMsg.backContent);
+    console.log(message, backMsg);
     if (backMsg != null) {
       if (backMsg.type === "text") {
         return res.render('wechat-text', {
