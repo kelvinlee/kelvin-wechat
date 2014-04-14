@@ -13,7 +13,7 @@ Segment = require('segment').Segment;
 
 APPID = "wx86b8da13792d7a54";
 
-REDIRECT_URI = "http://wechat.giccoo.com/lottery/";
+REDIRECT_URI = "http://wechat.giccoo.com/lottery-work/";
 
 STATE = "ok";
 
@@ -27,4 +27,9 @@ exports.index = function(req, res, next) {
   } else {
     return res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + APPID + '&redirect_uri=' + REDIRECT_URI + '&response_type=code&scope=' + scope + '&state=' + STATE + '#wechat_redirect');
   }
+};
+
+exports.work = function(req, res, next) {
+  console.log(req.body);
+  return res.render('lottery');
 };
