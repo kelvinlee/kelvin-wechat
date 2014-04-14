@@ -7,10 +7,11 @@ module.exports = (app)->
   # home page
   app.get '/', wechat.index 
   app.post '/', wechat.index 
+  app.get '/lottery', lottery.index
   app.get '/gettoken', post.gettoken
   app.get '/getmenu', post.getmenu
   app.get '/word', wechat.word
 
-  app.get '/lottery', lottery.index
+  
 
 console.log "routes loaded."

@@ -46,22 +46,11 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/coffee\/routes.coffee",
 		"minifyOutput": 0,
-		"outputAbbreviatedPath": "\/coffee\/routes.js",
+		"outputAbbreviatedPath": "\/routes.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
+		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
-		},
-	"\/coffee\/routes.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/coffee\/routes.js",
-		"outputAbbreviatedPath": "\/coffee\/min\/routes-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
 		},
 	"\/config.js": {
 		"fileType": 64,
@@ -172,12 +161,12 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/routes.js": {
+	"\/controllers\/wechat.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/routes.js",
-		"outputAbbreviatedPath": "\/min\/routes-ck.js",
+		"inputAbbreviatedPath": "\/controllers\/wechat.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/wechat-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
