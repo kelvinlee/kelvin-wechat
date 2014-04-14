@@ -13,11 +13,11 @@ Segment = require('segment').Segment;
 
 APPID = "wx86b8da13792d7a54";
 
-REDIRECT_URI = "http://wechat.giccoo.com/lottery-work/";
+REDIRECT_URI = "http://wechat.giccoo.com/lottery-work";
 
 STATE = "ok";
 
-scope = "snsapi_base";
+scope = "snsapi_userinfo";
 
 exports.index = function(req, res, next) {
   var code;
@@ -30,6 +30,6 @@ exports.index = function(req, res, next) {
 };
 
 exports.work = function(req, res, next) {
-  console.log(req.body);
+  console.log(req);
   return res.render('lottery');
 };
