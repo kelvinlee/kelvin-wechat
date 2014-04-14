@@ -220,13 +220,15 @@ exports.index = function(req, res, next) {
     backMsg = checkMessage(message);
     console.log(message);
     console.log(backMsg, backMsg.type, backMsg.backContent);
-    if (backMsg.type === "text") {
-      return res.render('wechat-text', {
-        toUser: message.FromUserName,
-        fromUser: message.ToUserName,
-        date: new Date().getTime(),
-        content: backMsg.backContent
-      });
+    if (backMsg != null) {
+      if (backMsg.type === "text") {
+        return res.render('wechat-text', {
+          toUser: message.FromUserName,
+          fromUser: message.ToUserName,
+          date: new Date().getTime(),
+          content: backMsg.backContent
+        });
+      }
     } else {
       return res.render('wechat-text', {
         toUser: message.FromUserName,

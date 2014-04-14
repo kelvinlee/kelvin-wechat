@@ -115,12 +115,13 @@ exports.index = (req,res,next)->
 		backMsg = checkMessage message
 		console.log message
 		console.log backMsg,backMsg.type,backMsg.backContent
-		if backMsg.type is "text"
-			res.render 'wechat-text',
-				toUser:message.FromUserName
-				fromUser:message.ToUserName
-				date: new Date().getTime()
-				content: backMsg.backContent
+		if backMsg?
+			if backMsg.type is "text"
+				res.render 'wechat-text',
+					toUser:message.FromUserName
+					fromUser:message.ToUserName
+					date: new Date().getTime()
+					content: backMsg.backContent
 		else
 			res.render 'wechat-text',
 				toUser:message.FromUserName
