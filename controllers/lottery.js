@@ -17,7 +17,7 @@ REDIRECT_URI = "http://wechat.giccoo.com/lottery-work";
 
 STATE = "ok";
 
-scope = "snsapi_userinfo";
+scope = "snsapi_base";
 
 exports.index = function(req, res, next) {
   var code;
@@ -30,6 +30,6 @@ exports.index = function(req, res, next) {
 };
 
 exports.work = function(req, res, next) {
-  console.log(req);
+  console.log(req.query);
   return res.render('lottery');
 };
