@@ -74,6 +74,7 @@ formatMessage = (result)->
 	message
 # message信息分发. 这里应该是中间键的一个点.
 # @codekit-prepend "wechat-process.coffee";
+# @codekit-prepend "wechat-subscribe.coffee";
 checkMessage = (message)->
 	console.log message.MsgType
 	switch message.MsgType
@@ -98,6 +99,8 @@ checkMessage = (message)->
 			# CLICK 菜单点击
 			# LOCATION 地利位置
 			console.log message.Event
+			go_subscribe message if message.Event is 'subscribe'
+
 
 # 信息接受位置 [first step]
 exports.index = (req,res,next)->
