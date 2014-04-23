@@ -21,19 +21,13 @@ STATE = "ok";
 
 scope = "snsapi_base";
 
-exports.index = function(req, res, next) {
-  var code;
-  code = req.body.code;
-  if (code != null) {
-    return res.render('lottery');
-  } else {
-    return res.redirect('https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + APPID + '&redirect_uri=' + REDIRECT_URI + '&response_type=code&scope=' + scope + '&state=' + STATE + '#wechat_redirect');
-  }
-};
-
 ACCESS_TOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + APPID + "&secret=" + SECRET + "&code={code}&grant_type=authorization_code";
+
+exports.index = function(req, res, next) {
+  return res.render('lottery');
+};
 
 exports.work = function(req, res, next) {
   console.log(req.query);
-  return res.render('lottery');
+  return res.render('lottery-work');
 };

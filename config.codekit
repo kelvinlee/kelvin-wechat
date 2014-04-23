@@ -141,17 +141,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/controllers\/lottery.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/controllers\/lottery.js",
-		"outputAbbreviatedPath": "\/controllers\/min\/lottery-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/controllers\/wechat-post.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -169,6 +158,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/controllers\/wechat-subscribe.js",
 		"outputAbbreviatedPath": "\/controllers\/min\/wechat-subscribe-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/controllers\/wechat.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/wechat.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/wechat-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
