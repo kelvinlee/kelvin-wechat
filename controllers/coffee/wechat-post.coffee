@@ -17,6 +17,10 @@ options_create_menu =
 options_get_menu = 
 	host : "https://api.weixin.qq.com/cgi-bin/menu/get?access_token="
 	method: 'GET'
+# 删除菜单
+options_get_menu = 
+	host : "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token="
+	method: 'GET'
 # 获取token值
 options_get_access_token = 
 	host : "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx86b8da13792d7a54&secret=f93ec247a40c59eccbf4bc8b5ac5721c"

@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, url, welcometext, xml2js;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, url, welcometext, xml2js;
 
 User = require('../proxy').User;
 
@@ -243,4 +243,23 @@ welcometext = {
 
 go_subscribe = function(message) {
   return welcometext;
+};
+
+
+/*
+--------------------------------------------
+     Begin wechat-db-Operating.coffee
+--------------------------------------------
+ */
+
+Inser_db_text = function(db) {
+  return Message.saveText(db.FromUserName, db.MsgType, db.Content, db.MsgId, function(err) {
+    return console.log("text back:", err);
+  });
+};
+
+Inser_db_img = function(db) {
+  return Message.saveImg(db.FromUserName, db.MsgType, db.PicUrl, db.MsgId, db.MediaId, function(err) {
+    return console.log("text back:", err);
+  });
 };

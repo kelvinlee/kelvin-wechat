@@ -52,6 +52,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/config.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/config.js",
+		"outputAbbreviatedPath": "\/min\/config-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/controllers\/coffee\/lottery.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -68,7 +79,7 @@
 	"\/controllers\/coffee\/wechat-db-Operating.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/controllers\/coffee\/wechat-db-Operating.coffee",
 		"minifyOutput": 0,
@@ -141,17 +152,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/controllers\/wechat-db-Operating.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/controllers\/wechat-db-Operating.js",
-		"outputAbbreviatedPath": "\/controllers\/min\/wechat-db-Operating-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/controllers\/wechat-post.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -174,86 +174,97 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/model\/backsend.js": {
+	"\/models\/backsend.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/model\/backsend.js",
-		"outputAbbreviatedPath": "\/model\/min\/backsend-ck.js",
+		"inputAbbreviatedPath": "\/models\/backsend.js",
+		"outputAbbreviatedPath": "\/models\/min\/backsend-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/model\/coffee\/backsend.coffee": {
+	"\/models\/coffee\/backsend.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/model\/coffee\/backsend.coffee",
+		"inputAbbreviatedPath": "\/models\/coffee\/backsend.coffee",
 		"minifyOutput": 0,
-		"outputAbbreviatedPath": "\/model\/backsend.js",
+		"outputAbbreviatedPath": "\/models\/backsend.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/model\/coffee\/index.coffee": {
+	"\/models\/coffee\/index.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/model\/coffee\/index.coffee",
+		"inputAbbreviatedPath": "\/models\/coffee\/index.coffee",
 		"minifyOutput": 0,
-		"outputAbbreviatedPath": "\/model\/index.js",
+		"outputAbbreviatedPath": "\/models\/index.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/model\/coffee\/msg.coffee": {
+	"\/models\/coffee\/msg.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/model\/coffee\/msg.coffee",
+		"inputAbbreviatedPath": "\/models\/coffee\/msg.coffee",
 		"minifyOutput": 0,
-		"outputAbbreviatedPath": "\/model\/msg.js",
+		"outputAbbreviatedPath": "\/models\/msg.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/model\/coffee\/user.coffee": {
+	"\/models\/coffee\/user.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/model\/coffee\/user.coffee",
+		"inputAbbreviatedPath": "\/models\/coffee\/user.coffee",
 		"minifyOutput": 0,
-		"outputAbbreviatedPath": "\/model\/user.js",
+		"outputAbbreviatedPath": "\/models\/user.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/model\/msg.js": {
+	"\/models\/index.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/model\/msg.js",
-		"outputAbbreviatedPath": "\/model\/min\/msg-ck.js",
+		"inputAbbreviatedPath": "\/models\/index.js",
+		"outputAbbreviatedPath": "\/models\/min\/index-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/model\/user.js": {
+	"\/models\/msg.js": {
 		"fileType": 64,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/model\/user.js",
-		"outputAbbreviatedPath": "\/model\/min\/user-ck.js",
+		"inputAbbreviatedPath": "\/models\/msg.js",
+		"outputAbbreviatedPath": "\/models\/min\/msg-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/models\/user.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/user.js",
+		"outputAbbreviatedPath": "\/models\/min\/user-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

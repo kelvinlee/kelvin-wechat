@@ -81,7 +81,7 @@ formatMessage = (result)->
 # message信息分发. 这里应该是中间键的一个点.
 # @codekit-append "wechat-process.coffee";
 # @codekit-append "wechat-subscribe.coffee";
-# @codekit-append "wechat-db-Operation.coffee";
+# @codekit-append "wechat-db-Operating.coffee";
 checkMessage = (message)->
 	console.log message.MsgType
 	switch message.MsgType
