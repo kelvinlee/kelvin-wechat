@@ -3,9 +3,13 @@
 # 并不能主动发出
 # 接收到消息后分析xml,并发送给中间键做分析,然后返回给微信.
 # 
-# User = require('../proxy').User 
-# Ut = require '../lib/util'
-# check = require('validator').check 
+
+# 数据库
+User = require('../proxy').User
+# Message = require('../proxy').Message
+
+
+# 基本类库
 fs = require 'fs'
 path = require 'path'
 crypto = require 'crypto'
@@ -43,6 +47,8 @@ segWord.use('URLTokenizer')
 .loadDict('wildcard.txt', 'WILDCARD', true)
 #var md = require('showdown').Markdown
 
+
+
 # 检查签名
 checkSignature = (query, token)->
 	signature = query.signature
@@ -73,16 +79,20 @@ formatMessage = (result)->
 		message[key] = (if isEmpty val then '' else val).trim()
 	message
 # message信息分发. 这里应该是中间键的一个点.
-# @codekit-prepend "wechat-process.coffee";
-# @codekit-prepend "wechat-subscribe.coffee";
+# @codekit-append "wechat-process.coffee";
+# @codekit-append "wechat-subscribe.coffee";
+# @codekit-append "wechat-db-Operation.coffee";
 checkMessage = (message)->
 	console.log message.MsgType
 	switch message.MsgType
 		when 'text'
 			console.log '文字信息'
+			Inser_db_text message
 			return go_process message.Content
 		when 'image'
 			console.log '图片信息'
+			Inser_db_img message
+			return go_img_process message.Content
 		when 'voice'
 			# Recognition 开启语音识别,返回对应中文.
 			console.log '声音信息'
@@ -99,7 +109,9 @@ checkMessage = (message)->
 			# CLICK 菜单点击
 			# LOCATION 地利位置
 			console.log message.Event
-			go_subscribe message if message.Event is 'subscribe'
+			return go_subscribe message if message.Event is 'subscribe'
+			return null
+	return null
 
 
 # 信息接受位置 [first step]

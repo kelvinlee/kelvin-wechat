@@ -4,8 +4,9 @@ EventProxy = require 'eventproxy'
 config = require('../config').config
 Segment = require('segment').Segment
 
-APPID = "wx86b8da13792d7a54"
-REDIRECT_URI = "http://wechat.giccoo.com/lottery-work"
+APPID = config.APPID
+SECRET = config.SECRET
+REDIRECT_URI = config.REDIRECT_URI
 STATE = "ok"
 # snsapi_base 只获取openid , snsapi_userinfo 获取用户信息
 scope = "snsapi_base"
@@ -16,6 +17,8 @@ exports.index = (req,res,next)->
 		res.render 'lottery'
 	else
 		res.redirect 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='+APPID+'&redirect_uri='+REDIRECT_URI+'&response_type=code&scope='+scope+'&state='+STATE+'#wechat_redirect'
+
+ACCESS_TOKEN_URL = "https://api.weixin.qq.com/sns/oauth2/access_token?appid="+APPID+"&secret="+SECRET+"&code={code}&grant_type=authorization_code"
 exports.work = (req,res,next)->
 	console.log req.query
 	res.render 'lottery'

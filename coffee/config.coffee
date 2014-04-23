@@ -4,12 +4,16 @@ exports.config =
 	description: 'WeChat'
 	version: '0.1.0' 
 
-	# db: 'mongodb://localhost/wechat'
+	db: 'mongodb://localhost/wechat'
 	session_secret: 'giccoo_wechat'
 	auth_cookie_name: 'giccoo_wechat'
 	ip: '127.0.0.1' #
 	port: 8081
-	list_count: 20 
+	list_count: 20
+	host_url: "http://samsung.4view.cn"
 
 	wechat_token: "kelvinbuild"
+	APPID: 'wx86b8da13792d7a54'
+	SECRET: "f93ec247a40c59eccbf4bc8b5ac5721c"
+	REDIRECT_URI : "http://samsung.4view.cn/lottery-work"
 	plugins: [] 
