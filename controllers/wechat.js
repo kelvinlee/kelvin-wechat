@@ -5,9 +5,11 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, url, welcometext, xml2js;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, url, welcometext, xml2js;
 
 User = require('../proxy').User;
+
+Message = require('../proxy').Message;
 
 fs = require('fs');
 

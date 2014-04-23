@@ -6,7 +6,7 @@
 
 # 数据库
 User = require('../proxy').User
-# Message = require('../proxy').Message
+Message = require('../proxy').Message
 
 
 # 基本类库
