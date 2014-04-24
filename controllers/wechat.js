@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, url, welcometext, xml2js;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, tranStr, url, welcometext, xml2js;
 
 User = require('../proxy').User;
 
@@ -90,14 +90,14 @@ checkMessage = function(message) {
     case 'text':
       console.log('文字信息');
       Inser_db_text(message);
-      return go_process(message.Content);
+      return tranStr(message, go_process(message.Content));
     case 'image':
       console.log('图片信息');
       Inser_db_img(message);
-      return go_img_process(message.Content);
+      return tranStr(message, go_img_process(message.Content));
     case 'voice':
       console.log('声音信息');
-      return go_process(message.Recognition);
+      return tranStr(message, go_process(message.Recognition));
     case 'video':
       console.log('视频信息');
       break;
@@ -131,7 +131,6 @@ exports.index = function(req, res, next) {
       return res.send(to ? parse.echostr : "what?");
     }
     backMsg = checkMessage(message);
-    console.log(message, backMsg);
     if (backMsg != null) {
       if (backMsg.type === "text") {
         return res.render('wechat-text', {
@@ -174,7 +173,7 @@ op_Process_list = [
     name: "抽奖",
     key: "抽奖",
     type: "text",
-    backContent: "点开下面的连接参与抽奖:\n\r " + config.host_url + "/active/nahaoli"
+    backContent: "点开下面的连接参与抽奖:\n\r " + config.host_url + "/active/nahaoli/"
   }, {
     name: "查看抽奖结果",
     key: "查看抽奖结果",
@@ -227,6 +226,11 @@ go_process = function(msg) {
     go_process(msg);
   }
   return myProcess = false;
+};
+
+tranStr = function(message, str) {
+  str.replace('${id}', message.FromUserName);
+  return str;
 };
 
 

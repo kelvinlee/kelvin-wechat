@@ -88,15 +88,15 @@ checkMessage = (message)->
 		when 'text'
 			console.log '文字信息'
 			Inser_db_text message
-			return go_process message.Content
+			return tranStr message, go_process message.Content
 		when 'image'
 			console.log '图片信息'
 			Inser_db_img message
-			return go_img_process message.Content
+			return tranStr message, go_img_process message.Content
 		when 'voice'
 			# Recognition 开启语音识别,返回对应中文.
 			console.log '声音信息'
-			return go_process message.Recognition
+			return tranStr message, go_process message.Recognition
 		when 'video'
 			console.log '视频信息'
 		when 'location'
@@ -125,7 +125,6 @@ exports.index = (req,res,next)->
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
 		backMsg = checkMessage message
-		console.log message,backMsg
 		# console.log backMsg,backMsg.type,backMsg.backContent
 		if backMsg?
 			if backMsg.type is "text"

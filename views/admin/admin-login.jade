@@ -1,0 +1,38 @@
+extends layout 
+block content_here
+	//- div.main
+		form(action="/sign/in",method="POST")
+			input(type="text",name="username")
+			input(type="password",name="password")
+			input(type="submit",value="登录")
+	div.login-container(id="cl-wrapper")
+		div.middle-login
+			div.block-flat
+				div.header
+					h3.text-center
+						//- img(src="/images/logo.png",alt="logo")
+						| 三星乐园
+				div
+					form(id="login",method="post",action="/sign/in",style="margin-bottom: 0px !important;")
+						div.content
+							h4.title 登录信息
+							div.form-gourp
+								div.col-sm-12
+									div.input-group
+										span.input-group-addon
+											i.fa.fa-user
+										input.form-control(type="text",id="username",name="username",placeholder="用户名")
+							div.form-gourp
+								div.col-sm-12
+									div.input-group
+										span.input-group-addon
+											i.fa.fa-lock
+										input.form-control(type="password",id="password",name="password",placeholder="密码")
+						div.foot
+							button.btn.btn-primary(data-dismiss="modal",name="submit",type="button") 登录
+
+			div.text-center.out-links
+				a(href="#") &copy; 2014 三星乐园-微信管理
+
+block js_here
+	script(src="/js/login.js")

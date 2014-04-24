@@ -9,6 +9,7 @@
     "eventproxy":"*",
     "xml2js":"*",
     "bufferhelper":"*",
+    "validator":"*",
     "xss":"*",
     "segment":"*",
     "jade": "*"

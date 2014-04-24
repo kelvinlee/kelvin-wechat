@@ -1,9 +1,11 @@
+# ?id=${id} 用户id , 用作唯一值
+# 
 op_Process_list = [
 	{
 		name:"抽奖"
 		key: "抽奖"
 		type: "text"
-		backContent: "点开下面的连接参与抽奖:\n\r #{config.host_url}/active/nahaoli" 
+		backContent: "点开下面的连接参与抽奖:\n\r #{config.host_url}/active/nahaoli/" 
 	}
 	{
 		name:"查看抽奖结果"
@@ -47,3 +49,7 @@ go_process = (msg)->
 		# 没有的时候返回一级查看.
 		go_process msg
 	return myProcess = false
+
+tranStr = (message,str)->
+	str.replace '${id}',message.FromUserName
+	return str
