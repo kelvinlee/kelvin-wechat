@@ -58,10 +58,10 @@ exports.signpost = (req,res,next)->
 	if Ut.empty name
 		re.reason = 'empty username'
 		re.recode = 201
-	Admin.saveNew name,passwd, (err,obj)->
-		console.log err,obj
-	res.send re
-	return no
+	# Admin.saveNew name,passwd, (err,obj)->
+	# 	console.log err,obj
+	# res.send re
+	# return no
 	if re.recode is 200
 		Admin.getUserLogin name,passwd, (err,obj)->
 			if err

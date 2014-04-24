@@ -69,11 +69,6 @@ exports.signpost = function(req, res, next) {
     re.reason = 'empty username';
     re.recode = 201;
   }
-  Admin.saveNew(name, passwd, function(err, obj) {
-    return console.log(err, obj);
-  });
-  res.send(re);
-  return false;
   if (re.recode === 200) {
     Admin.getUserLogin(name, passwd, function(err, obj) {
       var day, user;
