@@ -44,34 +44,48 @@ options_user_info =
 post_data = 
 	button:[
 		{
-			type:"click"
-			name:"桥哥"
-			key:"myself"
-		}
-		{
-			name:"新奇世界"
-			sub_button:[
+			# type:"click"
+			name:"推荐活动"
+			# key:"myself"
+			sub_button: [
 				{
 					type:"click"
-					name:"新奇产品"
-					key:"product"
+					name:"往期活动"
+					key:"oldactive"
 				}
 				{
 					type:"click"
-					name:"新奇事件"
-					key:"things"
-				}
-				{
-					type:"click"
-					name:"新奇人物"
-					key:"people"
+					name:"热门活动"
+					key:"active"
 				}
 			]
 		}
 		{
 			type:"click"
-			name:"跟桥哥对话"
-			key:"talkto"
+			name:"推荐文章"
+			key:"article"
+		}
+		{
+			# type:"click"
+			name:"应用与服务"
+			# key:"myself"
+			sub_button: [
+				{
+					type:"click"
+					name:"查找我的手机"
+					key:"myphone"
+				}
+				{
+					type:"click"
+					name:"Samsung Apps"
+					key:"apps"
+				}
+				{
+					type:"click"
+					name:"Samsung Link"
+					key:"link"
+				}
+			]
 		}
 	]
 

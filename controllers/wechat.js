@@ -173,12 +173,12 @@ op_Process_list = [
     name: "抽奖",
     key: "抽奖",
     type: "text",
-    backContent: "点开下面的连接参与抽奖:\n\r " + config.host_url + "/active/nahaoli/"
+    backContent: "您点不开下面的连接参与抽奖:\n\r " + config.host_url + "/active/test/ 只是测试回复功能"
   }, {
     name: "查看抽奖结果",
     key: "查看抽奖结果",
     type: "text",
-    backContent: "查看我的抽奖结果:\n\r " + config.host_url + "/active-over/nahaoli"
+    backContent: "查看我的抽奖结果:\n\r " + config.host_url + "/active-over/test"
   }
 ];
 
