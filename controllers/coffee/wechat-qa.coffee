@@ -75,18 +75,18 @@ _qa = [
 	}
 ]
 
-user = []
+myProcess = []
 getQA = (message,openid)->
 	key = message
-	console.log "user #{openid} :",user[openid]
-	if user[openid]?
-		qa = user[openid]
+	console.log "user #{openid} :",myProcess[openid]
+	if myProcess[openid]?
+		qa = myProcess[openid].next
 		_n = searchQA key,qa
 		console.log _n
-		user[openid] = _n if typeof _n.next isnt 'undefined'
+		myProcess[openid] = _n if _n.next?
 	else
-		user[openid] = searchQA key,_qa
-		qa = _n = user[openid]
+		myProcess[openid] = searchQA key,_qa
+		qa = _n = myProcess[openid]
 
 	return qa
 

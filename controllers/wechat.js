@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, searchQA, segWord, tranStr, url, user, welcometext, xml2js, _nr, _qa;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
 
 User = require('../proxy').User;
 
@@ -314,22 +314,22 @@ _qa = [
   }
 ];
 
-user = [];
+myProcess = [];
 
 getQA = function(message, openid) {
   var key, qa, _n;
   key = message;
-  console.log("user " + openid + " :", user[openid]);
-  if (user[openid] != null) {
-    qa = user[openid];
+  console.log("user " + openid + " :", myProcess[openid]);
+  if (myProcess[openid] != null) {
+    qa = myProcess[openid].next;
     _n = searchQA(key, qa);
     console.log(_n);
-    if (typeof _n.next !== 'undefined') {
-      user[openid] = _n;
+    if (_n.next != null) {
+      myProcess[openid] = _n;
     }
   } else {
-    user[openid] = searchQA(key, _qa);
-    qa = _n = user[openid];
+    myProcess[openid] = searchQA(key, _qa);
+    qa = _n = myProcess[openid];
   }
   return qa;
 };
