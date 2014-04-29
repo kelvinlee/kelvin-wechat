@@ -23,7 +23,7 @@ searchQA = (key,list)->
 		return a if a.key is key
 
 clearQA = (openid)->
-	console.log "clear"
+	console.log "clear: #{openid}",this
 	delete myProcess[openid]
 overQA = (openid)->
 	console.log openid

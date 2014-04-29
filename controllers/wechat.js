@@ -319,7 +319,7 @@ searchQA = function(key, list) {
 };
 
 clearQA = function(openid) {
-  console.log("clear");
+  console.log("clear: " + openid, this);
   return delete myProcess[openid];
 };
 
