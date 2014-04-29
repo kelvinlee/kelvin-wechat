@@ -291,13 +291,13 @@ getQA = function(message, openid) {
   key = message;
   console.log("user " + openid + " :", myProcess[openid]);
   if (myProcess[openid] != null) {
-    qa = myProcess[openid].next;
-    qa = searchQA(key, qa);
     if (qa.event != null) {
       qa.evt.call(openid);
       qa = false;
     }
     if (qa.next != null) {
+      qa = myProcess[openid].next;
+      qa = searchQA(key, qa);
       myProcess[openid] = qa;
     }
   } else {
