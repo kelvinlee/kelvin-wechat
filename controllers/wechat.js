@@ -319,12 +319,13 @@ searchQA = function(key, list) {
 };
 
 clearQA = function(openid) {
-  return myProcess[openid] = null;
+  console.log(clear);
+  return delete myProcess[openid];
 };
 
 overQA = function(openid) {
   console.log(openid);
-  myProcess[openid] = null;
+  clearQA(openid);
   return Inser_db_qauser({
     openid: openid
   });

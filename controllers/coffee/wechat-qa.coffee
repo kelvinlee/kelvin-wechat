@@ -23,10 +23,11 @@ searchQA = (key,list)->
 		return a if a.key is key
 
 clearQA = (openid)->
-	myProcess[openid] = null
+	console.log clear
+	delete myProcess[openid]
 overQA = (openid)->
 	console.log openid
-	myProcess[openid] = null
+	clearQA openid
 	Inser_db_qauser {openid:openid}
 
 
