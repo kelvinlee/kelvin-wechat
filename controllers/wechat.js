@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, tranStr, url, welcometext, xml2js, _nr;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
 
 User = require('../proxy').User;
 
@@ -84,16 +84,13 @@ formatMessage = function(result) {
   return message;
 };
 
-checkMessage = function(message) {
-  console.log(message.MsgType);
+checkMessage = function(message, req) {
   switch (message.MsgType) {
     case 'text':
       console.log('文字信息');
-      Inser_db_text(message);
-      return tranStr(message, go_process(message.Content));
+      return getQA(message.Content, req);
     case 'image':
       console.log('图片信息');
-      Inser_db_img(message);
       return tranStr(message, go_img_process(message.Content));
     case 'voice':
       console.log('声音信息');
@@ -108,7 +105,6 @@ checkMessage = function(message) {
       console.log('连接消息');
       break;
     case 'event':
-      console.log(message.Event);
       if (message.Event === 'subscribe') {
         return go_subscribe(message);
       }
@@ -130,7 +126,8 @@ exports.index = function(req, res, next) {
     if (!message) {
       return res.send(to ? parse.echostr : "what?");
     }
-    backMsg = checkMessage(message);
+    backMsg = checkMessage(message, req);
+    console.log("session:", req.session.qa);
     if (backMsg != null) {
       if (backMsg.type === "text") {
         return res.render('wechat-text', {
@@ -181,68 +178,6 @@ op_Process_list = [
     key: "查看抽奖结果",
     type: "text",
     backContent: "查看我的抽奖结果:" + _nr + " " + config.host_url + "/active-over/test"
-  }, {
-    name: "答题回答问题",
-    key: "开始答题",
-    type: "text",
-    backContent: "第一题:三星 galayxy S5 的后置摄像头是多少像素" + _nr + " A. 500万" + _nr + "B. 1000万" + _nr + "C. 1500万",
-    next: [
-      {
-        name: "答案1",
-        key: "A",
-        type: "text",
-        backContent: "答得不对哦,再试试其他的答案"
-      }, {
-        name: "答案2",
-        key: "B",
-        type: "text",
-        backContent: "答得不对哦,再试试其他的答案"
-      }, {
-        name: "答案3",
-        key: "C",
-        type: "text",
-        backContent: "恭喜答对了" + _nr + "第二题:三星 galayxt S5 使用的是几核CPU?" + _nr + "A. 双核" + _nr + "B. 四核" + _nr + "C. 八核",
-        next: [
-          {
-            name: "答案1",
-            key: "A",
-            type: "text",
-            backContent: "再仔细想想看"
-          }, {
-            name: "答案2",
-            key: "B",
-            type: "text",
-            backContent: "再仔细想想看"
-          }, {
-            name: "答案1",
-            key: "C",
-            type: "text",
-            backContent: "哎呦,不错哦" + _nr + "第三题:三星 galayxy S5 的新增特色功能是什么?" + _nr + "A. 指纹识别" + _nr + "B. 眼球阅读" + _nr + "C. 电源节省",
-            next: [
-              {
-                name: "答案1",
-                key: "A",
-                type: "text",
-                backContent: "干得漂亮,你已经答对了所有的题目,成功参与此次抽奖活动,敬请期待抽奖结果,也可以使用口令'查看抽奖结果',来查看自己的中奖情况",
-                event: function() {}
-              }, {
-                name: "答案2",
-                key: "B",
-                type: "text",
-                backContent: "只差一点就答对了."
-              }, {
-                name: "答案3",
-                key: "C",
-                type: "text",
-                backContent: "只差一点就答对了."
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }, {
-    name: ""
   }
 ];
 
@@ -263,7 +198,6 @@ myProcess = false;
 
 go_process = function(msg) {
   var pro, _i, _j, _len, _len1, _ref;
-  console.log(myProcess);
   if (!myProcess) {
     for (_i = 0, _len = op_Process_list.length; _i < _len; _i++) {
       pro = op_Process_list[_i];
@@ -293,15 +227,118 @@ go_process = function(msg) {
           break;
         }
       }
-    } else {
-      return myProcess;
     }
+    go_process(msg);
   }
   return myProcess = false;
 };
 
 tranStr = function(message, str) {
   return str;
+};
+
+
+/*
+--------------------------------------------
+     Begin wechat-qa.coffee
+--------------------------------------------
+ */
+
+_nr = "\n\r";
+
+_qa = [
+  {
+    name: "查看活动详情",
+    key: "1",
+    type: "text",
+    backContent: "活动详情"
+  }, {
+    name: "开始答题",
+    key: "2",
+    type: "text",
+    backContent: "节⽬目中特别提到的Gear版特⾊色应⽤用是?" + _nr + "A,搜狐视频Gear版 " + _nr + "B,⾼高德地图Gear版 " + _nr + "C,S健康Gear版",
+    next: [
+      {
+        name: "答案1",
+        key: "A",
+        type: "text",
+        backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。"
+      }, {
+        name: "答案2",
+        key: "B",
+        type: "text",
+        backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。"
+      }, {
+        name: "答案3",
+        key: "C",
+        type: "text",
+        backContent: "⾦金秀贤最喜欢的时尚刊物APP是什么?" + _nr + "A、《宝宝俱乐部》 " + _nr + "B、《新炫刊》" + _nr + "C、《掌阅iReader》",
+        next: [
+          {
+            name: "答案1",
+            key: "A",
+            type: "text",
+            backContent: "很遗憾,回答错误。请再次作答。"
+          }, {
+            name: "答案2",
+            key: "B",
+            type: "text",
+            backContent: "很遗憾,回答错误。请再次作答。"
+          }, {
+            name: "答案3",
+            key: "C",
+            type: "text",
+            backContent: "节⽬目中重点介绍了⼀一个钱包类app,可以⽅方便实现各类卡券的收纳与管 理,是以下的哪个?" + _nr + "A、《⽀支付宝钱包》 " + _nr + "B、《壹钱包》 " + _nr + "C、《三星钱包》",
+            next: [
+              {
+                name: "答案1",
+                key: "A",
+                type: "text",
+                backContent: "哎呀,答错了。还有机会哦!"
+              }, {
+                name: "答案2",
+                key: "B",
+                type: "text",
+                backContent: "哎呀,答错了。还有机会哦!"
+              }, {
+                name: "答案3",
+                key: "C",
+                type: "text",
+                backContent: "恭喜你全部答对了,已经成功参与抽奖,敬请关注中奖通知.",
+                event: function() {}
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
+
+getQA = function(message, req) {
+  var key, qa, _n;
+  key = message;
+  if (req.session.qa != null) {
+    qa = req.session.qa;
+    _n = searchQA(key, qa);
+    if (_n.next != null) {
+      req.session.qa = _n;
+    }
+  } else {
+    req.session.qa = searchQA(key, _qa);
+    qa = _n = req.session.qa;
+  }
+  return qa;
+};
+
+searchQA = function(key, list) {
+  var a, _i, _len;
+  for (_i = 0, _len = list.length; _i < _len; _i++) {
+    a = list[_i];
+    if (a.key === key) {
+      return a;
+    }
+  }
 };
 
 
@@ -315,7 +352,7 @@ welcometext = {
   name: "welcome",
   key: "你好",
   type: "text",
-  backContent: "欢迎关注三星乐园,三星乐园会为您推荐各种好用的软件,好玩的游戏和最新鲜的资讯.以下是近期火热展开的新炫刊活动,点击链接: " + config.host_url + "/lottery/ 即刻参与活动赢取Tab Pro,中奖率百分之百呦,赶快行动吧~"
+  backContent: "感谢您关注【三星乐园】官⽅方微信,参与《我爱三星视频秀》答题,即有机会获 得丰厚⼤大奖 本期《我爱三星视频秀》正在为您揭秘三星热门旗舰机型——GALAXY S5,关注 直播内容并正确回答以下三个问题,即有机会获得S5九折卡、70M流量卡等超值 奖品,幸运的⼩小伙伴更有机会获得GALAXY S5惊喜⼤大礼!⼼心动不如⾏行动,⼀一起来 答题吧~回复【1】了解活动详情,回复【2】开始答题。"
 };
 
 go_subscribe = function(message) {

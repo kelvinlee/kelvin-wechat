@@ -139,6 +139,19 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/controllers\/coffee\/wechat-qa.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/coffee\/wechat-qa.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/controllers\/wechat-qa.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/controllers\/coffee\/wechat-subscribe.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,

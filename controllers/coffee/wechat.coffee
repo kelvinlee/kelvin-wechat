@@ -80,18 +80,19 @@ formatMessage = (result)->
 	message
 # message信息分发. 这里应该是中间键的一个点.
 # @codekit-append "wechat-process.coffee";
+# @codekit-append "wechat-qa.coffee";
 # @codekit-append "wechat-subscribe.coffee";
 # @codekit-append "wechat-db-Operating.coffee";
-checkMessage = (message)->
-	console.log message.MsgType
+checkMessage = (message,req)->
+	# console.log message.MsgType
 	switch message.MsgType
 		when 'text'
 			console.log '文字信息'
-			Inser_db_text message
-			return tranStr message, go_process message.Content
+			# Inser_db_text message
+			return getQA message.Content,req
 		when 'image'
 			console.log '图片信息'
-			Inser_db_img message
+			# Inser_db_img message
 			return tranStr message, go_img_process message.Content
 		when 'voice'
 			# Recognition 开启语音识别,返回对应中文.
@@ -108,13 +109,15 @@ checkMessage = (message)->
 			# unsubscribe 取消关注
 			# CLICK 菜单点击
 			# LOCATION 地利位置
-			console.log message.Event
+			# console.log message.Event
 			return go_subscribe message if message.Event is 'subscribe'
 			return null
 	return null
 
 
 # 信息接受位置 [first step]
+# exports.index = getQA
+
 exports.index = (req,res,next)->
 	parse = getParse req
 	# console.log req,req.body
@@ -124,7 +127,8 @@ exports.index = (req,res,next)->
 		console.log err if err
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
-		backMsg = checkMessage message
+		backMsg = checkMessage message,req
+		console.log "session:",req.session.qa
 		# console.log backMsg,backMsg.type,backMsg.backContent
 		if backMsg?
 			if backMsg.type is "text"
