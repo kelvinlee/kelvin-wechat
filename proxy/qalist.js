@@ -20,7 +20,8 @@ exports.getall = function(callback) {
 };
 
 exports.saveNew = function(openid, callback) {
-  QAlist = new QAlist();
-  QAlist.openid = openid;
-  return QAlist.save(callback);
+  var qa;
+  qa = new QAlist();
+  qa.openid = openid;
+  return qa.save(callback);
 };

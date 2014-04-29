@@ -8,9 +8,9 @@ exports.getall = (callback)->
 	QAlist.find {}, callback
 
 exports.saveNew = (openid,callback)->
-	QAlist = new QAlist()
-	QAlist.openid = openid
-	QAlist.save callback
+	qa = new QAlist()
+	qa.openid = openid
+	qa.save callback
 
 # exports.saveText = (openid, type, text, msgid, callback)->
 #   text = new Message()
