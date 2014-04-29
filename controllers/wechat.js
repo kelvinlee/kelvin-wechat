@@ -284,8 +284,9 @@ go_process = function(msg) {
           break;
         }
       }
+    } else {
+      return myProcess;
     }
-    go_process(msg);
   }
   return myProcess = false;
 };

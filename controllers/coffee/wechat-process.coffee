@@ -113,8 +113,12 @@ go_process = (msg)->
 					return pro
 					break
 		# 没有的时候返回一级查看.
-		go_process msg
+		# go_process msg
+		else
+			return myProcess
 	return myProcess = false
+
+
 
 tranStr = (message,str)->
 	# str.replace '${id}',message.FromUserName
