@@ -5,11 +5,13 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, clearQA, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, QAlist, Segment, User, checkMessage, checkSignature, clearQA, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
 
 User = require('../proxy').User;
 
 Message = require('../proxy').Message;
+
+QAlist = require('../proxy').QAlist;
 
 fs = require('fs');
 
@@ -277,7 +279,9 @@ Inser_db_img = function(db) {
 };
 
 Inser_db_qauser = function(db) {
-  return console.log(db);
+  return QAlist.saveNew(openid, function(err) {
+    return console.log("录入成功");
+  });
 };
 
 
@@ -324,6 +328,7 @@ clearQA = function(openid) {
 
 overQA = function(openid) {
   console.log("记录抽奖ID: ", openid);
+  clearQA(openid);
   return Inser_db_qauser({
     openid: openid
   });

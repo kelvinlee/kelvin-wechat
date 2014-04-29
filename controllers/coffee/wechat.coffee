@@ -7,6 +7,7 @@
 # 数据库
 User = require('../proxy').User
 Message = require('../proxy').Message
+QAlist = require('../proxy').QAlist
 
 
 # 基本类库

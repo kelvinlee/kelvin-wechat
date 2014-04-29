@@ -10,4 +10,5 @@ Inser_db_img = (db)->
 
 # 题目均答对的用户存入数据库
 Inser_db_qauser = (db)->
-	console.log db
+	QAlist.saveNew openid, (err)->
+		console.log "录入成功"

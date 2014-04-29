@@ -335,6 +335,19 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/models\/coffee\/qalist.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/coffee\/qalist.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/models\/qalist.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/models\/coffee\/user.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -387,6 +400,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/models\/msg.js",
 		"outputAbbreviatedPath": "\/models\/min\/msg-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/models\/qalist.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/qalist.js",
+		"outputAbbreviatedPath": "\/models\/min\/qalist-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -492,6 +516,19 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/proxy\/coffee\/qalist.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/coffee\/qalist.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/proxy\/qalist.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/proxy\/coffee\/user.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -557,6 +594,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/proxy\/message.js",
 		"outputAbbreviatedPath": "\/proxy\/min\/message-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/proxy\/qalist.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/qalist.js",
+		"outputAbbreviatedPath": "\/proxy\/min\/qalist-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

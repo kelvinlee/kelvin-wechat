@@ -20,6 +20,8 @@ require('./lottery');
 
 require('./lottery_x_list');
 
+require('./qalist');
+
 require('./admin');
 
 exports.User = mongoose.model('User');
@@ -31,3 +33,5 @@ exports.Lottery = mongoose.model('Lottery');
 exports.Lottery_x_list = mongoose.model('Lottery_x_list');
 
 exports.Admin = mongoose.model('Admin');
+
+exports.QAlist = mongoose.model('QAlist');
