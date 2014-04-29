@@ -291,7 +291,7 @@ getQA = function(message, openid) {
   key = message;
   console.log("user " + openid + " :", myProcess[openid]);
   if (myProcess[openid] != null) {
-    if (qa.event != null) {
+    if (qa.evt != null) {
       qa.evt.call(openid);
       qa = false;
     }

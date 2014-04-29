@@ -3,7 +3,7 @@ getQA = (message,openid)->
 	key = message
 	console.log "user #{openid} :",myProcess[openid]
 	if myProcess[openid]?
-		if qa.event?
+		if qa.evt?
 			qa.evt.call openid 
 			qa = false
 		if qa.next?
