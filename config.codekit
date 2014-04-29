@@ -555,17 +555,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
-	"\/proxy\/index.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/proxy\/index.js",
-		"outputAbbreviatedPath": "\/proxy\/min\/index-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/proxy\/lottery.js": {
 		"fileType": 64,
 		"ignore": 1,
