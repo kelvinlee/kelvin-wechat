@@ -5,7 +5,7 @@ getQA = (message,openid)->
 	if myProcess[openid]?
 		qa = myProcess[openid]
 		if qa.evt?
-			qa.evt.call openid
+			qa.evt openid
 			qa = false
 		if qa.next?
 			qa = myProcess[openid].next

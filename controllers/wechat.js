@@ -293,7 +293,7 @@ getQA = function(message, openid) {
   if (myProcess[openid] != null) {
     qa = myProcess[openid];
     if (qa.evt != null) {
-      qa.evt.call(openid);
+      qa.evt(openid);
       qa = false;
     }
     if (qa.next != null) {
