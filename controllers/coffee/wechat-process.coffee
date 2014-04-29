@@ -23,47 +23,56 @@ op_Process_list = [
 			{
 				name:"答案1"
 				key:"A"
+				type: "text"
 				backContent:"答得不对哦,再试试其他的答案"
 			}
 			{
 				name:"答案2"
 				key:"B"
+				type: "text"
 				backContent:"答得不对哦,再试试其他的答案"
 			}
 			{
 				name:"答案3"
 				key:"C"
+				type: "text"
 				backContent:"恭喜答对了#{_nr}第二题:三星 galayxt S5 使用的是几核CPU?#{_nr}A. 双核#{_nr}B. 四核#{_nr}C. 八核"
 				next: [
 					{
 						name:"答案1"
 						key:"A"
+						type: "text"
 						backContent:"再仔细想想看"
 					}
 					{
 						name:"答案2"
 						key:"B"
+						type: "text"
 						backContent:"再仔细想想看"
 					}
 					{
 						name:"答案1"
 						key:"C"
+						type: "text"
 						backContent:"哎呦,不错哦#{_nr}第三题:三星 galayxy S5 的新增特色功能是什么?#{_nr}A. 指纹识别#{_nr}B. 眼球阅读#{_nr}C. 电源节省"
 						next: [
 							{
 								name:"答案1"
 								key:"A"
+								type: "text"
 								backContent:"干得漂亮,你已经答对了所有的题目,成功参与此次抽奖活动,敬请期待抽奖结果,也可以使用口令'查看抽奖结果',来查看自己的中奖情况"
 								event: ->
 							}
 							{
 								name:"答案2"
 								key:"B"
+								type: "text"
 								backContent:"只差一点就答对了."
 							}
 							{
 								name:"答案3"
 								key:"C"
+								type: "text"
 								backContent:"只差一点就答对了."
 							}
 						]
