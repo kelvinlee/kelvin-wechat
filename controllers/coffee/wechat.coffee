@@ -139,7 +139,7 @@ exports.index = (req,res,next)->
 					fromUser:message.ToUserName
 					date: new Date().getTime()
 					content: backMsg.backContent
-				backMsg.evt message.FromUserName
+				backMsg.evt message.FromUserName if backMsg.evt?
 		else
 			res.render 'wechat-text',
 				toUser:message.FromUserName

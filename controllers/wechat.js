@@ -135,7 +135,9 @@ exports.index = function(req, res, next) {
           date: new Date().getTime(),
           content: backMsg.backContent
         });
-        return backMsg.evt(message.FromUserName);
+        if (backMsg.evt != null) {
+          return backMsg.evt(message.FromUserName);
+        }
       }
     } else {
       return res.render('wechat-text', {
