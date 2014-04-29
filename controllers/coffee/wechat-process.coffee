@@ -116,5 +116,5 @@ go_process = (msg)->
 	return myProcess = false
 
 tranStr = (message,str)->
-	str.replace '${id}',message.FromUserName
+	# str.replace '${id}',message.FromUserName
 	return str

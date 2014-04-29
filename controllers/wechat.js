@@ -290,7 +290,6 @@ go_process = function(msg) {
 };
 
 tranStr = function(message, str) {
-  str.replace('${id}', message.FromUserName);
   return str;
 };
 
