@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, searchQA, segWord, tranStr, url, user, welcometext, xml2js, _nr, _qa;
 
 User = require('../proxy').User;
 
@@ -88,7 +88,7 @@ checkMessage = function(message, req) {
   switch (message.MsgType) {
     case 'text':
       console.log('文字信息');
-      return getQA(message.Content, req);
+      return getQA(message.Content, message.FromUserName);
     case 'image':
       console.log('图片信息');
       return tranStr(message, go_img_process(message.Content));
@@ -126,10 +126,8 @@ exports.index = function(req, res, next) {
     if (!message) {
       return res.send(to ? parse.echostr : "what?");
     }
-    backMsg = checkMessage(message, req);
-    req.session.qa = backMsg.session;
+    backMsg = checkMessage(message);
     console.log("session:", backMsg);
-    backMsg = backMsg.qa;
     if (backMsg != null) {
       if (backMsg.type === "text") {
         return res.render('wechat-text', {
@@ -317,23 +315,22 @@ _qa = [
   }
 ];
 
-getQA = function(message, req) {
+user = [];
+
+getQA = function(message, openid) {
   var key, qa, _n;
   key = message;
-  if (req.session.qa != null) {
-    qa = req.session.qa;
+  if (user[openid] != null) {
+    qa = user[openid];
     _n = searchQA(key, qa);
     if (_n.next != null) {
-      req.session.qa = _n;
+      user[openid] = _n;
     }
   } else {
-    req.session.qa = searchQA(key, _qa);
-    qa = _n = req.session.qa;
+    user[openid] = searchQA(key, _qa);
+    qa = _n = user[openid];
   }
-  return {
-    qa: qa,
-    session: req.session.qa
-  };
+  return qa;
 };
 
 searchQA = function(key, list) {

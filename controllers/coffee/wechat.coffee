@@ -89,7 +89,7 @@ checkMessage = (message,req)->
 		when 'text'
 			console.log '文字信息'
 			# Inser_db_text message
-			return getQA message.Content,req
+			return getQA message.Content,message.FromUserName
 		when 'image'
 			console.log '图片信息'
 			# Inser_db_img message
@@ -127,10 +127,9 @@ exports.index = (req,res,next)->
 		console.log err if err
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
-		backMsg = checkMessage message,req
-		req.session.qa = backMsg.session
+		backMsg = checkMessage message
 		console.log "session:",backMsg
-		backMsg = backMsg.qa
+		
 		# console.log backMsg,backMsg.type,backMsg.backContent
 		if backMsg?
 			if backMsg.type is "text"

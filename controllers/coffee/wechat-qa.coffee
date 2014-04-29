@@ -75,17 +75,18 @@ _qa = [
 	}
 ]
 
-getQA = (message,req)->
+user = []
+getQA = (message,openid)->
 	key = message
-	if req.session.qa?
-		qa = req.session.qa
+	if user[openid]?
+		qa = user[openid]
 		_n = searchQA key,qa
-		req.session.qa = _n if _n.next?
+		user[openid] = _n if _n.next?
 	else
-		req.session.qa = searchQA key,_qa
-		qa = _n = req.session.qa
+		user[openid] = searchQA key,_qa
+		qa = _n = user[openid]
 
-	return {qa:qa,session:req.session.qa}
+	return qa
 
 searchQA = (key,list)->
 	for a in list
