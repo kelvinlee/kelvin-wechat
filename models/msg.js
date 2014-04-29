@@ -11,7 +11,7 @@ ObjectId = Schema.ObjectId;
 
 MsgSchema = new Schema({
   openid: {
-    type: ObjectId
+    type: String
   },
   type: {
     type: String,
@@ -34,7 +34,7 @@ MsgSchema = new Schema({
     "default": null
   },
   checked: {
-    type: ObjectId,
+    type: Boolean,
     "default": null
   },
   create_at: {
