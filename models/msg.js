@@ -36,8 +36,7 @@ MsgSchema = new Schema({
   },
   checked: {
     type: ObjectId,
-    "default": null,
-    ref: 'backsend'
+    "default": null
   },
   create_at: {
     type: Date,

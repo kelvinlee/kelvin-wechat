@@ -11,8 +11,7 @@ ObjectId = Schema.ObjectId;
 
 BackSendSchema = new Schema({
   openid: {
-    type: ObjectId,
-    ref: 'User'
+    type: ObjectId
   },
   create_at: {
     type: Date,

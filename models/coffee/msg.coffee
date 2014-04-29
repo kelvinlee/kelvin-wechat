@@ -11,7 +11,7 @@ MsgSchema = new Schema
   msgid: {type: Number, default: 0}
   picurl: {type:String, default: null}
   mediaid: {type: String, default: null}
-  checked: {type: ObjectId, default: null, ref:'backsend'}
+  checked: {type: ObjectId, default: null}
   create_at: {type: Date, default: new Date()}
 
 mongoose.model 'Msg', MsgSchema

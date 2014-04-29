@@ -200,17 +200,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/models\/backsend.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/models\/backsend.js",
-		"outputAbbreviatedPath": "\/models\/min\/backsend-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/models\/coffee\/admin.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -330,17 +319,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/models\/lottery_x_list.js",
 		"outputAbbreviatedPath": "\/models\/min\/lottery_x_list-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/models\/msg.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/models\/msg.js",
-		"outputAbbreviatedPath": "\/models\/min\/msg-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
