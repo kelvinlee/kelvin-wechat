@@ -126,7 +126,6 @@ exports.index = function(req, res, next) {
     if (!message) {
       return res.send(to ? parse.echostr : "what?");
     }
-    console.log("session:", user[message.FromUserName]);
     backMsg = checkMessage(message);
     if (backMsg != null) {
       if (backMsg.type === "text") {
@@ -320,6 +319,7 @@ user = [];
 getQA = function(message, openid) {
   var key, qa, _n;
   key = message;
+  console.log("user " + openid + " :", user[openid]);
   if (user[openid] != null) {
     qa = user[openid];
     _n = searchQA(key, qa);

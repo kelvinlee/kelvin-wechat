@@ -127,7 +127,7 @@ exports.index = (req,res,next)->
 		console.log err if err
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
-		console.log "session:",user[message.FromUserName]
+		# console.log "session:",user[message.FromUserName]
 		backMsg = checkMessage message
 		
 

@@ -78,6 +78,7 @@ _qa = [
 user = []
 getQA = (message,openid)->
 	key = message
+	console.log "user #{openid} :",user[openid]
 	if user[openid]?
 		qa = user[openid]
 		_n = searchQA key,qa
