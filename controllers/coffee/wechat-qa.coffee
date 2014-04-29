@@ -81,7 +81,8 @@ getQA = (message,openid)->
 	if user[openid]?
 		qa = user[openid]
 		_n = searchQA key,qa
-		user[openid] = _n if _n.next
+		console.log _n
+		user[openid] = _n if typeof _n.next isnt 'undefined'
 	else
 		user[openid] = searchQA key,_qa
 		qa = _n = user[openid]

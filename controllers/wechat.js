@@ -126,8 +126,8 @@ exports.index = function(req, res, next) {
     if (!message) {
       return res.send(to ? parse.echostr : "what?");
     }
+    console.log("session:", user[message.FromUserName]);
     backMsg = checkMessage(message);
-    console.log("session:", backMsg);
     if (backMsg != null) {
       if (backMsg.type === "text") {
         return res.render('wechat-text', {
@@ -323,7 +323,8 @@ getQA = function(message, openid) {
   if (user[openid] != null) {
     qa = user[openid];
     _n = searchQA(key, qa);
-    if (_n.next) {
+    console.log(_n);
+    if (typeof _n.next !== 'undefined') {
       user[openid] = _n;
     }
   } else {
