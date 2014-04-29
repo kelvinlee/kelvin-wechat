@@ -279,8 +279,14 @@ Inser_db_img = function(db) {
 };
 
 Inser_db_qauser = function(openid) {
-  return QAlist.saveNew(openid, function(err, obj) {
-    return console.log("录入成功");
+  return QAlist.checkhas(openid, function(err, obj) {
+    if (obj != null) {
+      return console.log("已经存在,无法录入");
+    } else {
+      return QAlist.saveNew(openid, function(err, obj) {
+        return console.log("录入成功");
+      });
+    }
   });
 };
 
