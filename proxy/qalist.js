@@ -15,7 +15,7 @@ exports.checkhas = function(openid, callback) {
   }, callback);
 };
 
-exports.saveNew = function(name, passwd, callback) {
+exports.saveNew = function(openid, callback) {
   QAlist = new QAlist();
   QAlist.openid = openid;
   return QAlist.save(callback);

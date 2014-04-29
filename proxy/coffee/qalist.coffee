@@ -5,7 +5,7 @@ exports.checkhas = (openid, callback)->
   QAlist.findOne {openid:openid},null,{sort:{create_at:1}},callback 
 
 
-exports.saveNew = (name,passwd,callback)->
+exports.saveNew = (openid,callback)->
 	QAlist = new QAlist()
 	QAlist.openid = openid
 	QAlist.save callback
