@@ -81,9 +81,8 @@ getQA = (message,openid)->
 	console.log "user #{openid} :",myProcess[openid]
 	if myProcess[openid]?
 		qa = myProcess[openid].next
-		_n = searchQA key,qa
-		console.log _n
-		myProcess[openid] = _n if _n.next?
+		qa = searchQA key,qa
+		myProcess[openid] = qa if qa.next?
 	else
 		myProcess[openid] = searchQA key,_qa
 		qa = _n = myProcess[openid]

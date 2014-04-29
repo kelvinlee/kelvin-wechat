@@ -322,10 +322,9 @@ getQA = function(message, openid) {
   console.log("user " + openid + " :", myProcess[openid]);
   if (myProcess[openid] != null) {
     qa = myProcess[openid].next;
-    _n = searchQA(key, qa);
-    console.log(_n);
-    if (_n.next != null) {
-      myProcess[openid] = _n;
+    qa = searchQA(key, qa);
+    if (qa.next != null) {
+      myProcess[openid] = qa;
     }
   } else {
     myProcess[openid] = searchQA(key, _qa);
