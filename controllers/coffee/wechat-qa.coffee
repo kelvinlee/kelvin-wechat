@@ -81,7 +81,7 @@ getQA = (message,openid)->
 	if user[openid]?
 		qa = user[openid]
 		_n = searchQA key,qa
-		user[openid] = _n if _n.next?
+		user[openid] = _n if _n.next
 	else
 		user[openid] = searchQA key,_qa
 		qa = _n = user[openid]

@@ -323,7 +323,7 @@ getQA = function(message, openid) {
   if (user[openid] != null) {
     qa = user[openid];
     _n = searchQA(key, qa);
-    if (_n.next != null) {
+    if (_n.next) {
       user[openid] = _n;
     }
   } else {
