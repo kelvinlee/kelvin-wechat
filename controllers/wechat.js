@@ -314,7 +314,9 @@ getQA = function(message, openid) {
     if (qa.next != null) {
       qa = myProcess[openid].next;
       qa = searchQA(key, qa);
-      myProcess[openid] = qa;
+      if (qa.next != null) {
+        myProcess[openid] = qa;
+      }
     }
   } else {
     myProcess[openid] = searchQA(key, _qa);
