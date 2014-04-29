@@ -28,6 +28,7 @@ overQA = (openid)->
 	console.log "记录抽奖ID: ",openid
 	clearQA openid
 	Inser_db_qauser openid
+	Get_db_qauser()
 
 
 

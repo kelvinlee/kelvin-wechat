@@ -4,6 +4,8 @@ QAlist = models.QAlist
 exports.checkhas = (openid, callback)->
   QAlist.findOne {openid:openid},null,{sort:{create_at:1}},callback 
 
+exports.getall = (callback)->
+	QAlist.find {}, callback
 
 exports.saveNew = (openid,callback)->
 	QAlist = new QAlist()

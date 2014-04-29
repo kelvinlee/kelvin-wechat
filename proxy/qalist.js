@@ -15,6 +15,10 @@ exports.checkhas = function(openid, callback) {
   }, callback);
 };
 
+exports.getall = function(callback) {
+  return QAlist.find({}, callback);
+};
+
 exports.saveNew = function(openid, callback) {
   QAlist = new QAlist();
   QAlist.openid = openid;
