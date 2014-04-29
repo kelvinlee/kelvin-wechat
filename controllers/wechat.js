@@ -292,14 +292,14 @@ getQA = function(message, openid) {
   console.log("user " + openid + " :", myProcess[openid]);
   if (myProcess[openid] != null) {
     qa = myProcess[openid];
-    if (qa.evt != null) {
-      qa.evt(openid);
-      qa = false;
-    }
     if (qa.next != null) {
       qa = myProcess[openid].next;
       qa = searchQA(key, qa);
       myProcess[openid] = qa;
+    }
+    if (qa.evt != null) {
+      qa.evt(openid);
+      qa = false;
     }
   } else {
     myProcess[openid] = searchQA(key, _qa);
@@ -319,12 +319,12 @@ searchQA = function(key, list) {
 };
 
 clearQA = function(openid) {
-  console.log("clear: " + openid, this);
+  console.log("clear: " + openid);
   return delete myProcess[openid];
 };
 
 overQA = function(openid) {
-  console.log(openid);
+  console.log("记录抽奖ID: ", openid);
   clearQA(openid);
   return Inser_db_qauser({
     openid: openid
