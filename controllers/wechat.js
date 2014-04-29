@@ -345,7 +345,7 @@ _qa = [
                 key: "C",
                 type: "text",
                 backContent: "恭喜你全部答对了,已经成功参与抽奖,敬请关注中奖通知.",
-                event: overQA
+                evt: overQA
               }
             ]
           }
@@ -365,7 +365,7 @@ getQA = function(message, openid) {
     qa = myProcess[openid].next;
     qa = searchQA(key, qa);
     if (qa.event != null) {
-      qa.event.call(openid);
+      qa.evt.call(openid);
     }
     if (qa.next != null) {
       myProcess[openid] = qa;
