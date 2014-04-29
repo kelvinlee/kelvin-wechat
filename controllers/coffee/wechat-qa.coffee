@@ -8,9 +8,9 @@ getQA = (message,openid)->
 			qa = myProcess[openid].next
 			qa = searchQA key,qa
 			myProcess[openid] = qa
-		if qa.evt?
-			qa.evt openid
-			qa = false
+		# if qa.evt?
+			# qa.evt openid
+			# qa = false
 	else
 		myProcess[openid] = searchQA key,_qa
 		qa = _n = myProcess[openid]
@@ -26,7 +26,7 @@ clearQA = (openid)->
 	delete myProcess[openid]
 overQA = (openid)->
 	console.log "记录抽奖ID: ",openid
-	clearQA openid
+	# clearQA openid
 	Inser_db_qauser {openid:openid}
 
 

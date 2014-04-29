@@ -129,12 +129,13 @@ exports.index = function(req, res, next) {
     backMsg = checkMessage(message);
     if (backMsg != null) {
       if (backMsg.type === "text") {
-        return res.render('wechat-text', {
+        res.render('wechat-text', {
           toUser: message.FromUserName,
           fromUser: message.ToUserName,
           date: new Date().getTime(),
           content: backMsg.backContent
         });
+        return backMsg.evt(message.FromUserName);
       }
     } else {
       return res.render('wechat-text', {
@@ -297,10 +298,6 @@ getQA = function(message, openid) {
       qa = searchQA(key, qa);
       myProcess[openid] = qa;
     }
-    if (qa.evt != null) {
-      qa.evt(openid);
-      qa = false;
-    }
   } else {
     myProcess[openid] = searchQA(key, _qa);
     qa = _n = myProcess[openid];
@@ -325,7 +322,6 @@ clearQA = function(openid) {
 
 overQA = function(openid) {
   console.log("记录抽奖ID: ", openid);
-  clearQA(openid);
   return Inser_db_qauser({
     openid: openid
   });
