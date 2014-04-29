@@ -128,7 +128,9 @@ exports.index = (req,res,next)->
 		message = formatMessage result
 		(return res.send if to then parse.echostr else "what?" ) if not message
 		backMsg = checkMessage message,req
-		console.log "session:",req.session.qa
+		req.session.qa = backMsg.session
+		console.log "session:",backMsg
+		backMsg = backMsg.qa
 		# console.log backMsg,backMsg.type,backMsg.backContent
 		if backMsg?
 			if backMsg.type is "text"

@@ -127,7 +127,9 @@ exports.index = function(req, res, next) {
       return res.send(to ? parse.echostr : "what?");
     }
     backMsg = checkMessage(message, req);
-    console.log("session:", req.session.qa);
+    req.session.qa = backMsg.session;
+    console.log("session:", backMsg);
+    backMsg = backMsg.qa;
     if (backMsg != null) {
       if (backMsg.type === "text") {
         return res.render('wechat-text', {
@@ -328,7 +330,10 @@ getQA = function(message, req) {
     req.session.qa = searchQA(key, _qa);
     qa = _n = req.session.qa;
   }
-  return qa;
+  return {
+    qa: qa,
+    session: req.session.qa
+  };
 };
 
 searchQA = function(key, list) {

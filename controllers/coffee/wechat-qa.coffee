@@ -85,7 +85,7 @@ getQA = (message,req)->
 		req.session.qa = searchQA key,_qa
 		qa = _n = req.session.qa
 
-	return qa
+	return {qa:qa,session:req.session.qa}
 
 searchQA = (key,list)->
 	for a in list
