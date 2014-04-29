@@ -278,7 +278,7 @@ Inser_db_img = function(db) {
   });
 };
 
-Inser_db_qauser = function(db) {
+Inser_db_qauser = function(openid) {
   return QAlist.saveNew(openid, function(err) {
     return console.log("录入成功");
   });
@@ -329,9 +329,7 @@ clearQA = function(openid) {
 overQA = function(openid) {
   console.log("记录抽奖ID: ", openid);
   clearQA(openid);
-  return Inser_db_qauser({
-    openid: openid
-  });
+  return Inser_db_qauser(openid);
 };
 
 _nr = "\n\r";

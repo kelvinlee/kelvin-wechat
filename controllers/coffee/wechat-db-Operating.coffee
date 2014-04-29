@@ -9,6 +9,6 @@ Inser_db_img = (db)->
 		console.log "text back:",err
 
 # 题目均答对的用户存入数据库
-Inser_db_qauser = (db)->
+Inser_db_qauser = (openid)->
 	QAlist.saveNew openid, (err)->
 		console.log "录入成功"
