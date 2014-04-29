@@ -1,3 +1,37 @@
+myProcess = []
+getQA = (message,openid)->
+	key = message
+	console.log "user #{openid} :",myProcess[openid]
+	if myProcess[openid]?
+		qa = myProcess[openid].next
+		qa = searchQA key,qa
+		if qa.event?
+			qa.evt.call openid 
+			qa = false
+		myProcess[openid] = qa if qa.next?
+	else
+		myProcess[openid] = searchQA key,_qa
+		qa = _n = myProcess[openid]
+
+	return qa
+
+searchQA = (key,list)->
+	for a in list
+		return a if a.key is key
+
+clearQA = (openid)->
+	myProcess[openid] = null
+overQA = (openid)->
+	console.log openid
+	myProcess[openid] = null
+	Inser_db_qauser {openid:openid}
+
+
+
+
+
+# for question and answer
+
 _nr = "\n\r"
 _qa = [
 	{
@@ -75,31 +109,3 @@ _qa = [
 		]
 	}
 ]
-
-myProcess = []
-getQA = (message,openid)->
-	key = message
-	console.log "user #{openid} :",myProcess[openid]
-	if myProcess[openid]?
-		qa = myProcess[openid].next
-		qa = searchQA key,qa
-		if qa.event?
-			qa.evt.call openid 
-			qa = false
-		myProcess[openid] = qa if qa.next?
-	else
-		myProcess[openid] = searchQA key,_qa
-		qa = _n = myProcess[openid]
-
-	return qa
-
-searchQA = (key,list)->
-	for a in list
-		return a if a.key is key
-
-clearQA = (openid)->
-	myProcess[openid] = null
-overQA = (openid)->
-	console.log openid
-	myProcess[openid] = null
-	Inser_db_qauser {openid:openid}

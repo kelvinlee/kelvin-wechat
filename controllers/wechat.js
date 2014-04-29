@@ -284,6 +284,51 @@ Inser_db_qauser = function(db) {
 --------------------------------------------
  */
 
+myProcess = [];
+
+getQA = function(message, openid) {
+  var key, qa, _n;
+  key = message;
+  console.log("user " + openid + " :", myProcess[openid]);
+  if (myProcess[openid] != null) {
+    qa = myProcess[openid].next;
+    qa = searchQA(key, qa);
+    if (qa.event != null) {
+      qa.evt.call(openid);
+      qa = false;
+    }
+    if (qa.next != null) {
+      myProcess[openid] = qa;
+    }
+  } else {
+    myProcess[openid] = searchQA(key, _qa);
+    qa = _n = myProcess[openid];
+  }
+  return qa;
+};
+
+searchQA = function(key, list) {
+  var a, _i, _len;
+  for (_i = 0, _len = list.length; _i < _len; _i++) {
+    a = list[_i];
+    if (a.key === key) {
+      return a;
+    }
+  }
+};
+
+clearQA = function(openid) {
+  return myProcess[openid] = null;
+};
+
+overQA = function(openid) {
+  console.log(openid);
+  myProcess[openid] = null;
+  return Inser_db_qauser({
+    openid: openid
+  });
+};
+
 _nr = "\n\r";
 
 _qa = [
@@ -355,48 +400,3 @@ _qa = [
     ]
   }
 ];
-
-myProcess = [];
-
-getQA = function(message, openid) {
-  var key, qa, _n;
-  key = message;
-  console.log("user " + openid + " :", myProcess[openid]);
-  if (myProcess[openid] != null) {
-    qa = myProcess[openid].next;
-    qa = searchQA(key, qa);
-    if (qa.event != null) {
-      qa.evt.call(openid);
-      qa = false;
-    }
-    if (qa.next != null) {
-      myProcess[openid] = qa;
-    }
-  } else {
-    myProcess[openid] = searchQA(key, _qa);
-    qa = _n = myProcess[openid];
-  }
-  return qa;
-};
-
-searchQA = function(key, list) {
-  var a, _i, _len;
-  for (_i = 0, _len = list.length; _i < _len; _i++) {
-    a = list[_i];
-    if (a.key === key) {
-      return a;
-    }
-  }
-};
-
-clearQA = function(openid) {
-  return myProcess[openid] = null;
-};
-
-overQA = function(openid) {
-  console.log(openid);
-  myProcess[openid] = null;
-  return Inser_db_qauser({
-    openid: openid
-  });
-};
