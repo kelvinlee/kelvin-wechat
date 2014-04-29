@@ -4,7 +4,7 @@ config = require '../config'
 ObjectId = Schema.ObjectId
 
 MsgSchema = new Schema
-  openid: { type: ObjectId, ref:'User' }
+  openid: { type: ObjectId }
   type: {type: String, default: "text"}
  	
   text: {type: String, default: null}

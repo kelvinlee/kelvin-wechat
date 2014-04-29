@@ -11,8 +11,7 @@ ObjectId = Schema.ObjectId;
 
 MsgSchema = new Schema({
   openid: {
-    type: ObjectId,
-    ref: 'User'
+    type: ObjectId
   },
   type: {
     type: String,
