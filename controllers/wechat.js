@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, tranStr, url, welcometext, xml2js;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, segWord, tranStr, url, welcometext, xml2js, _nr;
 
 User = require('../proxy').User;
 
@@ -168,17 +168,72 @@ exports.word = function(req, res, next) {
 --------------------------------------------
  */
 
+_nr = "\n\r";
+
 op_Process_list = [
   {
     name: "抽奖",
     key: "抽奖",
     type: "text",
-    backContent: "您点不开下面的连接参与抽奖:\n\r " + config.host_url + "/active/test/ 只是测试回复功能"
+    backContent: "您点不开下面的连接参与抽奖:" + _nr + " " + config.host_url + "/active/test/ 只是测试回复功能"
   }, {
     name: "查看抽奖结果",
     key: "查看抽奖结果",
     type: "text",
-    backContent: "查看我的抽奖结果:\n\r " + config.host_url + "/active-over/test"
+    backContent: "查看我的抽奖结果:" + _nr + " " + config.host_url + "/active-over/test"
+  }, {
+    name: "答题回答问题",
+    key: "开始答题",
+    type: "text",
+    backContent: "第一题:三星 galayxy S5 的后置摄像头是多少像素" + _nr + " A. 500万" + _nr + "B. 1000万" + _nr + "C. 1500万",
+    next: [
+      {
+        name: "答案1",
+        key: "A",
+        backContent: "答得不对哦,再试试其他的答案"
+      }, {
+        name: "答案2",
+        key: "B",
+        backContent: "答得不对哦,再试试其他的答案"
+      }, {
+        name: "答案3",
+        key: "C",
+        backContent: "恭喜答对了" + _nr + "第二题:三星 galayxt S5 使用的是几核CPU?" + _nr + "A. 双核" + _nr + "B. 四核" + _nr + "C. 八核",
+        next: [
+          {
+            name: "答案1",
+            key: "A",
+            backContent: "再仔细想想看"
+          }, {
+            name: "答案2",
+            key: "B",
+            backContent: "再仔细想想看"
+          }, {
+            name: "答案1",
+            key: "C",
+            backContent: "哎呦,不错哦" + _nr + "第三题:三星 galayxy S5 的新增特色功能是什么?" + _nr + "A. 指纹识别" + _nr + "B. 眼球阅读" + _nr + "C. 电源节省",
+            next: [
+              {
+                name: "答案1",
+                key: "A",
+                backContent: "干得漂亮,你已经答对了所有的题目,成功参与此次抽奖活动,敬请期待抽奖结果,也可以使用口令'查看抽奖结果',来查看自己的中奖情况",
+                event: function() {}
+              }, {
+                name: "答案2",
+                key: "B",
+                backContent: "只差一点就答对了."
+              }, {
+                name: "答案3",
+                key: "C",
+                backContent: "只差一点就答对了."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }, {
+    name: ""
   }
 ];
 
@@ -205,6 +260,9 @@ go_process = function(msg) {
       if (pro.key === msg) {
         if (pro.next) {
           myProcess = pro;
+          if (pro.event != null) {
+            pro.event.call();
+          }
         }
         return pro;
         break;
@@ -218,6 +276,9 @@ go_process = function(msg) {
         pro = _ref[_j];
         if (pro.key === msg) {
           myProcess = pro;
+          if (pro.event != null) {
+            pro.event.call();
+          }
           return pro;
           break;
         }
