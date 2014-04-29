@@ -7,3 +7,7 @@ Inser_db_text = (db)->
 Inser_db_img = (db)->
 	Message.saveImg db.FromUserName,db.MsgType,db.PicUrl,db.MsgId,db.MediaId, (err)->
 		console.log "text back:",err
+
+# 题目均答对的用户存入数据库
+Inser_db_qauser = (db)->
+	console.log db

@@ -65,7 +65,7 @@ _qa = [
 								key:"C"
 								type:"text"
 								backContent: "恭喜你全部答对了,已经成功参与抽奖,敬请关注中奖通知."
-								event: ->
+								event: overQA
 							}
 						]
 					}
@@ -82,6 +82,7 @@ getQA = (message,openid)->
 	if myProcess[openid]?
 		qa = myProcess[openid].next
 		qa = searchQA key,qa
+		qa.event.call openid if qa.event?
 		myProcess[openid] = qa if qa.next?
 	else
 		myProcess[openid] = searchQA key,_qa
@@ -93,3 +94,7 @@ searchQA = (key,list)->
 	for a in list
 		return a if a.key is key
 
+overQA = (openid)->
+	console.log openid
+	myProcess[openid] = null
+	Inser_db_qauser {openid:openid}

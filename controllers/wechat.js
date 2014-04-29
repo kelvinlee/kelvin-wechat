@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
 
 User = require('../proxy').User;
 
@@ -239,6 +239,47 @@ tranStr = function(message, str) {
 
 /*
 --------------------------------------------
+     Begin wechat-subscribe.coffee
+--------------------------------------------
+ */
+
+welcometext = {
+  name: "welcome",
+  key: "你好",
+  type: "text",
+  backContent: "感谢您关注【三星乐园】官⽅方微信,参与《我爱三星视频秀》答题,即有机会获 得丰厚⼤大奖 本期《我爱三星视频秀》正在为您揭秘三星热门旗舰机型——GALAXY S5,关注 直播内容并正确回答以下三个问题,即有机会获得S5九折卡、70M流量卡等超值 奖品,幸运的⼩小伙伴更有机会获得GALAXY S5惊喜⼤大礼!⼼心动不如⾏行动,⼀一起来 答题吧~回复【1】了解活动详情,回复【2】开始答题。"
+};
+
+go_subscribe = function(message) {
+  return welcometext;
+};
+
+
+/*
+--------------------------------------------
+     Begin wechat-db-Operating.coffee
+--------------------------------------------
+ */
+
+Inser_db_text = function(db) {
+  return Message.saveText(db.FromUserName, db.MsgType, db.Content, db.MsgId, function(err) {
+    return console.log("text back:", err);
+  });
+};
+
+Inser_db_img = function(db) {
+  return Message.saveImg(db.FromUserName, db.MsgType, db.PicUrl, db.MsgId, db.MediaId, function(err) {
+    return console.log("text back:", err);
+  });
+};
+
+Inser_db_qauser = function(db) {
+  return console.log(db);
+};
+
+
+/*
+--------------------------------------------
      Begin wechat-qa.coffee
 --------------------------------------------
  */
@@ -304,7 +345,7 @@ _qa = [
                 key: "C",
                 type: "text",
                 backContent: "恭喜你全部答对了,已经成功参与抽奖,敬请关注中奖通知.",
-                event: function() {}
+                event: overQA
               }
             ]
           }
@@ -323,6 +364,9 @@ getQA = function(message, openid) {
   if (myProcess[openid] != null) {
     qa = myProcess[openid].next;
     qa = searchQA(key, qa);
+    if (qa.event != null) {
+      qa.event.call(openid);
+    }
     if (qa.next != null) {
       myProcess[openid] = qa;
     }
@@ -343,39 +387,10 @@ searchQA = function(key, list) {
   }
 };
 
-
-/*
---------------------------------------------
-     Begin wechat-subscribe.coffee
---------------------------------------------
- */
-
-welcometext = {
-  name: "welcome",
-  key: "你好",
-  type: "text",
-  backContent: "感谢您关注【三星乐园】官⽅方微信,参与《我爱三星视频秀》答题,即有机会获 得丰厚⼤大奖 本期《我爱三星视频秀》正在为您揭秘三星热门旗舰机型——GALAXY S5,关注 直播内容并正确回答以下三个问题,即有机会获得S5九折卡、70M流量卡等超值 奖品,幸运的⼩小伙伴更有机会获得GALAXY S5惊喜⼤大礼!⼼心动不如⾏行动,⼀一起来 答题吧~回复【1】了解活动详情,回复【2】开始答题。"
-};
-
-go_subscribe = function(message) {
-  return welcometext;
-};
-
-
-/*
---------------------------------------------
-     Begin wechat-db-Operating.coffee
---------------------------------------------
- */
-
-Inser_db_text = function(db) {
-  return Message.saveText(db.FromUserName, db.MsgType, db.Content, db.MsgId, function(err) {
-    return console.log("text back:", err);
-  });
-};
-
-Inser_db_img = function(db) {
-  return Message.saveImg(db.FromUserName, db.MsgType, db.PicUrl, db.MsgId, db.MediaId, function(err) {
-    return console.log("text back:", err);
+overQA = function(openid) {
+  console.log(openid);
+  myProcess[openid] = null;
+  return Inser_db_qauser({
+    openid: openid
   });
 };
