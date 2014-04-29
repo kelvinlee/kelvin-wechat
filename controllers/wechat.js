@@ -254,6 +254,7 @@ myProcess = false;
 
 go_process = function(msg) {
   var pro, _i, _j, _len, _len1, _ref;
+  console.log(myProcess);
   if (!myProcess) {
     for (_i = 0, _len = op_Process_list.length; _i < _len; _i++) {
       pro = op_Process_list[_i];

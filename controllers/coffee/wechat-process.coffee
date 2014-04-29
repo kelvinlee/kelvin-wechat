@@ -93,6 +93,7 @@ go_img_process = ()->
 myProcess = false
 go_process = (msg)->
 	# 判断是否有下一级菜单
+	console.log  myProcess 
 	if not myProcess
 		for pro in op_Process_list
 			if pro.key is msg
