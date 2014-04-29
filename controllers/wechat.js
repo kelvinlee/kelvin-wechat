@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
+var BufferHelper, EventProxy, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, Segment, User, checkMessage, checkSignature, clearQA, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
 
 User = require('../proxy').User;
 
@@ -291,7 +291,8 @@ _qa = [
     name: "查看活动详情",
     key: "1",
     type: "text",
-    backContent: "活动详情"
+    backContent: "活动详情",
+    evt: clearQA
   }, {
     name: "开始答题",
     key: "2",
@@ -366,6 +367,7 @@ getQA = function(message, openid) {
     qa = searchQA(key, qa);
     if (qa.event != null) {
       qa.evt.call(openid);
+      qa = false;
     }
     if (qa.next != null) {
       myProcess[openid] = qa;
@@ -385,6 +387,10 @@ searchQA = function(key, list) {
       return a;
     }
   }
+};
+
+clearQA = function(openid) {
+  return myProcess[openid] = null;
 };
 
 overQA = function(openid) {

@@ -5,6 +5,7 @@ _qa = [
 		key:"1"
 		type:"text"
 		backContent :"活动详情"
+		evt:clearQA
 	}
 	{
 		name:"开始答题"
@@ -82,7 +83,9 @@ getQA = (message,openid)->
 	if myProcess[openid]?
 		qa = myProcess[openid].next
 		qa = searchQA key,qa
-		qa.evt.call openid if qa.event?
+		if qa.event?
+			qa.evt.call openid 
+			qa = false
 		myProcess[openid] = qa if qa.next?
 	else
 		myProcess[openid] = searchQA key,_qa
@@ -94,6 +97,8 @@ searchQA = (key,list)->
 	for a in list
 		return a if a.key is key
 
+clearQA = (openid)->
+	myProcess[openid] = null
 overQA = (openid)->
 	console.log openid
 	myProcess[openid] = null
