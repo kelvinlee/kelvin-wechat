@@ -133,6 +133,7 @@ exports.index = (req,res,next)->
 		
 
 		# console.log backMsg,backMsg.type,backMsg.backContent
+		console.log message.FromUserName,message.ToUserName
 		if backMsg?
 			if backMsg.type is "text"
 				res.render 'wechat-text',
