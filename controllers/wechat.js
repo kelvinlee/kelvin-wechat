@@ -314,8 +314,12 @@ getQA = function(message, openid) {
     if (qa.next != null) {
       qa = myProcess[openid].next;
       qa = searchQA(key, qa);
-      if (qa.next != null) {
-        myProcess[openid] = qa;
+      if (qa != null) {
+        if (qa.next != null) {
+          myProcess[openid] = qa;
+        }
+      } else {
+        return {};
       }
     }
   } else {
@@ -333,6 +337,7 @@ searchQA = function(key, list) {
       return a;
     }
   }
+  return null;
 };
 
 clearQA = function(openid) {

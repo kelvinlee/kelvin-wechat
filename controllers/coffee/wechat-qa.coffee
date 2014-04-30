@@ -7,7 +7,10 @@ getQA = (message,openid)->
 		if qa.next?
 			qa = myProcess[openid].next
 			qa = searchQA key,qa
-			myProcess[openid] = qa if qa.next?
+			if qa?
+				myProcess[openid] = qa if qa.next?
+			else
+				return {}
 		# if qa.evt?
 			# qa.evt openid
 			# qa = false
@@ -20,7 +23,7 @@ getQA = (message,openid)->
 searchQA = (key,list)->
 	for a in list
 		return a if a.key is key
-
+	return null
 clearQA = (openid)->
 	console.log "clear: #{openid}"
 	delete myProcess[openid]
