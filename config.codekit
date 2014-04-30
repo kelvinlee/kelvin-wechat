@@ -712,17 +712,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/img\/samx-1.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 34340,
-		"inputAbbreviatedPath": "\/public\/img\/samx-1.jpg",
-		"outputAbbreviatedPath": "\/public\/img\/samx-1.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/public\/img\/submit.png": {
 		"fileType": 32768,
 		"ignore": 0,
