@@ -63,6 +63,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/controllers\/admin.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/admin.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/admin-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/controllers\/coffee\/admin.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -544,6 +555,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/proxy\/index.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/index.js",
+		"outputAbbreviatedPath": "\/proxy\/min\/index-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/proxy\/lottery.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -572,6 +594,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/proxy\/message.js",
 		"outputAbbreviatedPath": "\/proxy\/min\/message-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/proxy\/qalist.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/qalist.js",
+		"outputAbbreviatedPath": "\/proxy\/min\/qalist-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -697,6 +730,17 @@
 		"initialSize": 37328,
 		"inputAbbreviatedPath": "\/public\/img\/card.jpg",
 		"outputAbbreviatedPath": "\/public\/img\/card.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/img\/samx-1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 34340,
+		"inputAbbreviatedPath": "\/public\/img\/samx-1.jpg",
+		"outputAbbreviatedPath": "\/public\/img\/samx-1.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
