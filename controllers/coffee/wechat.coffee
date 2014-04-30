@@ -137,6 +137,7 @@ exports.index = (req,res,next)->
 		console.log message.FromUserName,message.ToUserName
 		if backMsg?
 			if backMsg.type is "text"
+				backMsg.backContent = backMsg.random[Math.round(Math.random()*(backMsg.random.length-1))] if backMsg.random?
 				res.render 'wechat-text',
 					toUser:message.FromUserName
 					fromUser:message.ToUserName

@@ -39,6 +39,8 @@ overQA = (openid)->
 
 # for question and answer
 
+_randomBadAnswer = ["很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。","很遗憾,回答错误。请再次作答。","哎呀,答错了。还有机会哦!"]
+
 _nr = "\n\r"
 _qa = [
 	{
@@ -62,13 +64,15 @@ _qa = [
 				name:"答案1"
 				key:"C"
 				type:"text"
-				backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。"
+				backContent: ""
+				random:_randomBadAnswer
 			}
 			{
 				name:"答案2"
 				key:"B"
 				type:"text"
 				backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。"
+				random:_randomBadAnswer
 			}
 			{
 				name:"答案3"
@@ -81,12 +85,14 @@ _qa = [
 						key:"A"
 						type:"text"
 						backContent: "很遗憾,回答错误。请再次作答。"
+						random:_randomBadAnswer
 					}
 					{
 						name:"答案2"
 						key:"C"
 						type:"text"
 						backContent: "很遗憾,回答错误。请再次作答。"
+						random:_randomBadAnswer
 					}
 					{
 						name:"答案3"
@@ -99,12 +105,14 @@ _qa = [
 								key:"A"
 								type:"text"
 								backContent: "哎呀,答错了。还有机会哦!"
+								random:_randomBadAnswer
 							}
 							{
 								name:"答案2"
 								key:"B"
 								type:"text"
 								backContent: "哎呀,答错了。还有机会哦!"
+								random:_randomBadAnswer
 							}
 							{
 								name:"答案3"

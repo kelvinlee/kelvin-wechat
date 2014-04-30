@@ -5,7 +5,7 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Get_db_qauser, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, QAlist, Segment, User, checkMessage, checkSignature, clearQA, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa;
+var BufferHelper, EventProxy, Get_db_qauser, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, QAlist, Segment, User, checkMessage, checkSignature, clearQA, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa, _randomBadAnswer;
 
 User = require('../proxy').User;
 
@@ -132,6 +132,9 @@ exports.index = function(req, res, next) {
     console.log(message.FromUserName, message.ToUserName);
     if (backMsg != null) {
       if (backMsg.type === "text") {
+        if (backMsg.random != null) {
+          backMsg.backContent = backMsg.random[Math.round(Math.random() * (backMsg.random.length - 1))];
+        }
         res.render('wechat-text', {
           toUser: message.FromUserName,
           fromUser: message.ToUserName,
@@ -365,6 +368,8 @@ overQA = function(openid) {
   return Get_db_qauser();
 };
 
+_randomBadAnswer = ["很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。", "很遗憾,回答错误。请再次作答。", "哎呀,答错了。还有机会哦!"];
+
 _nr = "\n\r";
 
 _qa = [
@@ -388,12 +393,14 @@ _qa = [
         name: "答案1",
         key: "C",
         type: "text",
-        backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。"
+        backContent: "",
+        random: _randomBadAnswer
       }, {
         name: "答案2",
         key: "B",
         type: "text",
-        backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。"
+        backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。",
+        random: _randomBadAnswer
       }, {
         name: "答案3",
         key: "A",
@@ -404,12 +411,14 @@ _qa = [
             name: "答案1",
             key: "A",
             type: "text",
-            backContent: "很遗憾,回答错误。请再次作答。"
+            backContent: "很遗憾,回答错误。请再次作答。",
+            random: _randomBadAnswer
           }, {
             name: "答案2",
             key: "C",
             type: "text",
-            backContent: "很遗憾,回答错误。请再次作答。"
+            backContent: "很遗憾,回答错误。请再次作答。",
+            random: _randomBadAnswer
           }, {
             name: "答案3",
             key: "B",
@@ -420,12 +429,14 @@ _qa = [
                 name: "答案1",
                 key: "A",
                 type: "text",
-                backContent: "哎呀,答错了。还有机会哦!"
+                backContent: "哎呀,答错了。还有机会哦!",
+                random: _randomBadAnswer
               }, {
                 name: "答案2",
                 key: "B",
                 type: "text",
-                backContent: "哎呀,答错了。还有机会哦!"
+                backContent: "哎呀,答错了。还有机会哦!",
+                random: _randomBadAnswer
               }, {
                 name: "答案3",
                 key: "C",
