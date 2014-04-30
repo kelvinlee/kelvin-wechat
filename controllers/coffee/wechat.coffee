@@ -105,6 +105,7 @@ checkMessage = (message,req)->
 			console.log '地理信息'
 		when 'link'
 			console.log '连接消息'
+			
 		when 'event'
 			# subscribe 关注
 			# unsubscribe 取消关注
