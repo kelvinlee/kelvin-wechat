@@ -369,7 +369,7 @@ _qa = [
   {
     name: "查看活动详情",
     key: "1",
-    type: "text",
+    type: "news",
     backContent: "活动详情",
     evt: clearQA
   }, {
