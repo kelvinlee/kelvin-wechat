@@ -49,7 +49,7 @@ _qa = [
 		name:"开始答题"
 		key:"2"
 		type:"text"
-		backContent :"节⽬目中特别提到的Gear版特⾊色应⽤用是?#{_nr}A,搜狐视频Gear版 #{_nr}B,⾼高德地图Gear版 #{_nr}C,S健康Gear版"
+		backContent :"节⽬中特别提到的Gear版特⾊应⽤是?#{_nr}A,搜狐视频Gear版 #{_nr}B,⾼德地图Gear版 #{_nr}C,S健康Gear版"
 		next: [
 			{
 				name:"答案1"
@@ -67,7 +67,7 @@ _qa = [
 				name:"答案3"
 				key:"A"
 				type:"text"
-				backContent: "⾦金秀贤最喜欢的时尚刊物APP是什么?#{_nr}A、《宝宝俱乐部》 #{_nr}B、《新炫刊》#{_nr}C、《掌阅iReader》"
+				backContent: "⾦秀贤最喜欢的时尚刊物APP是什么?#{_nr}A、《宝宝俱乐部》 #{_nr}B、《新炫刊》#{_nr}C、《掌阅iReader》"
 				next: [
 					{
 						name:"答案1"
@@ -85,7 +85,7 @@ _qa = [
 						name:"答案3"
 						key:"B"
 						type:"text"
-						backContent: "节⽬目中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管 理,是以下的哪个?#{_nr}A、《⽀支付宝钱包》 #{_nr}B、《壹钱包》 #{_nr}C、《三星钱包》"
+						backContent: "节⽬中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管理,是以下的哪个?#{_nr}A、《⽀付宝钱包》 #{_nr}B、《壹钱包》 #{_nr}C、《三星钱包》"
 						next: [
 							{
 								name:"答案1"
