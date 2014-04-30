@@ -142,6 +142,7 @@ exports.index = (req,res,next)->
 					content: backMsg.backContent
 
 			if backMsg.type is 'news'
+				console.log "news run"
 				res.render 'wechat-news',
 					toUser:message.FromUserName
 					fromUser:message.ToUserName

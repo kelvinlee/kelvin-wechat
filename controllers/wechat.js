@@ -139,6 +139,7 @@ exports.index = function(req, res, next) {
         });
       }
       if (backMsg.type === 'news') {
+        console.log("news run");
         res.render('wechat-news', {
           toUser: message.FromUserName,
           fromUser: message.ToUserName,
