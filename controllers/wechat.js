@@ -116,8 +116,9 @@ checkMessage = function(message, req) {
 };
 
 exports.index = function(req, res, next) {
-  var parse, to;
+  var backup, parse, to;
   parse = getParse(req);
+  backup = req.query.code;
   to = checkSignature(parse, config.wechat_token);
   return getMessage(req, function(err, result) {
     var backMsg, message;
@@ -155,7 +156,7 @@ exports.index = function(req, res, next) {
         });
       }
       if (backMsg.evt != null) {
-        return backMsg.evt(message.FromUserName);
+        return backMsg.evt(message.FromUserName, backup);
       }
     } else {
       return res.render('wechat-text', {
@@ -268,7 +269,7 @@ welcometext = {
   name: "welcome",
   key: "你好",
   type: "text",
-  backContent: "感谢您关注【三星乐园】官⽅微信,参与《我爱三星视频秀》答题,即有机会获得丰厚⼤奖本期《我爱三星视频秀》正在为您揭秘三星热门旗舰机型——GALAXY S5,关注直播内容并正确回答以下三个问题,即有机会获得S5九折卡、70M流量卡等超值 奖品,幸运的⼩伙伴更有机会获得GALAXY S5惊喜⼤礼!⼼动不如⾏动,⼀起来答题吧~回复【1】了解活动详情,回复【2】开始答题。"
+  backContent: "感谢您关注【三星乐园】官⽅方微信,看《我爱三星视频秀》,参与答题,即有机会获得GALAXY S5惊喜大礼!回复【1】了解活动详情,回复【2】开始答题。"
 };
 
 go_subscribe = function(message) {
@@ -294,12 +295,12 @@ Inser_db_img = function(db) {
   });
 };
 
-Inser_db_qauser = function(openid) {
+Inser_db_qauser = function(openid, backup) {
   return QAlist.checkhas(openid, function(err, obj) {
     if (obj != null) {
       return console.log("已经存在,无法录入");
     } else {
-      return QAlist.saveNew(openid, function(err, obj) {
+      return QAlist.saveNew(openid, backup, function(err, obj) {
         return console.log("录入成功");
       });
     }
@@ -361,16 +362,19 @@ clearQA = function(openid) {
   return delete myProcess[openid];
 };
 
-overQA = function(openid) {
+overQA = function(openid, backup) {
+  if (backup == null) {
+    backup = "test";
+  }
   console.log("记录抽奖ID: ", openid);
   clearQA(openid);
-  Inser_db_qauser(openid);
+  Inser_db_qauser(openid, backup);
   return Get_db_qauser();
 };
 
-_randomBadAnswer = ["很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。", "很遗憾,回答错误。请再次作答。", "哎呀,答错了。还有机会哦!"];
+_randomBadAnswer = ["本题回答错误。快去本期《我爱三星视频秀》直播仔细瞄一下内容,再来重新作答哦!视频链接: http://tv.sohu.com/samsung", "嘿嘿,你一定没有认真看视频,要仔细看才能知道答案哦!~视频链接: http://tv.sohu.com/samsung", "哎呀,答错了。只有三道题全对才能赢得S5哟! ~ 视频链接: http://tv.sohu.com/samsung"];
 
-_nr = "\n\r";
+_nr = "\n";
 
 _qa = [
   {
@@ -405,7 +409,7 @@ _qa = [
         name: "答案3",
         key: "A",
         type: "text",
-        backContent: "⾦秀贤最喜欢的时尚刊物APP是什么?" + _nr + "A、《宝宝俱乐部》 " + _nr + "B、《新炫刊》" + _nr + "C、《掌阅iReader》",
+        backContent: "⾦秀贤最喜欢的时尚刊物APP是什么?" + _nr + "A、宝宝俱乐部 " + _nr + "B、新炫刊" + _nr + "C、掌阅iReader",
         next: [
           {
             name: "答案1",
@@ -423,7 +427,7 @@ _qa = [
             name: "答案3",
             key: "B",
             type: "text",
-            backContent: "节⽬中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管理,是以下的哪个?" + _nr + "A、《⽀付宝钱包》 " + _nr + "B、《壹钱包》 " + _nr + "C、《三星钱包》",
+            backContent: "节⽬中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管理,是以下的哪个?" + _nr + "A、⽀付宝钱包 " + _nr + "B、壹钱包 " + _nr + "C、三星钱包",
             next: [
               {
                 name: "答案1",
@@ -441,7 +445,7 @@ _qa = [
                 name: "答案3",
                 key: "C",
                 type: "text",
-                backContent: "恭喜你全部答对了,已经成功参与抽奖,敬请关注中奖通知.",
+                backContent: "恭喜您全部答对了,已经成功参与抽奖,敬请关注中奖通知。",
                 evt: overQA
               }
             ]

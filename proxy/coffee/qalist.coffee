@@ -7,9 +7,10 @@ exports.checkhas = (openid, callback)->
 exports.getall = (callback)->
 	QAlist.find {}, callback
 
-exports.saveNew = (openid,callback)->
+exports.saveNew = (openid,backup,callback)->
 	qa = new QAlist()
 	qa.openid = openid
+	qa.backup = backup
 	qa.save callback
 
 # exports.saveText = (openid, type, text, msgid, callback)->

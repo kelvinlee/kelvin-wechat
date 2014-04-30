@@ -19,9 +19,10 @@ exports.getall = function(callback) {
   return QAlist.find({}, callback);
 };
 
-exports.saveNew = function(openid, callback) {
+exports.saveNew = function(openid, backup, callback) {
   var qa;
   qa = new QAlist();
   qa.openid = openid;
+  qa.backup = backup;
   return qa.save(callback);
 };

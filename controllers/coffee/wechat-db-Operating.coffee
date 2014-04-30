@@ -9,12 +9,12 @@ Inser_db_img = (db)->
 		console.log "text back:",err
 
 # 题目均答对的用户存入数据库
-Inser_db_qauser = (openid)->
+Inser_db_qauser = (openid,backup)->
 	QAlist.checkhas openid,(err,obj)->
 		if obj?
 			console.log "已经存在,无法录入"
 		else
-			QAlist.saveNew openid, (err,obj)->
+			QAlist.saveNew openid, backup, (err,obj)->
 				console.log "录入成功"
 Get_db_qauser = ()->
 	QAlist.getall (err,list)->

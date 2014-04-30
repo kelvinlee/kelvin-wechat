@@ -27,10 +27,10 @@ searchQA = (key,list)->
 clearQA = (openid)->
 	console.log "clear: #{openid}"
 	delete myProcess[openid]
-overQA = (openid)->
+overQA = (openid,backup = "test")->
 	console.log "记录抽奖ID: ",openid
 	clearQA openid
-	Inser_db_qauser openid
+	Inser_db_qauser openid,backup
 	Get_db_qauser()
 
 
@@ -39,9 +39,9 @@ overQA = (openid)->
 
 # for question and answer
 
-_randomBadAnswer = ["很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。","很遗憾,回答错误。请再次作答。","哎呀,答错了。还有机会哦!"]
+_randomBadAnswer = ["本题回答错误。快去本期《我爱三星视频秀》直播仔细瞄一下内容,再来重新作答哦!视频链接: http://tv.sohu.com/samsung","嘿嘿,你一定没有认真看视频,要仔细看才能知道答案哦!~视频链接: http://tv.sohu.com/samsung","哎呀,答错了。只有三道题全对才能赢得S5哟! ~ 视频链接: http://tv.sohu.com/samsung"]
 
-_nr = "\n\r"
+_nr = "\n"
 _qa = [
 	{
 		name:"查看活动详情"
@@ -78,7 +78,7 @@ _qa = [
 				name:"答案3"
 				key:"A"
 				type:"text"
-				backContent: "⾦秀贤最喜欢的时尚刊物APP是什么?#{_nr}A、《宝宝俱乐部》 #{_nr}B、《新炫刊》#{_nr}C、《掌阅iReader》"
+				backContent: "⾦秀贤最喜欢的时尚刊物APP是什么?#{_nr}A、宝宝俱乐部 #{_nr}B、新炫刊#{_nr}C、掌阅iReader"
 				next: [
 					{
 						name:"答案1"
@@ -98,7 +98,7 @@ _qa = [
 						name:"答案3"
 						key:"B"
 						type:"text"
-						backContent: "节⽬中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管理,是以下的哪个?#{_nr}A、《⽀付宝钱包》 #{_nr}B、《壹钱包》 #{_nr}C、《三星钱包》"
+						backContent: "节⽬中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管理,是以下的哪个?#{_nr}A、⽀付宝钱包 #{_nr}B、壹钱包 #{_nr}C、三星钱包"
 						next: [
 							{
 								name:"答案1"
@@ -118,7 +118,7 @@ _qa = [
 								name:"答案3"
 								key:"C"
 								type:"text"
-								backContent: "恭喜你全部答对了,已经成功参与抽奖,敬请关注中奖通知."
+								backContent: "恭喜您全部答对了,已经成功参与抽奖,敬请关注中奖通知。"
 								evt: overQA
 							}
 						]

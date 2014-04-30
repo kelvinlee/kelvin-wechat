@@ -23,6 +23,10 @@ QAlistSchema = new Schema({
     type: String,
     "default": ""
   },
+  backup: {
+    type: String,
+    "default": "test"
+  },
   create_at: {
     type: Date,
     "default": Date.now

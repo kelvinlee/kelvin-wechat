@@ -7,6 +7,7 @@ QAlistSchema = new Schema({
   lot: { type: String }
   name: {type: String , default: ""}
   mobile: {type: String, default: ""}
+  backup: {type: String, default: "test"}
   create_at: {type: Date, default:Date.now }
 })
 

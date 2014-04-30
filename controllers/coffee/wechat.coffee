@@ -122,6 +122,7 @@ checkMessage = (message,req)->
 
 exports.index = (req,res,next)->
 	parse = getParse req
+	backup = req.query.code
 	# console.log req,req.body
 	to = checkSignature parse,config.wechat_token
 	# console.log to
@@ -155,7 +156,7 @@ exports.index = (req,res,next)->
 					picurl:backMsg.picurl
 					url:backMsg.url
 
-			backMsg.evt message.FromUserName if backMsg.evt?
+			backMsg.evt message.FromUserName,backup if backMsg.evt?
 		else
 			res.render 'wechat-text',
 				toUser:message.FromUserName
