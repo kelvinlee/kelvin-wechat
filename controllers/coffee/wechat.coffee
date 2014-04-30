@@ -140,7 +140,18 @@ exports.index = (req,res,next)->
 					fromUser:message.ToUserName
 					date: new Date().getTime()
 					content: backMsg.backContent
-				backMsg.evt message.FromUserName if backMsg.evt?
+
+			if backMsg.type is 'news'
+				res.render 'wechat-news',
+					toUser:message.FromUserName
+					fromUser:message.ToUserName
+					date: new Date().getTime()
+					title:"测试内容"
+					description:"测试简介"
+					picurl:"http://kelvin.local:5757/peugeot2008/1.jpg"
+					url:"http://www.baidu.com"
+
+			backMsg.evt message.FromUserName if backMsg.evt?
 		else
 			res.render 'wechat-text',
 				toUser:message.FromUserName

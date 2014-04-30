@@ -137,9 +137,20 @@ exports.index = function(req, res, next) {
           date: new Date().getTime(),
           content: backMsg.backContent
         });
-        if (backMsg.evt != null) {
-          return backMsg.evt(message.FromUserName);
-        }
+      }
+      if (backMsg.type === 'news') {
+        res.render('wechat-news', {
+          toUser: message.FromUserName,
+          fromUser: message.ToUserName,
+          date: new Date().getTime(),
+          title: "测试内容",
+          description: "测试简介",
+          picurl: "http://kelvin.local:5757/peugeot2008/1.jpg",
+          url: "http://www.baidu.com"
+        });
+      }
+      if (backMsg.evt != null) {
+        return backMsg.evt(message.FromUserName);
       }
     } else {
       return res.render('wechat-text', {
