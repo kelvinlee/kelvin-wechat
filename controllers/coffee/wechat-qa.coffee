@@ -46,6 +46,10 @@ _qa = [
 		key:"1"
 		type:"news"
 		backContent :"活动详情"
+		title:"【看视频 答问题】赢取S5惊喜大奖"
+		description: '参与《我爱三星视频秀》答题，即有机会获得丰厚大奖。'
+		picurl:"http://mmbiz.qpic.cn/mmbiz/icfeQvJeAJzO6ZUIrhM8bc1FQxoQAIggvWQeticpq3LS9knGDtL0KGhKHx5BuvIed7NmbJE9icIibEYknVq8WkFdXw/0"
+		url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200198976&idx=1&sn=f0508d0792f15fc2c812fe77a04192b6&scene=1&from=singlemessage&isappinstalled=0#rd"
 		evt:clearQA
 	}
 	{

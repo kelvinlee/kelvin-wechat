@@ -105,7 +105,7 @@ checkMessage = (message,req)->
 			console.log '地理信息'
 		when 'link'
 			console.log '连接消息'
-			
+
 		when 'event'
 			# subscribe 关注
 			# unsubscribe 取消关注
@@ -149,10 +149,10 @@ exports.index = (req,res,next)->
 					toUser:message.FromUserName
 					fromUser:message.ToUserName
 					date: new Date().getTime()
-					title:"测试内容"
-					description:"测试简介"
-					picurl:"http://kelvin.local:5757/peugeot2008/1.jpg"
-					url:"http://www.baidu.com"
+					title:backMsg.title
+					description:backMsg.description
+					picurl:backMsg.picurl
+					url:backMsg.url
 
 			backMsg.evt message.FromUserName if backMsg.evt?
 		else
