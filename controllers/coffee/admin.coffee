@@ -45,6 +45,11 @@ exports.homepage = (req,res,next)->
 	# 
 	res.render 'admin/homepage',{sharecontent:config.sharecontent}
 
+exports.question = (req,res,next)->
+	
+	res.render 'admin/question'
+
+
 exports.signin = (req,res,next)->
 	# 
 	res.render 'admin/admin-login'

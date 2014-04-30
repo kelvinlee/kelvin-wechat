@@ -53,7 +53,7 @@ _qa = [
 		next: [
 			{
 				name:"答案1"
-				key:"A"
+				key:"C"
 				type:"text"
 				backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。"
 			}
@@ -65,7 +65,7 @@ _qa = [
 			}
 			{
 				name:"答案3"
-				key:"C"
+				key:"A"
 				type:"text"
 				backContent: "⾦金秀贤最喜欢的时尚刊物APP是什么?#{_nr}A、《宝宝俱乐部》 #{_nr}B、《新炫刊》#{_nr}C、《掌阅iReader》"
 				next: [
@@ -77,15 +77,15 @@ _qa = [
 					}
 					{
 						name:"答案2"
-						key:"B"
+						key:"C"
 						type:"text"
 						backContent: "很遗憾,回答错误。请再次作答。"
 					}
 					{
 						name:"答案3"
-						key:"C"
+						key:"B"
 						type:"text"
-						backContent: "节⽬目中重点介绍了⼀一个钱包类app,可以⽅方便实现各类卡券的收纳与管 理,是以下的哪个?#{_nr}A、《⽀支付宝钱包》 #{_nr}B、《壹钱包》 #{_nr}C、《三星钱包》"
+						backContent: "节⽬目中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管 理,是以下的哪个?#{_nr}A、《⽀支付宝钱包》 #{_nr}B、《壹钱包》 #{_nr}C、《三星钱包》"
 						next: [
 							{
 								name:"答案1"

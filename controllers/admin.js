@@ -52,6 +52,10 @@ exports.homepage = function(req, res, next) {
   });
 };
 
+exports.question = function(req, res, next) {
+  return res.render('admin/question');
+};
+
 exports.signin = function(req, res, next) {
   return res.render('admin/admin-login');
 };
