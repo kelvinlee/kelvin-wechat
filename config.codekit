@@ -87,6 +87,19 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/controllers\/coffee\/lot.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/coffee\/lot.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/controllers\/lot.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/controllers\/coffee\/lottery.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -152,6 +165,19 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/controllers\/coffee\/wechat-special.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/coffee\/wechat-special.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/controllers\/wechat-special.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/controllers\/coffee\/wechat-subscribe.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -177,6 +203,17 @@
 		"outputPathIsSetByUser": 1,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
+		},
+	"\/controllers\/lot.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/lot.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/lot-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/controllers\/lottery.js": {
 		"fileType": 64,
@@ -335,6 +372,19 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/models\/coffee\/onetwo.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/coffee\/onetwo.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/models\/onetwo.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/models\/coffee\/qalist.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -360,17 +410,6 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
-		},
-	"\/models\/index.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/models\/index.js",
-		"outputAbbreviatedPath": "\/models\/min\/index-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
 		},
 	"\/models\/lottery.js": {
 		"fileType": 64,
@@ -400,6 +439,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/models\/msg.js",
 		"outputAbbreviatedPath": "\/models\/min\/msg-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/models\/qalist.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/qalist.js",
+		"outputAbbreviatedPath": "\/models\/min\/qalist-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -505,6 +555,19 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/proxy\/coffee\/onetwo.coffee": {
+		"createSourceMap": 0,
+		"fileType": 32,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/coffee\/onetwo.coffee",
+		"minifyOutput": 0,
+		"outputAbbreviatedPath": "\/proxy\/onetwo.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 0
+		},
 	"\/proxy\/coffee\/qalist.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -583,6 +646,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/proxy\/message.js",
 		"outputAbbreviatedPath": "\/proxy\/min\/message-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/proxy\/qalist.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/qalist.js",
+		"outputAbbreviatedPath": "\/proxy\/min\/qalist-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -708,6 +782,17 @@
 		"initialSize": 37328,
 		"inputAbbreviatedPath": "\/public\/img\/card.jpg",
 		"outputAbbreviatedPath": "\/public\/img\/card.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/img\/samx-1.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 33877,
+		"inputAbbreviatedPath": "\/public\/img\/samx-1.jpg",
+		"outputAbbreviatedPath": "\/public\/img\/samx-1.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

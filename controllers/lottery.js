@@ -92,7 +92,7 @@ exports.lotteryCode = function(req, res, next) {
   }
   re = Ut.recode();
   return Lottery.getLotter(code, function(err, obj) {
-    var lot, temp;
+    var lot;
     if (obj == null) {
       re.recode = 201;
       re.reason = "nocode";
@@ -123,13 +123,6 @@ exports.lotteryCode = function(req, res, next) {
         });
       } else {
         console.log("card list");
-        temp = Math.round(Math.random() * (900000 - 100000) + 100000);
-        obj.lottery = temp;
-        obj.num = num;
-        obj.save();
-        re.reason = temp;
-        res.send(re);
-        return false;
         return Lottery_x_list.getList(function(err, card) {
           console.log(err, card);
           if (card != null) {

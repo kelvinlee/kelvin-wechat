@@ -1,6 +1,7 @@
 wechat = require './controllers/wechat'
 post = require './controllers/wechat-post'
 lottery = require './controllers/lottery'
+lot = require './controllers/lot'
 admin = require './controllers/admin'
 
 module.exports = (app)->
@@ -11,6 +12,9 @@ module.exports = (app)->
   app.get '/lottery', lottery.index
   app.get '/lottery-work', lottery.work
   app.post '/lottery', lottery.lotteryCode
+
+  # app.get '/lot/:lot', lot.lot
+  # app.post '/lot/:lot', lot.lot_post
 
 
   app.get '/gettoken', post.gettoken

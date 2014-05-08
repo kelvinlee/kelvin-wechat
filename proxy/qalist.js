@@ -19,6 +19,13 @@ exports.getall = function(callback) {
   return QAlist.find({}, callback);
 };
 
+exports.getLottery = function(id, backup, callback) {
+  return QAlist.findOne({
+    openid: id,
+    backup: backup
+  }, callback);
+};
+
 exports.saveNew = function(openid, backup, callback) {
   var qa;
   qa = new QAlist();

@@ -53,6 +53,6 @@ go_process = (msg)->
 		go_process msg
 	return myProcess = false
 
-tranStr = (message,str)->
+tranStr = (message,str,callback)->
 	# str.replace '${id}',message.FromUserName
-	return str
+	callback str

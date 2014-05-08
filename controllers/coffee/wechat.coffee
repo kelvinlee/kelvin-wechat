@@ -8,6 +8,7 @@
 User = require('../proxy').User
 Message = require('../proxy').Message
 QAlist = require('../proxy').QAlist
+OneTwo = require('../proxy').OneTwo
 
 
 # 基本类库
@@ -84,21 +85,24 @@ formatMessage = (result)->
 # @codekit-append "wechat-subscribe.coffee";
 # @codekit-append "wechat-db-Operating.coffee";
 # @codekit-append "wechat-qa.coffee";
-checkMessage = (message,req)->
+# @codekit-append "wechat-special.coffee";
+checkMessage = (message,callback)->
 	# console.log message.MsgType
 	switch message.MsgType
 		when 'text'
 			console.log '文字信息'
+			# console.log '文字信息',message
 			# Inser_db_text message
-			return getQA message.Content,message.FromUserName
+			return getAnswer message.Content,message.FromUserName,callback if Special message.Content,message.FromUserName
+			return getQA message.Content,message.FromUserName,callback
 		when 'image'
 			console.log '图片信息'
 			# Inser_db_img message
-			return tranStr message, go_img_process message.Content
+			return tranStr message, go_img_process message.Content,callback
 		when 'voice'
 			# Recognition 开启语音识别,返回对应中文.
 			console.log '声音信息'
-			return tranStr message, go_process message.Recognition
+			return tranStr message, go_process message.Recognition,callback
 		when 'video'
 			console.log '视频信息'
 		when 'location'
@@ -112,7 +116,7 @@ checkMessage = (message,req)->
 			# CLICK 菜单点击
 			# LOCATION 地利位置
 			# console.log message.Event
-			return go_subscribe message if message.Event is 'subscribe'
+			return go_subscribe message,callback if message.Event is 'subscribe'
 			return null
 	return null
 
@@ -126,16 +130,9 @@ exports.index = (req,res,next)->
 	# console.log req,req.body
 	to = checkSignature parse,config.wechat_token
 	# console.log to
-	getMessage req, (err,result)->
-		console.log err if err
-		message = formatMessage result
+	allDone = new EventProxy()
+	allDone.all 'backMsg','message', (backMsg,message)->
 		(return res.send if to then parse.echostr else "what?" ) if not message
-		# console.log "session:",user[message.FromUserName]
-		backMsg = checkMessage message
-		
-
-		# console.log backMsg,backMsg.type,backMsg.backContent
-		console.log message.FromUserName,message.ToUserName
 		if backMsg?
 			if backMsg.type is "text"
 				backMsg.backContent = backMsg.random[Math.round(Math.random()*(backMsg.random.length-1))] if backMsg.random?
@@ -163,6 +160,22 @@ exports.index = (req,res,next)->
 				fromUser:message.ToUserName
 				date: new Date().getTime()
 				content: ""
+
+	getMessage req, (err,result)->
+		console.log err if err
+		console.log result
+		(return res.send if to then parse.echostr else "what?" ) if not result
+		message = formatMessage result
+		allDone.emit 'message', message
+		# console.log "session:",user[message.FromUserName]
+
+		checkMessage message, (back)->
+			console.log "back To: ",back
+			allDone.emit 'backMsg',back
+
+		# console.log backMsg,backMsg.type,backMsg.backContent
+		# console.log message.FromUserName,message.ToUserName
+		
 
 		# res.send if to then parse.echostr else "false"
 exports.word = (req,res,next)->

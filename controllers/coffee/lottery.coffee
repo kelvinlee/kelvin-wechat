@@ -106,13 +106,13 @@ exports.lotteryCode = (req,res,next)->
 			else
 				console.log "card list"
 				# 测试用,最后需要删除
-				temp = Math.round Math.random()*(900000-100000)+100000
-				obj.lottery = temp
-				obj.num =  num
-				obj.save()
-				re.reason = temp
-				res.send re
-				return false
+				# temp = Math.round Math.random()*(900000-100000)+100000
+				# obj.lottery = temp
+				# obj.num =  num
+				# obj.save()
+				# re.reason = temp
+				# res.send re
+				# return false
 				Lottery_x_list.getList (err,card)->
 					console.log err,card
 					if card?

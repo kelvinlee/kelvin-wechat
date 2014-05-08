@@ -19,3 +19,5 @@ Inser_db_qauser = (openid,backup)->
 Get_db_qauser = ()->
 	QAlist.getall (err,list)->
 		console.log "QA: ",err,list
+
+

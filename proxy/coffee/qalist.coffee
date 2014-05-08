@@ -7,6 +7,9 @@ exports.checkhas = (openid, callback)->
 exports.getall = (callback)->
 	QAlist.find {}, callback
 
+exports.getLottery = (id,backup,callback)->
+	QAlist.findOne {openid:id,backup:backup},callback
+
 exports.saveNew = (openid,backup,callback)->
 	qa = new QAlist()
 	qa.openid = openid

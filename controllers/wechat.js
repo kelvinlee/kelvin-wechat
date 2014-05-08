@@ -5,13 +5,15 @@
      Begin wechat.coffee
 --------------------------------------------
  */
-var BufferHelper, EventProxy, Get_db_qauser, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, QAlist, Segment, User, checkMessage, checkSignature, clearQA, config, crypto, formatMessage, fs, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa, _randomBadAnswer;
+var BufferHelper, EventProxy, Get_db_qauser, Inser_db_img, Inser_db_qauser, Inser_db_text, Message, OneTwo, QAlist, Segment, Special, User, checkMessage, checkSignature, clearQA, config, crypto, formatMessage, fs, getAnswer, getMessage, getParse, getQA, go_img_process, go_process, go_subscribe, isEmpty, myProcess, mySpecial, op_Process_img, op_Process_list, overQA, path, qs, searchQA, segWord, tranStr, url, welcometext, xml2js, _nr, _qa, _randomBadAnswer, _special;
 
 User = require('../proxy').User;
 
 Message = require('../proxy').Message;
 
 QAlist = require('../proxy').QAlist;
+
+OneTwo = require('../proxy').OneTwo;
 
 fs = require('fs');
 
@@ -86,17 +88,20 @@ formatMessage = function(result) {
   return message;
 };
 
-checkMessage = function(message, req) {
+checkMessage = function(message, callback) {
   switch (message.MsgType) {
     case 'text':
       console.log('文字信息');
-      return getQA(message.Content, message.FromUserName);
+      if (Special(message.Content, message.FromUserName)) {
+        return getAnswer(message.Content, message.FromUserName, callback);
+      }
+      return getQA(message.Content, message.FromUserName, callback);
     case 'image':
       console.log('图片信息');
-      return tranStr(message, go_img_process(message.Content));
+      return tranStr(message, go_img_process(message.Content, callback));
     case 'voice':
       console.log('声音信息');
-      return tranStr(message, go_process(message.Recognition));
+      return tranStr(message, go_process(message.Recognition, callback));
     case 'video':
       console.log('视频信息');
       break;
@@ -108,7 +113,7 @@ checkMessage = function(message, req) {
       break;
     case 'event':
       if (message.Event === 'subscribe') {
-        return go_subscribe(message);
+        return go_subscribe(message, callback);
       }
       return null;
   }
@@ -116,21 +121,15 @@ checkMessage = function(message, req) {
 };
 
 exports.index = function(req, res, next) {
-  var backup, parse, to;
+  var allDone, backup, parse, to;
   parse = getParse(req);
   backup = req.query.code;
   to = checkSignature(parse, config.wechat_token);
-  return getMessage(req, function(err, result) {
-    var backMsg, message;
-    if (err) {
-      console.log(err);
-    }
-    message = formatMessage(result);
+  allDone = new EventProxy();
+  allDone.all('backMsg', 'message', function(backMsg, message) {
     if (!message) {
       return res.send(to ? parse.echostr : "what?");
     }
-    backMsg = checkMessage(message);
-    console.log(message.FromUserName, message.ToUserName);
     if (backMsg != null) {
       if (backMsg.type === "text") {
         if (backMsg.random != null) {
@@ -166,6 +165,22 @@ exports.index = function(req, res, next) {
         content: ""
       });
     }
+  });
+  return getMessage(req, function(err, result) {
+    var message;
+    if (err) {
+      console.log(err);
+    }
+    console.log(result);
+    if (!result) {
+      return res.send(to ? parse.echostr : "what?");
+    }
+    message = formatMessage(result);
+    allDone.emit('message', message);
+    return checkMessage(message, function(back) {
+      console.log("back To: ", back);
+      return allDone.emit('backMsg', back);
+    });
   });
 };
 
@@ -254,8 +269,8 @@ go_process = function(msg) {
   return myProcess = false;
 };
 
-tranStr = function(message, str) {
-  return str;
+tranStr = function(message, str, callback) {
+  return callback(str);
 };
 
 
@@ -269,11 +284,11 @@ welcometext = {
   name: "welcome",
   key: "你好",
   type: "text",
-  backContent: "感谢您关注【三星乐园】官⽅方微信,看《我爱三星视频秀》,参与答题,即有机会获得GALAXY S5惊喜大礼!回复【1】了解活动详情,回复【2】开始答题。"
+  backContent: "欢迎关注三星乐园"
 };
 
-go_subscribe = function(message) {
-  return welcometext;
+go_subscribe = function(message, callback) {
+  return callback(welcometext);
 };
 
 
@@ -322,7 +337,7 @@ Get_db_qauser = function() {
 
 myProcess = [];
 
-getQA = function(message, openid) {
+getQA = function(message, openid, callback) {
   var key, qa, _n;
   key = message;
   console.log("user " + openid + " :", myProcess[openid]);
@@ -336,14 +351,14 @@ getQA = function(message, openid) {
           myProcess[openid] = qa;
         }
       } else {
-        return {};
+        callback({});
       }
     }
   } else {
     myProcess[openid] = searchQA(key, _qa);
     qa = _n = myProcess[openid];
   }
-  return qa;
+  return callback(qa);
 };
 
 searchQA = function(key, list) {
@@ -368,8 +383,7 @@ overQA = function(openid, backup) {
   }
   console.log("记录抽奖ID: ", openid);
   clearQA(openid);
-  Inser_db_qauser(openid, backup);
-  return Get_db_qauser();
+  return Inser_db_qauser(openid, backup);
 };
 
 _randomBadAnswer = ["本题回答错误。快去本期《我爱三星视频秀》直播仔细瞄一下内容,再来重新作答哦!视频链接: http://tv.sohu.com/samsung", "嘿嘿,你一定没有认真看视频,要仔细看才能知道答案哦!~视频链接: http://tv.sohu.com/samsung", "哎呀,答错了。只有三道题全对才能赢得S5哟! ~ 视频链接: http://tv.sohu.com/samsung"];
@@ -378,80 +392,150 @@ _nr = "\n";
 
 _qa = [
   {
-    name: "查看活动详情",
+    name: "欢迎",
     key: "1",
-    type: "news",
-    backContent: "活动详情",
-    title: "【看视频 答问题】赢取S5惊喜大奖",
-    description: '参与《我爱三星视频秀》答题，即有机会获得丰厚大奖。',
-    picurl: "https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzO6ZUIrhM8bc1FQxoQAIggvhSkRKbz4gVROjv5MeibQOaRvAKMXFxa6oBicAoMYVRKOekMicUEEyOIww/0",
-    url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200198976&idx=1&sn=f0508d0792f15fc2c812fe77a04192b6&scene=1&from=singlemessage&isappinstalled=0#rd",
-    evt: clearQA
-  }, {
-    name: "开始答题",
-    key: "2",
     type: "text",
-    backContent: "节⽬中特别提到的Gear版特⾊应⽤是?" + _nr + "A,搜狐视频Gear版 " + _nr + "B,⾼德地图Gear版 " + _nr + "C,S健康Gear版",
-    next: [
-      {
-        name: "答案1",
-        key: "C",
-        type: "text",
-        backContent: "",
-        random: _randomBadAnswer
-      }, {
-        name: "答案2",
-        key: "B",
-        type: "text",
-        backContent: "很抱歉,本题回答错误。请根据本期《我爱三星视频秀》直播内容,重新作答。",
-        random: _randomBadAnswer
-      }, {
-        name: "答案3",
-        key: "A",
-        type: "text",
-        backContent: "⾦秀贤最喜欢的时尚刊物APP是什么?" + _nr + "A、宝宝俱乐部 " + _nr + "B、新炫刊" + _nr + "C、掌阅iReader",
-        next: [
-          {
-            name: "答案1",
-            key: "A",
-            type: "text",
-            backContent: "很遗憾,回答错误。请再次作答。",
-            random: _randomBadAnswer
-          }, {
-            name: "答案2",
-            key: "C",
-            type: "text",
-            backContent: "很遗憾,回答错误。请再次作答。",
-            random: _randomBadAnswer
-          }, {
-            name: "答案3",
-            key: "B",
-            type: "text",
-            backContent: "节⽬中重点介绍了⼀个钱包类app,可以⽅便实现各类卡券的收纳与管理,是以下的哪个?" + _nr + "A、⽀付宝钱包 " + _nr + "B、壹钱包 " + _nr + "C、三星钱包",
-            next: [
-              {
-                name: "答案1",
-                key: "A",
-                type: "text",
-                backContent: "哎呀,答错了。还有机会哦!",
-                random: _randomBadAnswer
-              }, {
-                name: "答案2",
-                key: "B",
-                type: "text",
-                backContent: "哎呀,答错了。还有机会哦!",
-                random: _randomBadAnswer
-              }, {
-                name: "答案3",
-                key: "C",
-                type: "text",
-                backContent: "恭喜您全部答对了,已经成功参与抽奖,敬请关注中奖通知。",
-                evt: overQA
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    backContent: "敬请期待下次活动"
   }
 ];
+
+
+/*
+--------------------------------------------
+     Begin wechat-special.coffee
+--------------------------------------------
+ */
+
+mySpecial = [];
+
+Special = function(text, id) {
+  if (text === '我的奖品9988877') {
+    return true;
+  } else if (mySpecial[id] === "phone") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+getAnswer = function(text, id, callback) {
+  var adr, mobile, str, username;
+  if (mySpecial[id] === "phone") {
+    str = text;
+    if (text.split(",").length <= 2) {
+      return callback(_special.onetwoerror[3]);
+    }
+    username = text.split(",")[0];
+    mobile = text.split(",")[1];
+    adr = text.replace(username + ",", "");
+    adr = adr.replace(mobile + ",", "");
+    if (mobile.length !== 11) {
+      return callback(_special.onetwoerror[1]);
+    }
+    return OneTwo.getLottery(id, "samsung", function(err, obj) {
+      console.log(obj);
+      if (obj) {
+        obj.username = username;
+        obj.mobile = mobile;
+        obj.adr = adr;
+        obj.talk = text;
+        obj.checked = true;
+        obj.save();
+        callback(_special.onetwo[4]);
+        return delete mySpecial[id];
+      } else {
+        return callback(_special.onetwo[1]);
+      }
+    });
+  } else {
+    console.log("start read db", id);
+    return OneTwo.getLottery(id, "samsung", function(err, obj) {
+      var bk;
+      if (obj) {
+        if (obj.lot === "phone") {
+          mySpecial[id] = "phone";
+          bk = _special.onetwo[3];
+          console.log(bk);
+          return callback(bk);
+        } else if (obj.lot === "discounts") {
+          bk = _special.onetwo[5];
+          bk.backContent = bk.backContent.replace('#key', obj.username);
+          console.log(bk);
+          obj.checked = true;
+          obj.talk = text;
+          obj.save();
+          return callback(bk);
+        } else {
+          bk = _special.onetwo[2];
+          bk.backContent = bk.backContent.replace('#key', obj.lot);
+          console.log(bk);
+          obj.checked = true;
+          obj.talk = text;
+          obj.save();
+          return callback(bk);
+        }
+      } else {
+        return callback(_special.onetwo[1]);
+      }
+    });
+  }
+};
+
+_special = {
+  onetwo: [
+    {
+      name: "onetwo 活动将资料发送后回复.",
+      key: "1",
+      type: "text",
+      backContent: "您的资料,我们已经收到,会尽快与您联系."
+    }, {
+      name: "很抱歉,您没有中奖,欢迎您继续参加我们的活动,下次活动可能您就中奖了.",
+      key: "2",
+      type: "text",
+      backContent: "很抱歉,您没有中奖,欢迎您继续参加我们的活动,下次活动可能您就中奖了."
+    }, {
+      name: "充值卡",
+      key: "2",
+      type: "text",
+      backContent: "恭喜您获得了70M移动上网流量卡,卡号: #key ,充值地址: http://samsung.view4.cn"
+    }, {
+      name: "手机试用",
+      key: "2",
+      type: "text",
+      backContent: "恭喜您获得S5 试用使用权,请您按照如下格式回复我们: 姓名,电话,发货地址 "
+    }, {
+      name: "记录手机用户",
+      key: "2",
+      type: "text",
+      backContent: "谢谢, 我们已经收到了您的信息,将会尽快与您联系."
+    }, {
+      name: "获得打折卷",
+      key: "2",
+      type: "text",
+      backContent: "恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城: http://samsung.view4.cn ,购买S5打九折."
+    }
+  ],
+  onetwoerror: [
+    {
+      name: "onetwo error.",
+      key: "1",
+      type: "text",
+      backContent: "您的用户名填写错误,请重新输入."
+    }, {
+      name: "onetwo error.",
+      key: "2",
+      type: "text",
+      backContent: "您的手机号填写错误,请重新输入."
+    }, {
+      name: "onetwo error.",
+      key: "3",
+      type: "text",
+      backContent: "您的地址填写错误,请重新输入."
+    }, {
+      name: "onetwo error.",
+      key: "4",
+      type: "text",
+      backContent: "您填写的信息不对,请按照格式: 姓名,电话,发货地址 重新发送."
+    }
+  ]
+};
