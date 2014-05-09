@@ -103,7 +103,7 @@ checkMessage = function(message, callback) {
         name: "返回收到图片信息.",
         key: "1",
         type: "text",
-        backContent: "您好,已经收到您的图片,请等待审核."
+        backContent: "您的信息已收录，后台审核后即可参与抽奖。"
       };
       callback(img);
       return img;

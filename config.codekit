@@ -63,6 +63,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/controllers\/admin.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/admin.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/admin-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/controllers\/coffee\/admin.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -199,6 +210,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/controllers\/lot.js",
 		"outputAbbreviatedPath": "\/controllers\/min\/lot-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/controllers\/lottery.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/lottery.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/lottery-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -395,6 +417,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/models\/index.js",
 		"outputAbbreviatedPath": "\/models\/min\/index-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/models\/lottery.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/lottery.js",
+		"outputAbbreviatedPath": "\/models\/min\/lottery-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -775,13 +808,13 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/public\/img\/card-m.jpg": {
+	"\/public\/img\/card-30.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 37328,
-		"inputAbbreviatedPath": "\/public\/img\/card-m.jpg",
-		"outputAbbreviatedPath": "\/public\/img\/card-m.jpg",
+		"inputAbbreviatedPath": "\/public\/img\/card-30.jpg",
+		"outputAbbreviatedPath": "\/public\/img\/card-30.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -3777,6 +3810,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/public\/js\/jquery.ui\/jquery-ui.js",
 		"outputAbbreviatedPath": "\/public\/js\/jquery.ui\/min\/jquery-ui-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/public\/js\/login.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/public\/js\/login.js",
+		"outputAbbreviatedPath": "\/public\/js\/min\/login-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
