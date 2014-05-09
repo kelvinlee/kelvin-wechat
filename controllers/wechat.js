@@ -405,8 +405,8 @@ _qa = [
     type: "news",
     backContent: "活动详情",
     title: "【看名车志，赢车模】100%中奖",
-    description: '下载【新炫刊】参与“看名车志，赢车模”活动，赢取移动70M数据流量包或1:18精美汽车模型，100%中奖！',
-    picurl: "https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzM5ibtoBBE2SGwkpLUxZNAx8sNhcpF28ytlCRD1LXR1yibgaAmUxF5Ce0wmrpK8eP16A0sicC0MJTH9g/0",
+    description: '下载【新炫刊】参与“看名车志，赢车模”活动，赢取移动30元充值卡或1:18精美汽车模型，100%中奖！',
+    picurl: "https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzM5ibtoBBE2SGwkpLUxZNAx8h8puh4WRxWa4xPWFKLgVp8vcAAF48cME3iaYIPqQCzKiapjCfb80P9Iw/0",
     url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200220698&idx=1&sn=08b87ef8fada09289f48ade871e675df#rd",
     evt: clearQA
   }
@@ -463,6 +463,8 @@ getAnswer = function(text, id, callback) {
         return callback(_special.onetwo[1]);
       }
     });
+  } else if (mySpecial[id] === "jf") {
+
   } else {
     console.log("start read db", id);
     return OneTwo.getLottery(id, "samsung", function(err, obj) {
@@ -480,10 +482,8 @@ getAnswer = function(text, id, callback) {
             name: "获得打折卷",
             key: "2",
             type: "text",
-            backContent: "恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+            backContent: "为更好地回馈用户 奖品升级为: 价值530元的三星网上商城积分,积分可全场通用,使用该积分 购买S5可以享受9折优惠(网上商城购机价5299元) 也可以用积分购买三星网上商城store.samsung.com/cn中的任何商品.您需要在一周内(下周五前 5/16日)回复本人的三星网上商城注册账号（邮箱号）之后由网上商城工作人员将积分充入您的账户, 若无三星网上商城账户 请先注册."
           };
-          backcontentlot.backContent = backcontentlot.backContent.replace('#key', obj.username);
-          console.log(backcontentlot);
           obj.checked = true;
           obj.create_at = new Date();
           obj.talk = text;
@@ -542,7 +542,7 @@ _special = {
       name: "获得打折卷",
       key: "2",
       type: "text",
-      backContent: "恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+      backContent: "为更好地回馈用户 奖品升级为: 价值530元的三星网上商城积分,积分可全场通用,使用该积分 购买S5可以享受9折优惠(网上商城购机价5299元) 也可以用积分购买三星网上商城store.samsung.com/cn中的任何商品.您需要在一周内(下周五前 5/16日)回复本人的三星网上商城注册账号（邮箱号）之后由网上商城工作人员将积分充入您的账户, 若无三星网上商城账户 请先注册."
     }, {
       name: "获取过用户信息",
       key: "2",

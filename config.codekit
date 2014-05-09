@@ -215,6 +215,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/controllers\/lottery.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/lottery.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/lottery-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/controllers\/wechat-post.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -417,6 +428,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/models\/lottery.js",
 		"outputAbbreviatedPath": "\/models\/min\/lottery-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/models\/lottery_x_list.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/lottery_x_list.js",
+		"outputAbbreviatedPath": "\/models\/min\/lottery_x_list-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -629,6 +651,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/proxy\/lottery_x_list.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/lottery_x_list.js",
+		"outputAbbreviatedPath": "\/proxy\/min\/lottery_x_list-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/proxy\/message.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -771,6 +804,17 @@
 		"initialSize": 50465,
 		"inputAbbreviatedPath": "\/public\/img\/car.jpg",
 		"outputAbbreviatedPath": "\/public\/img\/car.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/img\/card-m.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 37328,
+		"inputAbbreviatedPath": "\/public\/img\/card-m.jpg",
+		"outputAbbreviatedPath": "\/public\/img\/card-m.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

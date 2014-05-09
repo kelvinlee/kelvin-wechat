@@ -41,6 +41,8 @@ getAnswer = (text,id,callback)->
 			else
 				callback _special.onetwo[1]
 		
+	else if mySpecial[id] is "jf"
+
 	else
 		console.log "start read db",id
 		# OneTwo.newAndSave id,"discounts", (err,obj)->
@@ -62,10 +64,11 @@ getAnswer = (text,id,callback)->
 						name:"获得打折卷"
 						key:"2"
 						type:"text"
-						backContent:"恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+						# backContent:"恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+						backContent:"为更好地回馈用户 奖品升级为: 价值530元的三星网上商城积分,积分可全场通用,使用该积分 购买S5可以享受9折优惠(网上商城购机价5299元) 也可以用积分购买三星网上商城store.samsung.com/cn中的任何商品.您需要在一周内(下周五前 5/16日)回复本人的三星网上商城注册账号（邮箱号）之后由网上商城工作人员将积分充入您的账户, 若无三星网上商城账户 请先注册."
 					}
-					backcontentlot.backContent = backcontentlot.backContent.replace '#key',obj.username
-					console.log backcontentlot
+					# backcontentlot.backContent = backcontentlot.backContent.replace '#key',obj.username
+					# console.log backcontentlot
 					obj.checked = true
 					obj.create_at = new Date()
 					obj.talk = text
@@ -128,14 +131,15 @@ _special =
 			name:"获得打折卷"
 			key:"2"
 			type:"text"
-			backContent:"恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+			# backContent:"恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+			backContent:"为更好地回馈用户 奖品升级为: 价值530元的三星网上商城积分,积分可全场通用,使用该积分 购买S5可以享受9折优惠(网上商城购机价5299元) 也可以用积分购买三星网上商城store.samsung.com/cn中的任何商品.您需要在一周内(下周五前 5/16日)回复本人的三星网上商城注册账号（邮箱号）之后由网上商城工作人员将积分充入您的账户, 若无三星网上商城账户 请先注册."
 		}
 		{
 			name:"获取过用户信息"
 			key:"2"
 			type:"text"
 			backContent:"您已经提交过资料,请等待我们的联系."
-		}
+		} 
 	]
 	onetwoerror: [
 		{
