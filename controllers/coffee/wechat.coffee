@@ -163,14 +163,14 @@ exports.index = (req,res,next)->
 
 	getMessage req, (err,result)->
 		console.log err if err
-		console.log result
+		# console.log result
 		(return res.send if to then parse.echostr else "what?" ) if not result
 		message = formatMessage result
 		allDone.emit 'message', message
 		# console.log "session:",user[message.FromUserName]
 
 		checkMessage message, (back)->
-			console.log "back To: ",back
+			# console.log "back To: ",back
 			allDone.emit 'backMsg',back
 
 		# console.log backMsg,backMsg.type,backMsg.backContent

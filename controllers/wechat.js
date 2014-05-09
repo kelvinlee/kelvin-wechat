@@ -171,14 +171,12 @@ exports.index = function(req, res, next) {
     if (err) {
       console.log(err);
     }
-    console.log(result);
     if (!result) {
       return res.send(to ? parse.echostr : "what?");
     }
     message = formatMessage(result);
     allDone.emit('message', message);
     return checkMessage(message, function(back) {
-      console.log("back To: ", back);
       return allDone.emit('backMsg', back);
     });
   });
@@ -453,31 +451,43 @@ getAnswer = function(text, id, callback) {
   } else {
     console.log("start read db", id);
     return OneTwo.getLottery(id, "samsung", function(err, obj) {
-      var bk;
+      var backcontentlot, lstext;
+      console.log("callback: ", err, obj);
+      backcontentlot = {};
       if (obj) {
         if (obj.lot === "phone") {
           mySpecial[id] = "phone";
-          bk = _special.onetwo[3];
-          console.log(bk);
-          return callback(bk);
+          backcontentlot = _special.onetwo[3];
+          console.log(backcontentlot);
+          return callback(backcontentlot);
         } else if (obj.lot === "discounts") {
-          bk = _special.onetwo[5];
-          bk.backContent = bk.backContent.replace('#key', obj.username);
-          console.log(bk);
+          backcontentlot = {
+            name: "获得打折卷",
+            key: "2",
+            type: "text",
+            backContent: "恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+          };
+          backcontentlot.backContent = backcontentlot.backContent.replace('#key', obj.username);
+          console.log(backcontentlot);
           obj.checked = true;
           obj.create_at = new Date();
           obj.talk = text;
           obj.save();
-          return callback(bk);
+          return callback(backcontentlot);
         } else {
-          bk = _special.onetwo[2];
-          bk.backContent = bk.backContent.replace('#key', obj.lot);
-          console.log(bk);
+          backcontentlot = {
+            name: "充值卡",
+            key: "2",
+            type: "text",
+            backContent: "恭喜您获得了70M移动上网流量卡,卡号: #key ,尽快充值哦,欢迎继续参加我们的活动."
+          };
+          lstext = "恭喜您获得了70M移动上网流量卡,卡号: #key ,尽快充值哦,欢迎继续参加我们的活动.".replace('#key', obj.lot);
+          backcontentlot.backContent = lstext;
           obj.checked = true;
           obj.create_at = new Date();
           obj.talk = text;
           obj.save();
-          return callback(bk);
+          return callback(backcontentlot);
         }
       } else {
         return callback(_special.onetwo[1]);

@@ -237,17 +237,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/controllers\/wechat.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/controllers\/wechat.js",
-		"outputAbbreviatedPath": "\/controllers\/min\/wechat-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/lib\/coffee\/util.coffee": {
 		"createSourceMap": 0,
 		"fileType": 32,
@@ -428,17 +417,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/models\/lottery.js",
 		"outputAbbreviatedPath": "\/models\/min\/lottery-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/models\/lottery_x_list.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/models\/lottery_x_list.js",
-		"outputAbbreviatedPath": "\/models\/min\/lottery_x_list-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -646,17 +624,6 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/proxy\/lottery.js",
 		"outputAbbreviatedPath": "\/proxy\/min\/lottery-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
-	"\/proxy\/lottery_x_list.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/proxy\/lottery_x_list.js",
-		"outputAbbreviatedPath": "\/proxy\/min\/lottery_x_list-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,

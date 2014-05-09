@@ -26,9 +26,9 @@ exports.getLottery = function(lot, callback) {
   }, callback);
 };
 
-exports.create = function(content, callback) {
-  var lot;
+exports.create = function(content, lot, callback) {
   lot = new Lottery_x_list();
   lot.content = content;
+  lot.lot = lot;
   return lot.save(callback);
 };

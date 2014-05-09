@@ -93,8 +93,10 @@ exports.lotteryCode = (req,res,next)->
 			# 如果充值卡也没有了,就没有中奖.
 			# epall = new EventProxy()
 			# if lot is 1
-			
+			Lottery_x_list.create "TEST2","card", (err,obj)->
+				console.log "test list:",err,obj
 			Lottery_x_list.getLottery _lotlist[lot], (err,lot_obj)->
+				console.log err,lot_obj
 				if lot_obj?
 					obj.lottery = lot_obj.content
 					obj.num = num
@@ -103,6 +105,7 @@ exports.lotteryCode = (req,res,next)->
 					lot_obj.used = true
 					lot_obj.usedby = code
 					lot_obj.save()
+					re.reason = lot_obj.content
 					res.send re
 				else
 					obj.lottery = "none"

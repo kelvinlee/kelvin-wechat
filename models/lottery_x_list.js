@@ -11,6 +11,9 @@ Lottery_x_listSchema = new Schema({
   content: {
     type: String
   },
+  lot: {
+    type: String
+  },
   used: {
     type: Boolean,
     "default": false

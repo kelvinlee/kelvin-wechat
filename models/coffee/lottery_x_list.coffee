@@ -4,6 +4,7 @@ config = require '../config'
 
 Lottery_x_listSchema = new Schema({
   content: {type: String}
+  lot: {type: String}
   used: {type: Boolean, default: false}
   usedby: {type: String}
   create_at: {type: Date, default:Date.now }

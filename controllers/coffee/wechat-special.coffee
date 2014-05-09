@@ -47,33 +47,47 @@ getAnswer = (text,id,callback)->
 		# 	console.log "save: ",err,obj
 		# return ''
 		OneTwo.getLottery id,"samsung", (err,obj)->
-			# console.log "callback: ",err,obj
+			console.log "callback: ",err,obj
+			backcontentlot = {}
 			if obj
 				# mySpecial[id] = "get"
 				# callback _special.onetwo[1]
 				if obj.lot is "phone"
 					mySpecial[id] = "phone"
-					bk = _special.onetwo[3] 
-					console.log bk
-					callback bk
+					backcontentlot = _special.onetwo[3] 
+					console.log backcontentlot
+					callback backcontentlot
 				else if obj.lot is "discounts"
-					bk = _special.onetwo[5]
-					bk.backContent = bk.backContent.replace '#key',obj.username
-					console.log bk
+					backcontentlot = {
+						name:"获得打折卷"
+						key:"2"
+						type:"text"
+						backContent:"恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+					}
+					backcontentlot.backContent = backcontentlot.backContent.replace '#key',obj.username
+					console.log backcontentlot
 					obj.checked = true
 					obj.create_at = new Date()
 					obj.talk = text
 					obj.save()
-					callback bk
+					callback backcontentlot
 				else
-					bk = _special.onetwo[2]
-					bk.backContent = bk.backContent.replace '#key',obj.lot
-					console.log bk
+					backcontentlot = {
+						name:"充值卡"
+						key:"2"
+						type:"text"
+						backContent:"恭喜您获得了70M移动上网流量卡,卡号: #key ,尽快充值哦,欢迎继续参加我们的活动."
+					}
+					#backcontentlot.backContent.replace '#key',obj.lot
+					lstext = "恭喜您获得了70M移动上网流量卡,卡号: #key ,尽快充值哦,欢迎继续参加我们的活动.".replace '#key',obj.lot 
+					# console.log lstext
+					backcontentlot.backContent = lstext
+					# console.log "back contant:",backcontentlot
 					obj.checked = true
 					obj.create_at = new Date()
 					obj.talk = text
 					obj.save()
-					callback bk
+					callback backcontentlot
 			else
 				callback _special.onetwo[1]
 

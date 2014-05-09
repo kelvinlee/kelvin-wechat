@@ -107,7 +107,11 @@ exports.lotteryCode = function(req, res, next) {
       return res.send(re);
     } else {
       lot = fanpai();
+      Lottery_x_list.create("TEST2", "card", function(err, obj) {
+        return console.log("test list:", err, obj);
+      });
       return Lottery_x_list.getLottery(_lotlist[lot], function(err, lot_obj) {
+        console.log(err, lot_obj);
         if (lot_obj != null) {
           obj.lottery = lot_obj.content;
           obj.num = num;
@@ -116,6 +120,7 @@ exports.lotteryCode = function(req, res, next) {
           lot_obj.used = true;
           lot_obj.usedby = code;
           lot_obj.save();
+          re.reason = lot_obj.content;
           return res.send(re);
         } else {
           obj.lottery = "none";
