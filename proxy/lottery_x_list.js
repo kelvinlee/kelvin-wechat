@@ -15,6 +15,17 @@ exports.getList = function(callback) {
   }, callback);
 };
 
+exports.getLottery = function(lot, callback) {
+  return Lottery_x_list.findOne({
+    used: false,
+    lot: lot
+  }, null, {
+    sort: {
+      create_at: 1
+    }
+  }, callback);
+};
+
 exports.create = function(content, callback) {
   var lot;
   lot = new Lottery_x_list();

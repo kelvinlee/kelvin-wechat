@@ -13,10 +13,24 @@ LotterySchema = new Schema({
     index: true
   },
   lottery: {
+    type: String,
+    "default": null
+  },
+  username: {
+    type: String
+  },
+  mobile: {
+    type: String
+  },
+  adr: {
     type: String
   },
   num: {
-    type: Number
+    type: Number,
+    "default": 0
+  },
+  lot_at: {
+    type: Date
   },
   create_at: {
     type: Date,

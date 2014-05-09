@@ -409,7 +409,7 @@ _qa = [
 mySpecial = [];
 
 Special = function(text, id) {
-  if (text === '我的奖品9988877') {
+  if (text === '我的奖品') {
     return true;
   } else if (mySpecial[id] === "phone") {
     return true;
@@ -434,15 +434,18 @@ getAnswer = function(text, id, callback) {
     }
     return OneTwo.getLottery(id, "samsung", function(err, obj) {
       console.log(obj);
-      if (obj) {
+      if (obj && obj.checked === false) {
         obj.username = username;
         obj.mobile = mobile;
         obj.adr = adr;
         obj.talk = text;
         obj.checked = true;
+        obj.create_at = new Date();
         obj.save();
         callback(_special.onetwo[4]);
         return delete mySpecial[id];
+      } else if (obj && obj.checked === true) {
+        return callback(_special.onetwo[6]);
       } else {
         return callback(_special.onetwo[1]);
       }
@@ -462,6 +465,7 @@ getAnswer = function(text, id, callback) {
           bk.backContent = bk.backContent.replace('#key', obj.username);
           console.log(bk);
           obj.checked = true;
+          obj.create_at = new Date();
           obj.talk = text;
           obj.save();
           return callback(bk);
@@ -470,6 +474,7 @@ getAnswer = function(text, id, callback) {
           bk.backContent = bk.backContent.replace('#key', obj.lot);
           console.log(bk);
           obj.checked = true;
+          obj.create_at = new Date();
           obj.talk = text;
           obj.save();
           return callback(bk);
@@ -497,7 +502,7 @@ _special = {
       name: "充值卡",
       key: "2",
       type: "text",
-      backContent: "恭喜您获得了70M移动上网流量卡,卡号: #key ,充值地址: http://samsung.view4.cn"
+      backContent: "恭喜您获得了70M移动上网流量卡,卡号: #key ,尽快充值哦,欢迎继续参加我们的活动."
     }, {
       name: "手机试用",
       key: "2",
@@ -512,7 +517,12 @@ _special = {
       name: "获得打折卷",
       key: "2",
       type: "text",
-      backContent: "恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城: http://samsung.view4.cn ,购买S5打九折."
+      backContent: "恭喜您获得了三星商城S5打折卷 ,卡号: #key ,在三星商城购买S5打九折,快去抢购吧."
+    }, {
+      name: "获取过用户信息",
+      key: "2",
+      type: "text",
+      backContent: "您已经提交过资料,请等待我们的联系."
     }
   ],
   onetwoerror: [

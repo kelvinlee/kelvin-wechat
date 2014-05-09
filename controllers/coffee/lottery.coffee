@@ -30,8 +30,9 @@ sumArr = (list)->
 getRandom = (min,max)->
 	return Math.round(Math.random()*(max-min)+min)
 
+_lotlist = ["card","cm"]
 fanpai = ()->
-	lotlist = [30,70]
+	lotlist = [50,50]
 	$re = ''
 	$proSum = sumArr lotlist
 	for i in [0...lotlist.length]
@@ -85,52 +86,31 @@ exports.lotteryCode = (req,res,next)->
 			re.reason = "already have"
 			res.send re
 		else
-			# 没有中奖
+			# 没有中奖,开始抽奖
 			lot = fanpai()
-			if lot is 0
-				Lottery.getLotterByLot 'cm',(err,list)->
-					if list.length > 9
-						# 奖品超标.
-						obj.lottery = "none"
-						obj.num =  num
-						obj.save()
-						re.reason = "none"
-						res.send re
-					else
-						# 获得奖品.
-						obj.lottery = "cm"
-						obj.num =  num
-						obj.save()
-						re.reason = "cm"
-						res.send re
-			else
-				console.log "card list"
-				# 测试用,最后需要删除
-				# temp = Math.round Math.random()*(900000-100000)+100000
-				# obj.lottery = temp
-				# obj.num =  num
-				# obj.save()
-				# re.reason = temp
-				# res.send re
-				# return false
-				Lottery_x_list.getList (err,card)->
-					console.log err,card
-					if card?
-						# 存在充值卡
-						obj.lottery = card.content
-						obj.num =  num
-						obj.save()
-						re.reason = card.content
-						res.send re
-					else
-						# 充值卡已经用光
-						obj.lottery = "none"
-						obj.num =  num
-						obj.save()
-						re.reason = "none"
-						res.send re
-
-
+			# 如果是 1 就是车模
+			# 先去仓库(Lottery_x_list)查找车模是不是还有,如果没有改送充值卡.
+			# 如果充值卡也没有了,就没有中奖.
+			# epall = new EventProxy()
+			# if lot is 1
+			
+			Lottery_x_list.getLottery _lotlist[lot], (err,lot_obj)->
+				if lot_obj?
+					obj.lottery = lot_obj.content
+					obj.num = num
+					obj.lot_at = new Date()
+					obj.save()
+					lot_obj.used = true
+					lot_obj.usedby = code
+					lot_obj.save()
+					res.send re
+				else
+					obj.lottery = "none"
+					obj.num =  num
+					obj.lot_at = new Date()
+					obj.save()
+					re.reason = "none"
+					res.send re
 
 
 

@@ -215,17 +215,6 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/controllers\/lottery.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/controllers\/lottery.js",
-		"outputAbbreviatedPath": "\/controllers\/min\/lottery-ck.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/controllers\/wechat-post.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -243,6 +232,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/controllers\/wechat-subscribe.js",
 		"outputAbbreviatedPath": "\/controllers\/min\/wechat-subscribe-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/controllers\/wechat.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/controllers\/wechat.js",
+		"outputAbbreviatedPath": "\/controllers\/min\/wechat-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -411,6 +411,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 0
 		},
+	"\/models\/index.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/index.js",
+		"outputAbbreviatedPath": "\/models\/min\/index-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/models\/lottery.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -439,6 +450,17 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/models\/msg.js",
 		"outputAbbreviatedPath": "\/models\/min\/msg-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
+	"\/models\/onetwo.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/models\/onetwo.js",
+		"outputAbbreviatedPath": "\/models\/min\/onetwo-ck.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -651,6 +673,17 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/proxy\/onetwo.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/proxy\/onetwo.js",
+		"outputAbbreviatedPath": "\/proxy\/min\/onetwo-ck.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
+		},
 	"\/proxy\/qalist.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -804,6 +837,17 @@
 		"initialSize": 10230,
 		"inputAbbreviatedPath": "\/public\/img\/submit.png",
 		"outputAbbreviatedPath": "\/public\/img\/submit.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/public\/img\/title.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 5833,
+		"inputAbbreviatedPath": "\/public\/img\/title.png",
+		"outputAbbreviatedPath": "\/public\/img\/title.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0

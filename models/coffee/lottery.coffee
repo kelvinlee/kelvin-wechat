@@ -5,7 +5,11 @@ config = require '../config'
 LotterySchema = new Schema({
   randomcode: {type: String, index:true}
   lottery: {type: String, default: null}
+  username: {type: String}
+  mobile:{type: String}
+  adr: {type: String}
   num: {type: Number, default: 0}
+  lot_at: {type: Date}
   create_at: {type: Date, default:Date.now }
 })
 

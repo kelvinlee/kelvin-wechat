@@ -15,6 +15,9 @@ Lottery_x_listSchema = new Schema({
     type: Boolean,
     "default": false
   },
+  usedby: {
+    type: String
+  },
   create_at: {
     type: Date,
     "default": Date.now
