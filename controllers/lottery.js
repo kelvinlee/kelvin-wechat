@@ -66,8 +66,10 @@ exports.index = function(req, res, next) {
   var code;
   code = req.query.code;
   return Lottery.getLotter(code, function(err, obj) {
-    obj.read = true;
-    obj.save();
+    if (obj != null) {
+      obj.read = true;
+      obj.save();
+    }
     if ((obj != null) && obj.num !== 0) {
       return res.render('lottery', {
         lots: true,
@@ -112,6 +114,7 @@ exports.lotteryCode = function(req, res, next) {
       obj.lot_at = new Date();
       obj.save();
       re.reason = obj.lottery;
+      re.type = obj.lot;
       return res.send(re);
     }
   });

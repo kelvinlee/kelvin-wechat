@@ -12,6 +12,9 @@ LotterySchema = new Schema({
     type: String,
     index: true
   },
+  lot: {
+    type: String
+  },
   lottery: {
     type: String,
     "default": null

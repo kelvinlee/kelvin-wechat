@@ -48,6 +48,7 @@ exports.randomCode = function(req, res, next) {
     return Lottery_x_list.getLottery(type, function(err, lot_obj) {
       if (lot_obj != null) {
         obj.lottery = lot_obj.content;
+        obj.lot = type;
         obj.save();
         lot_obj.used = true;
         lot_obj.usedby = obj.randomcode;

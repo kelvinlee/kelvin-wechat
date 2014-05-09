@@ -54,14 +54,17 @@ exports.index = (req,res,next)->
 
 	code = req.query.code
 	Lottery.getLotter code,(err,obj)->
-		obj.read = true
-		obj.save()
+		if obj?
+			obj.read = true
+			obj.save()
+
 		if obj? && obj.num isnt 0
 			# 已经中奖了
 			res.render 'lottery',{lots:true,code:code,lot:obj}
 		else
 			# 还没抽奖.
 			res.render 'lottery',{lots:false,code:code,lot:{}}
+			
 
 	
 exports.lotteryCode = (req,res,next)->
@@ -103,6 +106,7 @@ exports.lotteryCode = (req,res,next)->
 			obj.lot_at = new Date()
 			obj.save()
 			re.reason = obj.lottery
+			re.type = obj.lot
 			res.send re
 
 

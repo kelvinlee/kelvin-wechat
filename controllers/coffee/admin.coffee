@@ -48,6 +48,7 @@ exports.randomCode = (req,res,next)->
 		Lottery_x_list.getLottery type, (err,lot_obj)->
 			if lot_obj?
 				obj.lottery = lot_obj.content
+				obj.lot = type
 				obj.save()
 				lot_obj.used = true
 				lot_obj.usedby = obj.randomcode

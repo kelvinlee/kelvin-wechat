@@ -2,13 +2,15 @@ extends layout
 block title
 	|  抽奖开始
 block content_here
-	-var bg = "/img/bg1.jpg",hidemain="",hidecm=hideother="display:none";
-	-if (lots && lot.lottery != "none")
+	-var bg = "/img/bg1.jpg",hidemain="",hidecard30=hidecm=hideother="display:none";
+	-if (lots && lot.lot != "none")
 		-bg = "/img/bg2.jpg";
-	-if (lots && lot.lottery == "cm")
-		-hidecm="";hidemain=hideother="display:none";
-	-if (lots && lot.lottery != "cm" && lot.lottery != "none")
-		-hideother="";hidemain=hidecm="display:none";
+	-if (lots && lot.lot == "cm")
+		-hidecm="";hidecard30=hidemain=hideother="display:none";
+	-if (lots && lot.lot == "card")
+		-hideother="";hidecard30=hidemain=hidecm="display:none";
+	-if (lots && lot.lot == "card30")
+		-hidecard30="";hideother=hidemain=hidecm="display:none";
 	div.bg
 		img#bg(src="#{bg}")
 		//- img(src="/img/bg2.jpg")
@@ -16,7 +18,7 @@ block content_here
 		div.model-list.clearfix
 			-for(var i=0;i<3;i++)
 				-var c = "",f="flip",fe="fliped";
-				-if (lots && lot.lottery == "none" && lot.num == i+1)
+				-if (lots && lot.lot == "none" && lot.num == i+1)
 					-c="很遗憾";f="fliped";fe="flip";
 				div.item
 					div.content
@@ -30,6 +32,8 @@ block content_here
 		div.car
 			img(src="/img/car.jpg")
 		div.table
+			div.title
+				img(src="/img/title.png")
 			form.form()
 				div.input-group
 					label 姓名
@@ -49,13 +53,24 @@ block content_here
 	div.otherpage(style="#{hideother}")
 		div.card
 			img(src="/img/card.jpg")
-		div.context
+		div.context.lot-card
 			h2 恭喜您获得移动70M流量卡一张<br/>您获得的流量卡充值密码为:
 			-var card = "";
 			-if (lots && lot.lottery != "cm" && lot.lottery != "none")
 				-card = lot.lottery;
 			p#cardcode #{card}
 			p (请复制充值卡帐号密码以便充值)
+	div.card30page(style="#{hidecard30}")
+		div.card
+			img(src="/img/card-30.jpg")
+		div.context.lot-card
+			h2 恭喜您获得移动30元充值卡一张<br/>您获得的充值卡充值密码为：
+			-var card = "";
+			-if (lots && lot.lottery != "cm" && lot.lottery != "none")
+				-card = lot.lottery;
+			p#cardcode30 #{card}
+			p (请复制充值卡帐号密码以便充值)
+
 block js_here
 	script.
 		var code = "#{code}";

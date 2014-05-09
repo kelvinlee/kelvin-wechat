@@ -35,7 +35,7 @@ ajaxpost = function(nums, target) {
     success: function(msg) {
       console.log(msg);
       if (msg.recode === 200) {
-        return changeBox(target, msg.reason);
+        return changeBox(target, msg.reason, msg.type);
       } else if (msg.recode === 201) {
         return alert('您的资格码有问题,请您确定后重新参与.');
       } else if (msg.recode === 202) {
@@ -47,13 +47,14 @@ ajaxpost = function(nums, target) {
   });
 };
 
-changeBox = function(target, lottery) {
+changeBox = function(target, lottery, type) {
   var $e1, $e2;
+  alert(type);
   $e1 = $('.flip', target);
   $e2 = $('.fliped', target);
   $e1.removeClass('flip').addClass('fliped');
   $e2.removeClass('fliped').addClass('flip');
-  if (lottery === 'cm') {
+  if (type === 'cm') {
     console.log('车模');
     $("span", target).text('中奖啦');
     return setTimeout(function() {
@@ -61,8 +62,16 @@ changeBox = function(target, lottery) {
       $(".main").hide();
       return $(".cmpage").show();
     }, 2000);
-  } else if (lottery === 'none') {
+  } else if (type === 'none') {
     return $("span", target).text('很遗憾');
+  } else if (type === 'card30') {
+    $("span", target).text('中奖啦');
+    return setTimeout(function() {
+      $("#bg").attr('src', "/img/bg2.jpg");
+      $(".main").hide();
+      $(".card30page").show();
+      return $("#cardcode30").text(lottery);
+    }, 2000);
   } else {
     $("span", target).text('中奖啦');
     return setTimeout(function() {

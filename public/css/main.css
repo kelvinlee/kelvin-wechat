@@ -744,6 +744,9 @@ img {
 .cmpage .table {
   padding-top: 30%;
 }
+.cmpage .table .title {
+  padding-bottom: 5%;
+}
 .cmpage .table .form {
   width: 90%;
   height: auto;
@@ -761,14 +764,20 @@ img {
   display: block;
   float: left;
   width: 30%;
+  height: 2.2em;
   text-align: center;
   border-right: solid 1px #000000;
+  font-size: 0.8em;
+  line-height: 2.2em;
 }
 .cmpage .table .form .input-group input {
   background: transparent;
   border: none;
   box-shadow: 0px 0px 0px;
-  padding-left: .5em;
+  padding: .2em .5em;
+  height: 1.4em;
+  font-size: 0.8em;
+  outline: none;
 }
 .cmpage .table .form .input-group:last-child {
   border-bottom: solid 1px #000000;
@@ -786,25 +795,30 @@ img {
   height: auto;
   margin: 0px 5%;
 }
-.otherpage {
+.otherpage,
+.card30page {
   padding-top: 34%;
 }
-.otherpage .card {
+.otherpage .card,
+.card30page .card {
   width: 55%;
   height: auto;
   margin: 0 auto;
   padding: 0px;
 }
-.otherpage .context {
+.otherpage .context,
+.card30page .context {
   padding-top: 25%;
 }
-.otherpage .context h2 {
+.otherpage .context h2,
+.card30page .context h2 {
   text-align: center;
   font-size: 1em;
   line-height: 1.4em;
   font-weight: 100;
 }
-.otherpage .context p {
+.otherpage .context p,
+.card30page .context p {
   font-size: 0.8em;
   text-align: center;
 }
