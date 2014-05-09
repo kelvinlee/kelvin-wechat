@@ -13,10 +13,10 @@ $(document).ready ->
 					window.location.href = "/admin/homepage"
 				else
 					alert msg.reason
-	$("[name=random]").click ->
+	$("[type=button]").click ->
 		console.log ">>"
 		$.ajax 
-			url:$("#generateform").attr 'action'
+			url:$("#generateform").attr('action')+"?type="+$(this).attr("name")
 			dataType:"json"
 			type:"POST"
 			data:$("#generateform").serializeArray()

@@ -1,6 +1,7 @@
 # 数据库
 Admin = require('../proxy').Admin
 Lottery = require('../proxy').Lottery
+Lottery_x_list = require('../proxy').Lottery_x_list
 
 
 # 基础类库
@@ -36,10 +37,29 @@ exports.randomCode = (req,res,next)->
 	randomCode += new Date().getTime()
 	randomCode = Ut.md5 randomCode
 	console.log randomCode
+
+	type = req.param 'type'
+
+	
+
 	Lottery.create randomCode,(err,obj)->
 		# console.log err,obj
 		re.reason = obj.randomcode
-		res.send re
+		Lottery_x_list.getLottery type, (err,lot_obj)->
+			if lot_obj?
+				obj.lottery = lot_obj.content
+				obj.save()
+				lot_obj.used = true
+				lot_obj.usedby = obj.randomcode
+				lot_obj.save()
+				res.send re
+			else
+				obj.remove()
+				re.recode = 404
+				re.reason = "奖品库已经没有此奖品."
+				res.send re
+
+		# res.send re
 
 exports.homepage = (req,res,next)->
 	# 

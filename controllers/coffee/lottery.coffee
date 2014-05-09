@@ -54,7 +54,9 @@ exports.index = (req,res,next)->
 
 	code = req.query.code
 	Lottery.getLotter code,(err,obj)->
-		if obj? && obj.lottery?
+		obj.read = true
+		obj.save()
+		if obj? && obj.num isnt 0
 			# 已经中奖了
 			res.render 'lottery',{lots:true,code:code,lot:obj}
 		else
@@ -80,14 +82,14 @@ exports.lotteryCode = (req,res,next)->
 			re.reason = "nocode"
 			res.send re
 			return false
-		if obj.lottery?
+		if obj.num isnt 0
 			# 已经中奖了
 			re.recode = 202
 			re.reason = "already have"
 			res.send re
 		else
 			# 没有中奖,开始抽奖
-			lot = fanpai()
+			# lot = fanpai()
 			# 如果是 1 就是车模
 			# 先去仓库(Lottery_x_list)查找车模是不是还有,如果没有改送充值卡.
 			# 如果充值卡也没有了,就没有中奖.
@@ -95,30 +97,38 @@ exports.lotteryCode = (req,res,next)->
 			# if lot is 1
 			# Lottery_x_list.create "TEST2","card", (err,obj)->
 			# 	console.log "test list:",err,obj
-			console.log "lot is :",_lotlist[lot]
-			Lottery_x_list.getLottery _lotlist[lot], (err,lot_obj)->
-				console.log err,lot_obj
-				if lot_obj?
-					obj.lottery = lot_obj.content
-					obj.num = num
-					obj.lot_at = new Date()
-					obj.save()
-					lot_obj.used = true
-					lot_obj.usedby = code
-					lot_obj.save()
-					re.reason = lot_obj.content
-					res.send re
-				else
-					Lottery_x_list.getLottery "card", (err,lot_obj2)->
-						obj.lottery = lot_obj2.content
-						obj.num = num
-						obj.lot_at = new Date()
-						obj.save()
-						lot_obj2.used = true
-						lot_obj2.usedby = code
-						lot_obj2.save()
-						re.reason = lot_obj2.content
-						res.send re
+			
+			console.log "lot is :",obj.lottery
+			obj.num = num
+			obj.lot_at = new Date()
+			obj.save()
+			re.reason = obj.lottery
+			res.send re
+
+
+			# Lottery_x_list.getLottery _lotlist[lot], (err,lot_obj)->
+			# 	console.log err,lot_obj
+			# 	if lot_obj?
+			# 		obj.lottery = lot_obj.content
+			# 		obj.num = num
+			# 		obj.lot_at = new Date()
+			# 		obj.save()
+			# 		lot_obj.used = true
+			# 		lot_obj.usedby = code
+			# 		lot_obj.save()
+			# 		re.reason = lot_obj.content
+			# 		res.send re
+			# 	else
+			# 		Lottery_x_list.getLottery "card", (err,lot_obj2)->
+			# 			obj.lottery = lot_obj2.content
+			# 			obj.num = num
+			# 			obj.lot_at = new Date()
+			# 			obj.save()
+			# 			lot_obj2.used = true
+			# 			lot_obj2.usedby = code
+			# 			lot_obj2.save()
+			# 			re.reason = lot_obj2.content
+			# 			res.send re
 						
 						# obj.lottery = "none"
 						# obj.num =  num

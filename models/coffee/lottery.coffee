@@ -10,6 +10,7 @@ LotterySchema = new Schema({
   adr: {type: String}
   num: {type: Number, default: 0}
   lot_at: {type: Date}
+  read: {type: Boolean}
   create_at: {type: Date, default:Date.now }
 })
 

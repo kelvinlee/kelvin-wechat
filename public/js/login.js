@@ -21,10 +21,10 @@ $(document).ready(function() {
       }
     });
   });
-  return $("[name=random]").click(function() {
+  return $("[type=button]").click(function() {
     console.log(">>");
     return $.ajax({
-      url: $("#generateform").attr('action'),
+      url: $("#generateform").attr('action') + "?type=" + $(this).attr("name"),
       dataType: "json",
       type: "POST",
       data: $("#generateform").serializeArray(),

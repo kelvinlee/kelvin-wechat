@@ -405,7 +405,7 @@ _qa = [
     type: "news",
     backContent: "活动详情",
     title: "【看名车志，赢车模】100%中奖",
-    description: '下载【新炫刊】参与“看名车志，赢车模”活动，赢取移动30元充值卡或1:18精美汽车模型，100%中奖！',
+    description: '下载【新炫刊】参与“看名车志，赢车模”活动，赢取移动30元充值卡、移动70M流量包或1:18精美汽车模型，100%中奖！',
     picurl: "https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzM5ibtoBBE2SGwkpLUxZNAx8h8puh4WRxWa4xPWFKLgVp8vcAAF48cME3iaYIPqQCzKiapjCfb80P9Iw/0",
     url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200220698&idx=1&sn=08b87ef8fada09289f48ade871e675df#rd",
     evt: clearQA

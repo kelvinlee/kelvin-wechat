@@ -66,7 +66,9 @@ exports.index = function(req, res, next) {
   var code;
   code = req.query.code;
   return Lottery.getLotter(code, function(err, obj) {
-    if ((obj != null) && (obj.lottery != null)) {
+    obj.read = true;
+    obj.save();
+    if ((obj != null) && obj.num !== 0) {
       return res.render('lottery', {
         lots: true,
         code: code,
@@ -94,46 +96,23 @@ exports.lotteryCode = function(req, res, next) {
   }
   re = Ut.recode();
   return Lottery.getLotter(code, function(err, obj) {
-    var lot;
     if (obj == null) {
       re.recode = 201;
       re.reason = "nocode";
       res.send(re);
       return false;
     }
-    if (obj.lottery != null) {
+    if (obj.num !== 0) {
       re.recode = 202;
       re.reason = "already have";
       return res.send(re);
     } else {
-      lot = fanpai();
-      console.log("lot is :", _lotlist[lot]);
-      return Lottery_x_list.getLottery(_lotlist[lot], function(err, lot_obj) {
-        console.log(err, lot_obj);
-        if (lot_obj != null) {
-          obj.lottery = lot_obj.content;
-          obj.num = num;
-          obj.lot_at = new Date();
-          obj.save();
-          lot_obj.used = true;
-          lot_obj.usedby = code;
-          lot_obj.save();
-          re.reason = lot_obj.content;
-          return res.send(re);
-        } else {
-          return Lottery_x_list.getLottery("card", function(err, lot_obj2) {
-            obj.lottery = lot_obj2.content;
-            obj.num = num;
-            obj.lot_at = new Date();
-            obj.save();
-            lot_obj2.used = true;
-            lot_obj2.usedby = code;
-            lot_obj2.save();
-            re.reason = lot_obj2.content;
-            return res.send(re);
-          });
-        }
-      });
+      console.log("lot is :", obj.lottery);
+      obj.num = num;
+      obj.lot_at = new Date();
+      obj.save();
+      re.reason = obj.lottery;
+      return res.send(re);
     }
   });
 };

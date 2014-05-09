@@ -32,6 +32,9 @@ LotterySchema = new Schema({
   lot_at: {
     type: Date
   },
+  read: {
+    type: Boolean
+  },
   create_at: {
     type: Date,
     "default": Date.now
