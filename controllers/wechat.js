@@ -98,19 +98,27 @@ checkMessage = function(message, callback) {
       return getQA(message.Content, message.FromUserName, callback);
     case 'image':
       console.log('图片信息');
+      return {
+        name: "welcome",
+        key: "你好",
+        type: "text",
+        backContent: "您好,已经收到您的图片,请等待审核."
+      };
+      return null;
       return tranStr(message, go_img_process(message.Content, callback));
     case 'voice':
       console.log('声音信息');
+      return null;
       return tranStr(message, go_process(message.Recognition, callback));
     case 'video':
       console.log('视频信息');
-      break;
+      return null;
     case 'location':
       console.log('地理信息');
-      break;
+      return null;
     case 'link':
       console.log('连接消息');
-      break;
+      return null;
     case 'event':
       if (message.Event === 'subscribe') {
         return go_subscribe(message, callback);
@@ -282,7 +290,7 @@ welcometext = {
   name: "welcome",
   key: "你好",
   type: "text",
-  backContent: "欢迎关注三星乐园"
+  backContent: "感谢您关注【三星乐园】官方微信，还在向朋友们留言“流量耗尽，下月见”？2014年5月9日—2014年5月22日参与【看名车志，赢车模】活动，就能赢取70M数据流量充值~还有精美车模相赠，回复【1】查看“活动详情”，赶紧下载参与吧。"
 };
 
 go_subscribe = function(message, callback) {
@@ -390,10 +398,15 @@ _nr = "\n";
 
 _qa = [
   {
-    name: "欢迎",
+    name: "查看活动详情",
     key: "1",
-    type: "text",
-    backContent: "敬请期待下次活动"
+    type: "news",
+    backContent: "活动详情",
+    title: "【看名车志，赢车模】100%中奖",
+    description: '下载【新炫刊】参与“看名车志，赢车模”活动，赢取移动70M数据流量包或1:18精美汽车模型，100%中奖！',
+    picurl: "https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzM5ibtoBBE2SGwkpLUxZNAx8sNhcpF28ytlCRD1LXR1yibgaAmUxF5Ce0wmrpK8eP16A0sicC0MJTH9g/0",
+    url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200220698&idx=1&sn=08b87ef8fada09289f48ade871e675df#rd",
+    evt: clearQA
   }
 ];
 

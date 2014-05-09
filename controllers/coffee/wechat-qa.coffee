@@ -43,23 +43,23 @@ _randomBadAnswer = ["本题回答错误。快去本期《我爱三星视频秀�
 
 _nr = "\n"
 _qa = [
-	{
-		name:"欢迎"
-		key:"1"
-		type:"text"
-		backContent:"敬请期待下次活动"
-	}
 	# {
-	# 	name:"查看活动详情"
+	# 	name:"欢迎"
 	# 	key:"1"
-	# 	type:"news"
-	# 	backContent :"活动详情"
-	# 	title:"【看视频 答问题】赢取S5惊喜大奖"
-	# 	description: '参与《我爱三星视频秀》答题，即有机会获得丰厚大奖。'
-	# 	picurl:"https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzO6ZUIrhM8bc1FQxoQAIggvhSkRKbz4gVROjv5MeibQOaRvAKMXFxa6oBicAoMYVRKOekMicUEEyOIww/0"
-	# 	url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200198976&idx=1&sn=f0508d0792f15fc2c812fe77a04192b6&scene=1&from=singlemessage&isappinstalled=0#rd"
-	# 	evt:clearQA
+	# 	type:"text"
+	# 	backContent:"敬请期待下次活动"
 	# }
+	{
+		name:"查看活动详情"
+		key:"1"
+		type:"news"
+		backContent :"活动详情"
+		title:"【看名车志，赢车模】100%中奖"
+		description: '下载【新炫刊】参与“看名车志，赢车模”活动，赢取移动70M数据流量包或1:18精美汽车模型，100%中奖！'
+		picurl:"https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzM5ibtoBBE2SGwkpLUxZNAx8sNhcpF28ytlCRD1LXR1yibgaAmUxF5Ce0wmrpK8eP16A0sicC0MJTH9g/0"
+		url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200220698&idx=1&sn=08b87ef8fada09289f48ade871e675df#rd"
+		evt:clearQA
+	}
 	# {
 	# 	name:"开始答题"
 	# 	key:"2"

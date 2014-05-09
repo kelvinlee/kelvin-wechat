@@ -98,17 +98,28 @@ checkMessage = (message,callback)->
 		when 'image'
 			console.log '图片信息'
 			# Inser_db_img message
+			return {
+				name:"welcome"
+				key: "你好"
+				type: "text"
+				backContent: "您好,已经收到您的图片,请等待审核."
+			}
+			return null
 			return tranStr message, go_img_process message.Content,callback
 		when 'voice'
 			# Recognition 开启语音识别,返回对应中文.
 			console.log '声音信息'
+			return null
 			return tranStr message, go_process message.Recognition,callback
 		when 'video'
 			console.log '视频信息'
+			return null
 		when 'location'
 			console.log '地理信息'
+			return null
 		when 'link'
 			console.log '连接消息'
+			return null
 
 		when 'event'
 			# subscribe 关注

@@ -32,7 +32,7 @@ getRandom = (min,max)->
 
 _lotlist = ["card","cm"]
 fanpai = ()->
-	lotlist = [50,50]
+	lotlist = [99999,1]
 	$re = ''
 	$proSum = sumArr lotlist
 	for i in [0...lotlist.length]
@@ -93,8 +93,9 @@ exports.lotteryCode = (req,res,next)->
 			# 如果充值卡也没有了,就没有中奖.
 			# epall = new EventProxy()
 			# if lot is 1
-			Lottery_x_list.create "TEST2","card", (err,obj)->
-				console.log "test list:",err,obj
+			# Lottery_x_list.create "TEST2","card", (err,obj)->
+			# 	console.log "test list:",err,obj
+			console.log "lot is :",_lotlist[lot]
 			Lottery_x_list.getLottery _lotlist[lot], (err,lot_obj)->
 				console.log err,lot_obj
 				if lot_obj?
@@ -108,12 +109,23 @@ exports.lotteryCode = (req,res,next)->
 					re.reason = lot_obj.content
 					res.send re
 				else
-					obj.lottery = "none"
-					obj.num =  num
-					obj.lot_at = new Date()
-					obj.save()
-					re.reason = "none"
-					res.send re
+					Lottery_x_list.getLottery "card", (err,lot_obj2)->
+						obj.lottery = lot_obj2.content
+						obj.num = num
+						obj.lot_at = new Date()
+						obj.save()
+						lot_obj2.used = true
+						lot_obj2.usedby = code
+						lot_obj2.save()
+						re.reason = lot_obj2.content
+						res.send re
+						
+						# obj.lottery = "none"
+						# obj.num =  num
+						# obj.lot_at = new Date()
+						# obj.save()
+						# re.reason = "none"
+						# res.send re
 
 
 

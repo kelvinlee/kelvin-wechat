@@ -47,7 +47,7 @@ _lotlist = ["card", "cm"];
 
 fanpai = function() {
   var $proSum, $randNum, $re, i, lotlist, _i, _ref;
-  lotlist = [50, 50];
+  lotlist = [99999, 1];
   $re = '';
   $proSum = sumArr(lotlist);
   for (i = _i = 0, _ref = lotlist.length; 0 <= _ref ? _i < _ref : _i > _ref; i = 0 <= _ref ? ++_i : --_i) {
@@ -107,9 +107,7 @@ exports.lotteryCode = function(req, res, next) {
       return res.send(re);
     } else {
       lot = fanpai();
-      Lottery_x_list.create("TEST2", "card", function(err, obj) {
-        return console.log("test list:", err, obj);
-      });
+      console.log("lot is :", _lotlist[lot]);
       return Lottery_x_list.getLottery(_lotlist[lot], function(err, lot_obj) {
         console.log(err, lot_obj);
         if (lot_obj != null) {
@@ -123,12 +121,17 @@ exports.lotteryCode = function(req, res, next) {
           re.reason = lot_obj.content;
           return res.send(re);
         } else {
-          obj.lottery = "none";
-          obj.num = num;
-          obj.lot_at = new Date();
-          obj.save();
-          re.reason = "none";
-          return res.send(re);
+          return Lottery_x_list.getLottery("card", function(err, lot_obj2) {
+            obj.lottery = lot_obj2.content;
+            obj.num = num;
+            obj.lot_at = new Date();
+            obj.save();
+            lot_obj2.used = true;
+            lot_obj2.usedby = code;
+            lot_obj2.save();
+            re.reason = lot_obj2.content;
+            return res.send(re);
+          });
         }
       });
     }
