@@ -99,13 +99,13 @@ checkMessage = (message,callback)->
 			console.log '图片信息'
 			# Inser_db_img message
 			return {
-				name:"welcome"
-				key: "你好"
-				type: "text"
+				name:"image"
+				key:"image"
+				type:"text" 
 				backContent: "您好,已经收到您的图片,请等待审核."
 			}
-			return null
-			return tranStr message, go_img_process message.Content,callback
+			# return null
+			# return tranStr message, go_img_process message.Content,callback
 		when 'voice'
 			# Recognition 开启语音识别,返回对应中文.
 			console.log '声音信息'
@@ -181,7 +181,7 @@ exports.index = (req,res,next)->
 		# console.log "session:",user[message.FromUserName]
 
 		checkMessage message, (back)->
-			# console.log "back To: ",back
+			console.log "back To: ",back
 			allDone.emit 'backMsg',back
 
 		# console.log backMsg,backMsg.type,backMsg.backContent

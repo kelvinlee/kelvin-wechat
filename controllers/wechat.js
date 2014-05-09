@@ -99,13 +99,11 @@ checkMessage = function(message, callback) {
     case 'image':
       console.log('图片信息');
       return {
-        name: "welcome",
-        key: "你好",
+        name: "image",
+        key: "image",
         type: "text",
         backContent: "您好,已经收到您的图片,请等待审核."
       };
-      return null;
-      return tranStr(message, go_img_process(message.Content, callback));
     case 'voice':
       console.log('声音信息');
       return null;
@@ -185,6 +183,7 @@ exports.index = function(req, res, next) {
     message = formatMessage(result);
     allDone.emit('message', message);
     return checkMessage(message, function(back) {
+      console.log("back To: ", back);
       return allDone.emit('backMsg', back);
     });
   });
