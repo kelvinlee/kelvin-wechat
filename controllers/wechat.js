@@ -89,6 +89,7 @@ formatMessage = function(result) {
 };
 
 checkMessage = function(message, callback) {
+  var img;
   switch (message.MsgType) {
     case 'text':
       console.log('文字信息');
@@ -98,12 +99,14 @@ checkMessage = function(message, callback) {
       return getQA(message.Content, message.FromUserName, callback);
     case 'image':
       console.log('图片信息');
-      return {
-        name: "image",
-        key: "image",
+      img = {
+        name: "返回收到图片信息.",
+        key: "1",
         type: "text",
         backContent: "您好,已经收到您的图片,请等待审核."
       };
+      callback(img);
+      return img;
     case 'voice':
       console.log('声音信息');
       return null;

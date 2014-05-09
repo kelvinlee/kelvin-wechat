@@ -98,12 +98,14 @@ checkMessage = (message,callback)->
 		when 'image'
 			console.log '图片信息'
 			# Inser_db_img message
-			return {
-				name:"image"
-				key:"image"
+			img = {
+				name:"返回收到图片信息."
+				key:"1"
 				type:"text" 
 				backContent: "您好,已经收到您的图片,请等待审核."
 			}
+			callback img
+			return img
 			# return null
 			# return tranStr message, go_img_process message.Content,callback
 		when 'voice'
