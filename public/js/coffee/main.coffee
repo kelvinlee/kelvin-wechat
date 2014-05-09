@@ -29,7 +29,6 @@ ajaxpost = (nums,target)->
 				alert msg.reason
 
 changeBox = (target,lottery,type)->
-	alert type
 	$e1 = $('.flip',target)
 	$e2 = $('.fliped',target)
 	$e1.removeClass('flip').addClass 'fliped'

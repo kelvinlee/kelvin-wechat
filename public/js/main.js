@@ -49,7 +49,6 @@ ajaxpost = function(nums, target) {
 
 changeBox = function(target, lottery, type) {
   var $e1, $e2;
-  alert(type);
   $e1 = $('.flip', target);
   $e2 = $('.fliped', target);
   $e1.removeClass('flip').addClass('fliped');
