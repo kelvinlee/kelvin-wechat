@@ -15,7 +15,7 @@ module.exports = function(app) {
   app.get('/', wechat.index);
   app.post('/', wechat.index);
   app.get('/lottery', lottery.index);
-  app.get('/lottery-work', lottery.work);
+  app.post('/lotttery-work', lottery.saveCM);
   app.post('/lottery', lottery.lotteryCode);
   app.get('/gettoken', post.gettoken);
   app.get('/getmenu', post.getmenu);

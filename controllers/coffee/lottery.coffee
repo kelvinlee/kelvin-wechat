@@ -66,7 +66,51 @@ exports.index = (req,res,next)->
 			res.render 'lottery',{lots:false,code:code,lot:{}}
 			
 
-	
+exports.saveCM = (req,res,next)->
+	console.log req.body
+	re = Ut.recode()
+	code = req.body.code
+	username = req.body.username
+	mobile = req.body.mobile
+	adr = req.body.adr
+	unless username?
+		re.reason = "用户名不能为空."
+		re.recode = 202
+		res.send re
+		return false
+	console.log mobile,mobile.length
+	unless mobile? and mobile.length is 11
+		re.reason = "电话号码为11位数字."
+		re.recode = 202
+		res.send re
+		return false
+	unless adr?
+		re.reason = "联系地址不能为空."
+		re.recode = 202
+		res.send re
+		return false
+
+	Lottery.getLotter code,(err,obj)->
+		if not obj?
+			re.recode = 201
+			re.reason = "nocode"
+			res.send re
+			return false
+		if obj.username?
+			re.recode = 203
+			re.reason = "already"
+			res.send re
+			return false
+		if obj.num isnt 0
+			obj.username = username
+			obj.mobile = mobile
+			obj.adr = adr
+			obj.lot_at = new Date()
+			obj.save()
+			res.send re
+			return false
+
+
 exports.lotteryCode = (req,res,next)->
 	# 抽奖逻辑: 
 	# 首先查看是否已经抽奖过.
@@ -141,8 +185,8 @@ exports.lotteryCode = (req,res,next)->
 						# re.reason = "none"
 						# res.send re
 
-
-
 exports.work = (req,res,next)->
 	console.log req.query
-	res.render 'lottery-work'
+	# res.render 'lottery-work'
+
+

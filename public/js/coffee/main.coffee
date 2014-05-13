@@ -8,7 +8,28 @@ $(document).ready ->
 			_first = false
 			ajaxpost $(this).index()+1,this
 	$(".submit").click ->
-		alert '提交成功'
+		# alert '提交成功'
+		data = $("[name=usernameinfo]").serializeArray()
+		data.push {name:"code",value:code}
+		console.log data
+		$.ajax
+			url:'/lotttery-work'
+			dataType:"json"
+			type:"POST"
+			data:data
+			success: (msg)->
+				console.log msg
+				if msg.recode is 202
+					alert msg.reason
+				else if msg.recode is 201
+					alert '您的资格码有问题,请您确定后重新参与.'
+				else if msg.recode is 203
+					alert '您已经提交过信息了.'
+				else if msg.recode is 200
+					alert '提交成功,请等待我们的联系.'
+				else
+					alert msg.reason
+
 
 ajaxpost = (nums,target)->
 	console.log nums

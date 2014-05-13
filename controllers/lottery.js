@@ -86,6 +86,58 @@ exports.index = function(req, res, next) {
   });
 };
 
+exports.saveCM = function(req, res, next) {
+  var adr, code, mobile, re, username;
+  console.log(req.body);
+  re = Ut.recode();
+  code = req.body.code;
+  username = req.body.username;
+  mobile = req.body.mobile;
+  adr = req.body.adr;
+  if (username == null) {
+    re.reason = "用户名不能为空.";
+    re.recode = 202;
+    res.send(re);
+    return false;
+  }
+  console.log(mobile, mobile.length);
+  if (!((mobile != null) && mobile.length === 11)) {
+    re.reason = "电话号码为11位数字.";
+    re.recode = 202;
+    res.send(re);
+    return false;
+  }
+  if (adr == null) {
+    re.reason = "联系地址不能为空.";
+    re.recode = 202;
+    res.send(re);
+    return false;
+  }
+  return Lottery.getLotter(code, function(err, obj) {
+    if (obj == null) {
+      re.recode = 201;
+      re.reason = "nocode";
+      res.send(re);
+      return false;
+    }
+    if (obj.username != null) {
+      re.recode = 203;
+      re.reason = "already";
+      res.send(re);
+      return false;
+    }
+    if (obj.num !== 0) {
+      obj.username = username;
+      obj.mobile = mobile;
+      obj.adr = adr;
+      obj.lot_at = new Date();
+      obj.save();
+      res.send(re);
+      return false;
+    }
+  });
+};
+
 exports.lotteryCode = function(req, res, next) {
   var code, num, re;
   code = req.body.code;
@@ -121,6 +173,5 @@ exports.lotteryCode = function(req, res, next) {
 };
 
 exports.work = function(req, res, next) {
-  console.log(req.query);
-  return res.render('lottery-work');
+  return console.log(req.query);
 };

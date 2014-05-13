@@ -33,6 +33,7 @@ $(document).ready(function() {
         if (msg.recode === 200) {
           $ep = $("[name=generate]");
           $ep.html($ep.data('content') + msg.reason);
+          $ep.val($ep.data('content') + msg.reason);
           $("#randomnum").css('color', colist[_ls]);
           $("#randomnum").html(msg.reason);
           _ls++;

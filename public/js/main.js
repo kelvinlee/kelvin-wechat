@@ -13,7 +13,33 @@ $(document).ready(function() {
     }
   });
   return $(".submit").click(function() {
-    return alert('提交成功');
+    var data;
+    data = $("[name=usernameinfo]").serializeArray();
+    data.push({
+      name: "code",
+      value: code
+    });
+    console.log(data);
+    return $.ajax({
+      url: '/lotttery-work',
+      dataType: "json",
+      type: "POST",
+      data: data,
+      success: function(msg) {
+        console.log(msg);
+        if (msg.recode === 202) {
+          return alert(msg.reason);
+        } else if (msg.recode === 201) {
+          return alert('您的资格码有问题,请您确定后重新参与.');
+        } else if (msg.recode === 203) {
+          return alert('您已经提交过信息了.');
+        } else if (msg.recode === 200) {
+          return alert('提交成功,请等待我们的联系.');
+        } else {
+          return alert(msg.reason);
+        }
+      }
+    });
   });
 });
 
