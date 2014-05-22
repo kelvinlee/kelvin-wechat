@@ -103,7 +103,7 @@ checkMessage = function(message, callback) {
         name: "返回收到图片信息.",
         key: "1",
         type: "text",
-        backContent: ""
+        backContent: "【看名车志，赢车模】活动于5月22日18时已结束，感谢大家的支持与参与。因参与活动人数较多，部分用户还未得到回复，请耐心等待。欢迎继续关注【三星乐园】，更多精彩内容，敬请期待！"
       };
       callback(img);
       return img;
@@ -171,7 +171,7 @@ exports.index = function(req, res, next) {
         toUser: message.FromUserName,
         fromUser: message.ToUserName,
         date: new Date().getTime(),
-        content: ""
+        content: "【看名车志，赢车模】活动于5月22日18时已结束，感谢大家的支持与参与。因参与活动人数较多，部分用户还未得到回复，请耐心等待。欢迎继续关注【三星乐园】，更多精彩内容，敬请期待！"
       });
     }
   });
