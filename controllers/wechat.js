@@ -103,7 +103,7 @@ checkMessage = function(message, callback) {
         name: "返回收到图片信息.",
         key: "1",
         type: "text",
-        backContent: "您的信息已收录，后台审核后即可参与抽奖。"
+        backContent: ""
       };
       callback(img);
       return img;
@@ -292,7 +292,7 @@ welcometext = {
   name: "welcome",
   key: "你好",
   type: "text",
-  backContent: "感谢您关注【三星乐园】官方微信，还在向朋友们留言“流量耗尽，下月见”？2014年5月9日—2014年5月22日参与【看名车志，赢车模】活动，就能赢取70M数据流量包、移动30元充值卡~还有精美车模相赠，回复【1】查看“活动详情”，赶紧下载参与吧。奖品有限，参与从速。"
+  backContent: "欢迎关注【三星乐园】，【看名车志，赢车模】活动于5月22日18时已结束，感谢大家的支持与参与。更多精彩内容，敬请期待。"
 };
 
 go_subscribe = function(message, callback) {
@@ -398,19 +398,7 @@ _randomBadAnswer = ["本题回答错误。快去本期《我爱三星视频秀�
 
 _nr = "\n";
 
-_qa = [
-  {
-    name: "查看活动详情",
-    key: "1",
-    type: "news",
-    backContent: "活动详情",
-    title: "【看名车志，赢车模】100%中奖",
-    description: '下载【新炫刊】参与“看名车志，赢车模”活动，赢取移动30元充值卡、移动70M流量包或1:18精美汽车模型，100%中奖！',
-    picurl: "https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzM5ibtoBBE2SGwkpLUxZNAx8h8puh4WRxWa4xPWFKLgVp8vcAAF48cME3iaYIPqQCzKiapjCfb80P9Iw/0",
-    url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200220698&idx=1&sn=08b87ef8fada09289f48ade871e675df#rd",
-    evt: clearQA
-  }
-];
+_qa = [];
 
 
 /*
