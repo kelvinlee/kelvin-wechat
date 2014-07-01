@@ -39,10 +39,21 @@ overQA = (openid,backup = "test")->
 
 # for question and answer
 
-_randomBadAnswer = ["本题回答错误。快去本期《我爱三星视频秀》直播仔细瞄一下内容,再来重新作答哦!视频链接: http://tv.sohu.com/samsung","嘿嘿,你一定没有认真看视频,要仔细看才能知道答案哦!~视频链接: http://tv.sohu.com/samsung","哎呀,答错了。只有三道题全对才能赢得S5哟! ~ 视频链接: http://tv.sohu.com/samsung"]
+# _randomBadAnswer = ["本题回答错误。快去本期《我爱三星视频秀》直播仔细瞄一下内容,再来重新作答哦!视频链接: http://tv.sohu.com/samsung","嘿嘿,你一定没有认真看视频,要仔细看才能知道答案哦!~视频链接: http://tv.sohu.com/samsung","哎呀,答错了。只有三道题全对才能赢得S5哟! ~ 视频链接: http://tv.sohu.com/samsung"]
 
 _nr = "\n"
 _qa = [
+	{
+		name:"查看活动详情"
+		key:"1"
+		type:"news"
+		backContent :"活动详情"
+		title:"Samsung GALAXY K zoom 让每个瞬间都精彩"
+		description: '参与活动赢取Samsung GALAXY K zoom，开启你的幸福之旅~'
+		picurl:"https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzNWR5PaQgtD89x9Drdb3oBEH7YOOcibiajvicowpicTgUjrlNzswycHMGPKjytQvc4icOqb3I627BnkWOQ/0"
+		url: "http://weixinapp.nmtree.com/samsung/?from=singlemessage&isappinstalled=0"
+		evt:clearQA
+	}
 	# {
 	# 	name:"欢迎"
 	# 	key:"1"
