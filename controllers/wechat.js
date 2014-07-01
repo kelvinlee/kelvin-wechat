@@ -93,9 +93,6 @@ checkMessage = function(message, callback) {
   switch (message.MsgType) {
     case 'text':
       console.log('文字信息');
-      if (Special(message.Content, message.FromUserName)) {
-        return getAnswer(message.Content, message.FromUserName, callback);
-      }
       return getQA(message.Content, message.FromUserName, callback);
     case 'image':
       console.log('图片信息');
@@ -405,7 +402,7 @@ _qa = [
     title: "Samsung GALAXY K zoom 让每个瞬间都精彩",
     description: '参与活动赢取Samsung GALAXY K zoom，开启你的幸福之旅~',
     picurl: "https://mmbiz.qlogo.cn/mmbiz/icfeQvJeAJzNWR5PaQgtD89x9Drdb3oBEH7YOOcibiajvicowpicTgUjrlNzswycHMGPKjytQvc4icOqb3I627BnkWOQ/0",
-    url: "http://weixinapp.nmtree.com/samsung/?from=singlemessage&isappinstalled=0",
+    url: "http://mp.weixin.qq.com/s?__biz=MzA5MTUwMzMyNA==&mid=200501036&idx=1&sn=7c19d06ff08719359639336eb357bbfe&scene=1&key=540a4984c4f01b4dfee5b42dd37ecdce5d742de5ce37445e8706c97c1def9f100a8bcf3813e0ea9f10b6acf5efa0d42b&ascene=0&uin=MjY4NjM5MDU%3D",
     evt: clearQA
   }
 ];

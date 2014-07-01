@@ -93,7 +93,7 @@ checkMessage = (message,callback)->
 			console.log '文字信息'
 			# console.log '文字信息',message
 			# Inser_db_text message
-			return getAnswer message.Content,message.FromUserName,callback if Special message.Content,message.FromUserName
+			# return getAnswer message.Content,message.FromUserName,callback if Special message.Content,message.FromUserName
 			return getQA message.Content,message.FromUserName,callback
 		when 'image'
 			console.log '图片信息'
