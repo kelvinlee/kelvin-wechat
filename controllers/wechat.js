@@ -289,7 +289,7 @@ welcometext = {
   name: "welcome",
   key: "你好",
   type: "text",
-  backContent: "欢迎关注【三星乐园】官⽅微信。参与活动赢取Samsung GALAXY K zoom，还等什么？回复【1】了解活动详情。"
+  backContent: "欢迎关注【三星乐园】官⽅微信。"
 };
 
 go_subscribe = function(message, callback) {
